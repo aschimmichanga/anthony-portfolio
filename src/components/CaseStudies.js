@@ -92,7 +92,7 @@ const CaseStudies = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0f0a] p-6 lg:p-16">
+    <div className="min-h-screen bg-[#0a0f0a] p-6">
       {/* Main Case Studies */}
       <div className="space-y-6 lg:space-y-8 mb-24">
         {projects.map((project, index) => (
