@@ -1,10 +1,7 @@
-import { heroui } from "@heroui/theme";
-
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/@heroui/theme/dist/components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -25,18 +22,6 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [heroui({
-    themes: {
-      light: {
-        colors: {
-          primary: {
-            DEFAULT: "#00a04d",
-            foreground: "#ffffff",
-          },
-          focus: "#00a04d",
-        },
-      },
-    },
-  })],
+  plugins: [],
 };
 
