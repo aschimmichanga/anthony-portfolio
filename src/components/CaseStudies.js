@@ -5,19 +5,53 @@ import { FiArrowUpRight } from 'react-icons/fi';
 const CaseStudies = () => {
   const projects = [
     {
-      title: 'Houseform',
-      subtitle: 'How do we connect renters with rental agents?',
-      description: 'Introducing your new Renting Passport',
-      bgGradient: 'from-orange-500 via-pink-400 to-yellow-300',
-      category: 'Real Estate Tech',
+      title: 'Improving a 3D Print Review System',
+      subtitle: 'Using AI to help users learn from failures while giving creators actionable feedback',
+      description: 'Product Design Case Study',
+      bgGradient: 'from-slate-700 via-gray-800 to-zinc-900',
+      thumbnail: '/images/case-studies/bambu-lab.png', // Add your image here
+      category: '3D Printing Platform • Product Design',
       metrics: [
-        { label: 'User Acquisition', value: '2,500+' },
-        { label: 'Time Saved', value: '40%' },
-        { label: 'Match Success', value: '85%' }
+        { label: 'User Reviews', value: '400+' },
+        { label: 'AI Features', value: '3' },
+        { label: 'Weeks', value: '4' }
       ],
-      impact: 'Streamlined the rental search process by creating a unified renter profile system that reduced application time from hours to minutes.',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Figma'],
-      link: '/case-studies/houseform'
+      impact: 'Designed an AI-powered review system that analyzes feedback patterns and suggests helpful tags. Helps users understand why things fail while giving creators actionable insights instead of angry 1-star reviews.',
+      technologies: ['Figma', 'AI/ML Design', 'User Research', 'Interaction Design'],
+      link: '/case-studies/bambu-lab',
+      featured: true,
+      designWork: {
+        deliverables: [
+          'AI-powered tag suggestions that learn from review patterns',
+          'Smart feedback categorization using machine learning',
+          'Guided feedback flow with contextual learning moments',
+          'Intelligent filter system to surface useful reviews',
+          'AI analysis to separate user error from product issues'
+        ]
+      },
+      longDescription: {
+        problem: 'Users rate products poorly when they make mistakes, not understanding the real cause. Creators get punished unfairly. No one learns anything.',
+        research: [
+          'Used AI to analyze 400+ user reviews and identify patterns',
+          'Studied community frustration on Reddit and forums',
+          'Classified complaints with AI assistance: product issues vs user mistakes vs environment',
+          'Found 35% of bad reviews were actually user error through data analysis'
+        ],
+        insights: [
+          '46% complained about actual product problems',
+          '35% were user mistakes (wrong setup, bad technique)',
+          '19% unclear what went wrong',
+          '81% gave clear feedback when prompted',
+          'Most users didn\'t know their reviews hurt creator income'
+        ],
+        solution: [
+          'Designed AI that suggests relevant tags based on review text',
+          'Created smart categorization that learns from user patterns',
+          'Added "what went wrong" categories so users can self-reflect',
+          'Built intelligent filter system that surfaces the most helpful reviews',
+          'Made feedback actionable with AI-powered insights for creators'
+        ]
+      }
     },
     {
       title: 'Onchain Pets',
@@ -95,11 +129,11 @@ const CaseStudies = () => {
     <div className="min-h-screen bg-[#0a0f0a] p-6">
       {/* Main Case Studies */}
       <div className="space-y-6 lg:space-y-8 mb-24">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
             className="group cursor-pointer"
@@ -112,105 +146,50 @@ const CaseStudies = () => {
                 </span>
               </div>
               
-              {/* Project Visual */}
-              <div className={`h-[400px] lg:h-[500px] bg-gradient-to-br ${project.bgGradient} flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500`}>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                <div className="relative z-10 text-center p-8 lg:p-12 w-full max-w-4xl">
-                  {index === 0 && (
-                    <motion.div 
-                      className="bg-white/95 backdrop-blur-xl rounded-3xl p-8 lg:p-16 shadow-2xl"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
-                        Introducing your<br />
-                        <span className="outlined-text" style={{ WebkitTextStroke: '1px #1f2937' }}>new Renting</span> Passport
-                      </h3>
-                      <p className="text-gray-600 mb-8 text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
-                        So we've created an easy-to-use service to find you a place fast and keep your renter information secure.
-                      </p>
-                      <div className="flex gap-4 justify-center flex-wrap">
-                        <button className="px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors">
-                          Find an agency
-                        </button>
-                        <button className="px-6 py-3 text-gray-700 text-sm font-medium hover:text-gray-900 transition-colors flex items-center gap-2">
-                          Learn More <FiArrowUpRight />
-                        </button>
-                      </div>
-                    </motion.div>
-                  )}
-                  {index === 1 && (
-                    <div className="text-white">
-                      <h3 className="text-5xl lg:text-7xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>
-                        Tokenize your <span className="text-cyan-300">dog</span>
-                      </h3>
-                      <p className="text-gray-200 mb-12 text-lg">
-                        Trade, create, share<br />
-                        digital memories of your beloved pets
-                      </p>
-                      <div className="grid grid-cols-4 gap-3 lg:gap-4 max-w-3xl mx-auto">
-                        {[1, 2, 3, 4].map((i) => (
-                          <motion.div 
-                            key={i} 
-                            className="aspect-square bg-teal-900/40 backdrop-blur-sm rounded-2xl border border-white/10"
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            transition={{ duration: 0.2 }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {index === 2 && (
-                    <motion.div 
-                      className="bg-white rounded-3xl p-8 lg:p-16 shadow-2xl"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
-                        Automated Social Media Marketing
-                      </h3>
-                      <p className="text-2xl lg:text-3xl font-semibold mb-8 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                        for Real Estate Agents
-                      </p>
-                      <p className="text-gray-600 mb-10 text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
-                        Boost your social media reach with automated listing posts and engaging content, 
-                        tailored specifically for the real estate market.
-                      </p>
-                      <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300">
-                        Get started now
-                      </button>
-                    </motion.div>
-                  )}
-                </div>
+              {/* Project Image */}
+              <div className={`h-[320px] lg:h-[380px] relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-500 ${!project.thumbnail ? `bg-gradient-to-br ${project.bgGradient}` : 'bg-gray-900'}`}>
+                {/* Thumbnail Image (if provided) */}
+                <img 
+                  src={project.thumbnail} 
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  onError={(e) => {
+                    console.error('Failed to load image:', project.thumbnail);
+                    e.target.style.display = 'none';
+                  }}
+                  onLoad={() => {
+                    console.log('Image loaded successfully:', project.thumbnail);
+                  }}
+                />
               </div>
               
               {/* Project Info */}
-              <div className="p-6 lg:p-8 bg-gradient-to-br from-[#0d1912]/50 to-[#0a0f0a]">
-                <div className="mb-6">
-                  <h3 className="text-white text-lg lg:text-xl font-semibold mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>
+              <div className="p-5 lg:p-6 bg-gradient-to-br from-[#0d1912]/50 to-[#0a0f0a]">
+                <div className="mb-4">
+                  <h3 className="text-white text-base lg:text-lg font-semibold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
                     {project.title}
                   </h3>
-                  <p className="text-gray-500 text-sm mb-4">{project.subtitle}</p>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-4">{project.impact}</p>
+                  <p className="text-gray-500 text-xs mb-3">{project.subtitle}</p>
+                  <p className="text-gray-400 text-xs leading-relaxed mb-3">{project.impact}</p>
                   
                   {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4 mb-4">
+                  <div className="grid grid-cols-3 gap-2 mb-3">
                     {project.metrics.map((metric, i) => (
-                      <div key={i} className="text-center p-3 bg-emerald-900/20 rounded-lg border border-emerald-800/30">
-                        <div className="text-xl lg:text-2xl font-bold text-emerald-400 mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
+                      <div key={i} className="text-center p-2 bg-emerald-900/20 rounded-lg border border-emerald-800/30">
+                        <div className="text-base lg:text-lg font-bold text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>
                           {metric.value}
                         </div>
-                        <div className="text-xs text-gray-500">{metric.label}</div>
+                        <div className="text-[10px] text-gray-500">{metric.label}</div>
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1.5 mb-3">
                     {project.technologies.map((tech, i) => (
                       <span 
                         key={i} 
-                        className="px-3 py-1 bg-gray-800/50 text-gray-400 text-xs rounded-full border border-gray-700/50"
+                        className="px-2 py-0.5 bg-gray-800/50 text-gray-400 text-[10px] rounded-full border border-gray-700/50"
                         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         {tech}
@@ -219,19 +198,19 @@ const CaseStudies = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center pt-4 border-t border-emerald-900/20">
-                  <span className="text-gray-500 text-xs">Full case study coming soon</span>
+                <div className="flex justify-between items-center pt-3 border-t border-emerald-900/20">
+                  <span className="text-gray-500 text-[10px]">Full case study coming soon</span>
                   <motion.a 
                     href={project.link}
-                    className="text-gray-400 hover:text-emerald-400 flex items-center gap-2 transition-colors group/link"
+                    className="text-gray-400 hover:text-emerald-400 flex items-center gap-1.5 transition-colors group/link"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="text-sm font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>View Details</span>
-                    <FiArrowUpRight className="text-xl" />
+                    <span className="text-xs font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>View Details</span>
+                    <FiArrowUpRight className="text-base" />
                   </motion.a>
                 </div>
               </div>
-            </div>
+                    </div>
           </motion.div>
         ))}
       </div>
@@ -278,16 +257,16 @@ const CaseStudies = () => {
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, i) => (
+                    {project.tags.map((tag, i) => (
                     <span 
                       key={i} 
                       className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
                       style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
-                      {tag}
+                        {tag}
                     </span>
-                  ))}
-                </div>
+                    ))}
+                  </div>
                 {(project.link || project.externalLink) && (
                   <a 
                     href={project.link || project.externalLink}
@@ -307,7 +286,7 @@ const CaseStudies = () => {
           ))}
         </div>
       </motion.div>
-    </div>
+      </div>
   );
 };
 
