@@ -226,7 +226,6 @@ const CaseStudies = () => {
                 </div>
                 
                 <div className="flex justify-between items-center pt-3 border-t border-emerald-900/20">
-                  <span className="text-gray-500 text-[10px]">Full case study coming soon</span>
                   <motion.a 
                     href={project.link}
                     className="text-gray-400 hover:text-emerald-400 flex items-center gap-1.5 transition-colors group/link"
