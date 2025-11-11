@@ -8,7 +8,7 @@ const BambuLabCaseStudy = () => {
     // Hero
     title: 'Fixing a Broken Review System',
     subtitle: 'Designed an AI-powered solution that helps users learn from failures while giving creators fair feedback',
-    hero: '/images/case-studies/bambu-lab.png',
+    hero: `${process.env.PUBLIC_URL}/images/case-studies/bambu-lab.png`,
     
     // Quick Context
     context: {
@@ -45,7 +45,7 @@ const BambuLabCaseStudy = () => {
         title: 'Smart Attribution Tags',
         problem: 'Users blame creators without understanding why prints fail',
         solution: 'AI suggests failure causes—helping users self-reflect before leaving reviews',
-        image: '/images/case-studies/bambu-attribution-tags.png',
+        image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-attribution-tags.png`,
         impact: 'Reduces misdirected blame by 35%',
         highlight: 'Product thinking: Turn negative moments into learning opportunities'
       },
@@ -53,7 +53,7 @@ const BambuLabCaseStudy = () => {
         title: 'Contextual Help Cards',
         problem: 'Frustrated users leave angry reviews instead of learning',
         solution: 'When users select "user error," show troubleshooting tips inline',
-        image: '/images/case-studies/bambu-help-cards.png',
+        image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-help-cards.png`,
         impact: 'Transforms complaints into education',
         highlight: 'UX craft: Progressive disclosure—help without overwhelming'
       },
@@ -61,7 +61,7 @@ const BambuLabCaseStudy = () => {
         title: 'Review Filters by Attribution',
         problem: 'Users can\'t distinguish real issues from user mistakes',
         solution: 'Filter reviews by cause type—see only what\'s relevant',
-        image: '/images/case-studies/bambu-filters.png',
+        image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-filters.png`,
         impact: 'Makes feedback actionable for both users and creators',
         highlight: 'Systems thinking: One feature serves multiple stakeholders'
       },
@@ -69,7 +69,7 @@ const BambuLabCaseStudy = () => {
         title: 'Creator Insights Dashboard',
         problem: 'Creators can\'t tell which feedback to act on',
         solution: 'AI-powered analytics showing real issues vs misdirected feedback',
-        image: '/images/case-studies/bambu-dashboard.png',
+        image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-dashboard.png`,
         impact: 'Empowers data-driven iteration',
         highlight: 'Business value: Retain creators by making feedback fair'
       }
@@ -102,19 +102,19 @@ const BambuLabCaseStudy = () => {
           version: 'V1: Pre-Review Quiz',
           approach: 'Force users to answer troubleshooting questions before reviewing',
           learning: '❌ Too much friction—users abandoned reviews',
-          image: '/images/case-studies/bambu-v1.png'
+          image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-v1.png`
         },
         {
           version: 'V2: Post-Review Attribution',
           approach: 'Let users review first, then ask "what went wrong?"',
           learning: '⚠️ Better, but users already blamed creators mentally',
-          image: '/images/case-studies/bambu-v2.png'
+          image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-v2.png`
         },
         {
           version: 'V3: AI Suggestions (Final)',
           approach: 'Analyze review text + suggest attribution tags in real-time',
           learning: '✅ Low friction + helps users self-reflect + fair to creators',
-          image: '/images/case-studies/bambu-v3.png'
+          image: `${process.env.PUBLIC_URL}/images/case-studies/bambu-v3.png`
         }
       ],
       keyDecision: {

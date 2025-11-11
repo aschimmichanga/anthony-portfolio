@@ -10,7 +10,7 @@ const CaseStudies = () => {
       subtitle: 'Using AI to help users learn from failures while giving creators actionable feedback',
       description: 'Product Design Case Study',
       bgGradient: 'from-slate-700 via-gray-800 to-zinc-900',
-      thumbnail: '/images/case-studies/bambu-lab.png', // Add your image here
+      thumbnail: `${process.env.PUBLIC_URL}/images/case-studies/bambu-lab.png`,
       category: '3D Printing Platform • Product Design',
       metrics: [
         { label: 'User Reviews', value: '400+' },
