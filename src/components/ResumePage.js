@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
+import { FiArrowLeft, FiExternalLink, FiDownload } from 'react-icons/fi';
 
 const ResumePage = () => {
   useEffect(() => {
@@ -121,7 +121,7 @@ const ResumePage = () => {
     <div className="min-h-screen bg-[#0a0f0a] text-white">
       {/* Header */}
       <div className="border-b border-emerald-900/30 bg-[#0a0f0a]/80 backdrop-blur-sm sticky top-0 z-20">
-        <div className="max-w-4xl mx-auto px-4 lg:px-8 py-4">
+        <div className="min-w-screen px-4 lg:px-8 py-4 flex justify-between">
           <Link 
             to="/"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors"
@@ -130,6 +130,16 @@ const ResumePage = () => {
             <FiArrowLeft className="text-xl" />
             <span className="text-sm font-medium">Back to Portfolio</span>
           </Link>
+          {/* Download Resume Button */}
+          <a
+            href="/Anthony_Luong_Resume.pdf"
+            download
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 hover:text-emerald-300 border border-emerald-500/30 hover:border-emerald-500/50 rounded-lg font-medium text-sm transition-all duration-300"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            <FiDownload className="text-base" />
+            <span>Download Resume</span>
+          </a>
         </div>
       </div>
 
@@ -169,7 +179,7 @@ const ResumePage = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider text-emerald-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider text-emerald-400 pl-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Professional Experience
           </h2>
           <div className="space-y-8">
@@ -224,7 +234,7 @@ const ResumePage = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider text-emerald-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider text-emerald-400 pl-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Education
           </h2>
           <div className="border-l-2 border-emerald-900/30 pl-6 relative">
@@ -276,10 +286,10 @@ const ResumePage = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider text-emerald-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider text-emerald-400 pl-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Skills
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 pl-6">
             {/* Proficiencies */}
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
