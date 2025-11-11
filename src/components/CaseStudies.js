@@ -157,6 +157,47 @@ const CaseStudies = () => {
     }
   };
 
+  const designWork = [
+    {
+      title: 'Houseform Ambassador Dashboard',
+      description: 'A dashboard designed for and used by our 10 Houseform campus ambassadors in our referral program to track progress and manage leads.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/houseform-ambassador-dashboard.png`,
+      tags: ['Dashboard', 'UI/UX', 'Responsive'],
+      link: 'https://www.houseform.ai/ambassador/home' // Optional: add URL if project has a live link
+    },
+    
+    
+    {
+      title: 'Klativa',
+      description: 'A B2B SaaS platform tailored for rental agents to create AI agents to prequalify renters, serving as one of the precursor to Houseform.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/klativa.png`,
+      tags: ['Live Prototype', 'Figma', 'B2B SaaS', 'AI'],
+      link: 'https://www.figma.com/proto/0SREuw7SRgYeWs2ZnWRs4x/Prototype-v4-(Copy)?page-id=2489%3A61912&node-id=2489-61913&viewport=340%2C307%2C0.02&t=0M5MY6th59NeXGN2-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2489%3A61913' // Optional: add URL if project has a live link
+    },
+    {
+      title: 'MVPepe',
+      description: 'A fun Framer website created in a night for a Solana meme coin project I ran over the summer with 3 friends.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/mvpepe.png`,
+      tags: ['Framer', 'Responsive Design', 'Web3'],
+      link: 'https://framer.com/projects/MVPEPE--4cLFMrfhZoJw0m26Qlht' // Optional: add URL if project has a live link
+    },
+    {
+      title: 'Greenpill Impact Networks Book',
+      description: 'Lead Designer for the 2024 Revised Edition of Impact Networks, published by Gitcoin. Collaborated with two other designers to deliver a 102-page book in just one week. Showcased at ETH Munich 2024',
+      image: `${process.env.PUBLIC_URL}/images/design-work/greenpill-network.png`,
+      tags: ['Book', 'Print Design', 'Web3'],
+      link: "https://greenpill.network/pdf/onchain-impact-networks.pdf" // Optional: add URL if project has a live link
+    },
+    {
+      title: 'Onchain Pets',
+      description: 'A marketplace enabling users to tokenize their pets on-chain. Creating in close collaboration with a development team of 2.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/onchain-pets.png`,
+      tags: ['Figma', 'UX Design', 'Web3'],
+      link: 'https://www.figma.com/proto/0SREuw7SRgYeWs2ZnWRs4x/Prototype-v4-(Copy)?page-id=2489%3A61912&node-id=2489-61913&viewport=340%2C307%2C0.02&t=0M5MY6th59NeXGN2-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2489%3A61913' // Optional: add URL if project has a live link
+    },
+    
+  ];
+
   return (
     <div className="min-h-screen bg-[#0a0f0a] p-6">
       {/* Main Case Studies */}
@@ -238,20 +279,106 @@ const CaseStudies = () => {
                     ))}
                   </div>
                 </div>
-                
-                <div className="flex justify-end items-center pt-3 border-t border-emerald-900/20">
-                  <div className="px-4 py-2 bg-emerald-500/10 group-hover:bg-emerald-500/20 text-emerald-400 group-hover:text-emerald-300 border border-emerald-500/30 group-hover:border-emerald-500/50 rounded-lg flex items-center gap-2 transition-all duration-300 text-xs font-medium"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
-                    <span>View Case Study</span>
-                    <FiArrowUpRight className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </div>
-                </div>
               </div>
             </Link>
           </motion.div>
         ))}
       </div>
+
+      {/* Design Work Section */}
+      <motion.div
+        id="design-work"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
+        className="border-t border-emerald-900/30 pt-8"
+      >
+        <div className="flex items-center gap-4 mb-12">
+          <h2 className="text-white text-2xl lg:text-3xl font-bold" style={{ fontFamily: "'Sora', sans-serif" }}>
+            Design Work
+          </h2>
+          <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
+        </div>
+
+        <p className="text-gray-400 mb-8 text-sm lg:text-base" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          A collection of design explorations showcasing visual craft, versatility, and attention to detail
+        </p>
+
+        {/* Masonry Grid */}
+        <div className="columns-1 md:columns-2 gap-6 lg:gap-8">
+          {designWork.map((project, index) => {
+            const CardContent = (
+              <div className="relative overflow-hidden rounded-2xl border border-emerald-900/30 hover:border-emerald-500/50 transition-all duration-300 bg-gray-900/30">
+                {/* Image */}
+                <div className="aspect-auto">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-white font-bold text-sm mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
+                        {project.title}
+                      </h3>
+                      {project.description && (
+                        <p className="text-gray-300 text-xs mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {project.description}
+                        </p>
+                      )}
+                    </div>
+                    {project.link && (
+                      <FiArrowUpRight className="text-emerald-400 flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    )}
+                  </div>
+                  {project.tags && project.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 text-[10px] rounded-full border border-emerald-500/30"
+                          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className={`mb-6 lg:mb-8 break-inside-avoid group ${project.link ? 'cursor-pointer' : ''}`}
+              >
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    {CardContent}
+                  </a>
+                ) : (
+                  CardContent
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
 
       {/* Resume Section */}
       <motion.div
