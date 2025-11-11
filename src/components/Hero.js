@@ -130,7 +130,7 @@ const Hero = () => {
         >
           <Link 
             to="/resume"
-            className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-medium text-sm transition-all duration-300 shadow-lg shadow-emerald-900/30 hover:shadow-emerald-900/50 flex items-center gap-2"
+            className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium text-sm transition-all duration-300 shadow-lg shadow-emerald-900/30 hover:shadow-emerald-900/50 flex items-center gap-2"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -376,7 +376,7 @@ const BambuLabCaseStudy = () => {
           <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>Want to chat about this project?</h3>
           <a
             href="mailto:anthony.luong@example.com"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-medium transition-all duration-300 shadow-lg shadow-emerald-900/30"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-all duration-300 shadow-lg shadow-emerald-900/30"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Let's Talk <FiExternalLink />
