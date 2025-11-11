@@ -10,7 +10,7 @@ const CaseStudies = () => {
       subtitle: 'Using AI to help users learn from failures while giving creators actionable feedback',
       description: 'Product Design Case Study',
       bgGradient: 'from-slate-700 via-gray-800 to-zinc-900',
-      thumbnail: '/images/case-studies/bambu-lab.png', // Add your image here
+      thumbnail: `${process.env.PUBLIC_URL}/images/case-studies/bambu-lab.png`,
       category: '3D Printing Platform • Product Design',
       metrics: [
         { label: 'User Reviews', value: '400+' },
@@ -62,7 +62,8 @@ const CaseStudies = () => {
         company: 'Houseform',
         location: 'Boston, MA',
         role: 'Digital Designer and Co-Founder',
-        period: 'Oct 2023 – Present',
+        period: 'Oct 2023 - Present',
+        website: 'https://www.houseform.ai/',
         achievements: [
           'Designed low and high-fidelity B2B user interfaces for two standalone agentic AI products supporting hundreds of monthly users',
           'Crafted internal dashboards for data analysts, ambassador teams, and stakeholders',
@@ -76,7 +77,8 @@ const CaseStudies = () => {
         company: 'Decentagora',
         location: 'Calgary, Canada',
         role: 'Founding Designer',
-        period: 'Feb 2022 – Oct 2023',
+        period: 'Feb 2022 - Oct 2023',
+        website: 'https://decentragora.xyz/',
         achievements: [
           'Created digital campaigns and proposal designs, securing over $100,000 in venture capital funding',
           'Designed core Web3 applications including no-code Solidity contract creator and first mainnet Optimism faucet',
@@ -89,7 +91,8 @@ const CaseStudies = () => {
         company: 'EVM Gas Station Tracker',
         location: 'Boston, MA',
         role: 'Digital Designer',
-        period: 'Sept 2022 – Oct 2023',
+        period: 'Sept 2022 - Oct 2023',
+        website: 'https://www.evmgasstation.xyz/',
         achievements: [
           'Consulted on and designed UI for real-time Ethereum gas price monitoring tool',
           'Improved UX and accessibility for thousands of weekly users',
@@ -101,7 +104,8 @@ const CaseStudies = () => {
         company: 'Scroll Kingdom (now Omni Kingdoms)',
         location: 'Boston, MA',
         role: 'Designer and Consultant',
-        period: 'Jul 2022 – Jan 2023',
+        period: 'Jul 2022 - Jan 2023',
+        website: 'https://scroll-237a2.web.app/',
         achievements: [
           'Designed UI that achieved highest number of transactions on Scroll Testnet in summer 2022',
           'Enhanced player engagement and optimized in-game navigation',
@@ -153,6 +157,47 @@ const CaseStudies = () => {
     }
   };
 
+  const designWork = [
+    {
+      title: 'Houseform Ambassador Dashboard',
+      description: 'A dashboard designed for and used by our 10 Houseform campus ambassadors in our referral program to track progress and manage leads.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/houseform-ambassador-dashboard.png`,
+      tags: ['Dashboard', 'UI/UX', 'Responsive'],
+      link: 'https://www.houseform.ai/ambassador/home' // Optional: add URL if project has a live link
+    },
+    
+    
+    {
+      title: 'Klativa',
+      description: 'A B2B SaaS platform tailored for rental agents to create AI agents to prequalify renters, serving as one of the precursor to Houseform.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/klativa.png`,
+      tags: ['Live Prototype', 'Figma', 'B2B SaaS', 'AI'],
+      link: 'https://www.figma.com/proto/0SREuw7SRgYeWs2ZnWRs4x/Prototype-v4-(Copy)?page-id=2489%3A61912&node-id=2489-61913&viewport=340%2C307%2C0.02&t=0M5MY6th59NeXGN2-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2489%3A61913' // Optional: add URL if project has a live link
+    },
+    {
+      title: 'MVPepe',
+      description: 'A fun Framer website created in a night for a Solana meme coin project I ran over the summer with 3 friends.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/mvpepe.png`,
+      tags: ['Framer', 'Responsive Design', 'Web3'],
+      link: 'https://framer.com/projects/MVPEPE--4cLFMrfhZoJw0m26Qlht' // Optional: add URL if project has a live link
+    },
+    {
+      title: 'Greenpill Impact Networks Book',
+      description: 'Lead Designer for the 2024 Revised Edition of Impact Networks, published by Gitcoin. Collaborated with two other designers to deliver a 102-page book in just one week. Showcased at ETH Munich 2024',
+      image: `${process.env.PUBLIC_URL}/images/design-work/greenpill-network.png`,
+      tags: ['Book', 'Print Design', 'Web3'],
+      link: "https://greenpill.network/pdf/onchain-impact-networks.pdf" // Optional: add URL if project has a live link
+    },
+    {
+      title: 'Onchain Pets',
+      description: 'A marketplace enabling users to tokenize their pets on-chain. Creating in close collaboration with a development team of 2.',
+      image: `${process.env.PUBLIC_URL}/images/design-work/onchain-pets.png`,
+      tags: ['Figma', 'UX Design', 'Web3'],
+      link: 'https://www.figma.com/proto/0SREuw7SRgYeWs2ZnWRs4x/Prototype-v4-(Copy)?page-id=2489%3A61912&node-id=2489-61913&viewport=340%2C307%2C0.02&t=0M5MY6th59NeXGN2-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2489%3A61913' // Optional: add URL if project has a live link
+    },
+    
+  ];
+
   return (
     <div className="min-h-screen bg-[#0a0f0a] p-6">
       {/* Main Case Studies */}
@@ -179,9 +224,9 @@ const CaseStudies = () => {
                   <span className="text-xs uppercase tracking-wider text-emerald-400/60 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {project.category}
                   </span>
-                </div>
+                      </div>
                 <FiArrowUpRight className="text-emerald-400/60 group-hover:text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-xl" />
-              </div>
+                      </div>
               
               {/* Project Image */}
               <div className={`h-[320px] lg:h-[380px] relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-500 ${!project.thumbnail ? `bg-gradient-to-br ${project.bgGradient}` : 'bg-gray-900'}`}>
@@ -198,7 +243,7 @@ const CaseStudies = () => {
                     console.log('Image loaded successfully:', project.thumbnail);
                   }}
                 />
-              </div>
+                  </div>
               
               {/* Project Info */}
               <div className="p-5 lg:p-6 bg-gradient-to-br from-[#0d1912]/50 to-[#0a0f0a]">
@@ -234,20 +279,106 @@ const CaseStudies = () => {
                     ))}
                   </div>
                 </div>
-                
-                <div className="flex justify-end items-center pt-3 border-t border-emerald-900/20">
-                  <div className="px-4 py-2 bg-emerald-500/10 group-hover:bg-emerald-500/20 text-emerald-400 group-hover:text-emerald-300 border border-emerald-500/30 group-hover:border-emerald-500/50 rounded-lg flex items-center gap-2 transition-all duration-300 text-xs font-medium"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
-                    <span>View Case Study</span>
-                    <FiArrowUpRight className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </div>
-                </div>
               </div>
             </Link>
           </motion.div>
         ))}
       </div>
+
+      {/* Design Work Section */}
+      <motion.div
+        id="design-work"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
+        className="border-t border-emerald-900/30 pt-8"
+      >
+        <div className="flex items-center gap-4 mb-12">
+          <h2 className="text-white text-2xl lg:text-3xl font-bold" style={{ fontFamily: "'Sora', sans-serif" }}>
+            Design Work
+          </h2>
+          <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
+        </div>
+
+        <p className="text-gray-400 mb-8 text-sm lg:text-base" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          A collection of design explorations showcasing visual craft, versatility, and attention to detail
+        </p>
+
+        {/* Masonry Grid */}
+        <div className="columns-1 md:columns-2 gap-6 lg:gap-8">
+          {designWork.map((project, index) => {
+            const CardContent = (
+              <div className="relative overflow-hidden rounded-2xl border border-emerald-900/30 hover:border-emerald-500/50 transition-all duration-300 bg-gray-900/30">
+                {/* Image */}
+                <div className="aspect-auto">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1">
+                      <h3 className="text-white font-bold text-sm mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
+                        {project.title}
+                      </h3>
+                      {project.description && (
+                        <p className="text-gray-300 text-xs mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {project.description}
+                        </p>
+                      )}
+                    </div>
+                    {project.link && (
+                      <FiArrowUpRight className="text-emerald-400 flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    )}
+                  </div>
+                  {project.tags && project.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 text-[10px] rounded-full border border-emerald-500/30"
+                          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className={`mb-6 lg:mb-8 break-inside-avoid group ${project.link ? 'cursor-pointer' : ''}`}
+              >
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    {CardContent}
+                  </a>
+                ) : (
+                  CardContent
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
 
       {/* Resume Section */}
       <motion.div
@@ -271,56 +402,84 @@ const CaseStudies = () => {
             Professional Experience
           </h3>
           <div className="space-y-6">
-            {resumeData.experience.map((job, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8 hover:border-emerald-500/50 transition-all duration-300"
-              >
-                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-                  <div className="flex-1">
-                    <h4 className="text-white text-xl font-bold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
-                      {job.company}
-                    </h4>
-                    <p className="text-emerald-300 font-medium mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {job.role}
-                    </p>
-                    <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {job.location}
-                    </p>
-                  </div>
-                  <span className="text-gray-400 text-sm mt-2 lg:mt-0" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {job.period}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 mb-4">
-                  {job.achievements.map((achievement, i) => (
-                    <li key={i} className="flex gap-3 text-gray-300 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {job.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      {tag}
+            {resumeData.experience.map((job, index) => {
+              const CardContent = (
+                <>
+                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-white text-xl font-bold mb-1 group-hover:text-emerald-300 transition-colors" style={{ fontFamily: "'Sora', sans-serif" }}>
+                          {job.company}
+                      </h4>
+                        {job.website && (
+                          <FiArrowUpRight className="text-emerald-400/60 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-emerald-300 font-medium mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {job.role}
+                      </p>
+                      <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {job.location}
+                      </p>
+                    </div>
+                    <span className="text-gray-400 text-sm mt-2 lg:mt-0" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {job.period}
                     </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                  </div>
+
+                  <ul className="space-y-2 mb-4">
+                    {job.achievements.map((achievement, i) => (
+                      <li key={i} className="flex gap-3 text-gray-300 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        <span className="text-emerald-400 mt-1">•</span>
+                        <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {job.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              );
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8 transition-all duration-300 ${
+                    job.website 
+                      ? 'hover:border-emerald-500/50 cursor-pointer group' 
+                      : ''
+                  }`}
+                >
+                  {job.website ? (
+                    <a
+                      href={job.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      {CardContent}
+                    </a>
+                  ) : (
+                    CardContent
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
-        </div>
+                    </div>
 
         {/* Education */}
         <motion.div
@@ -334,7 +493,7 @@ const CaseStudies = () => {
           </h3>
           <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8">
             <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-              <div>
+                    <div>
                 <h4 className="text-white text-xl font-bold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
                   {resumeData.education.school}
                 </h4>
@@ -418,19 +577,19 @@ const CaseStudies = () => {
             <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6">
               <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Certificates
-              </h4>
-              <ul className="space-y-2">
+                      </h4>
+                      <ul className="space-y-2">
                 {resumeData.skills.certificates.map((cert, i) => (
                   <li key={i} className="flex gap-2 text-gray-300 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     <span className="text-emerald-400">✓</span>
                     <span>{cert}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
         </motion.div>
-      </motion.div>
+            </motion.div>
       </div>
   );
 };
