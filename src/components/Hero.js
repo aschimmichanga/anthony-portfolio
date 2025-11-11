@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <div className="h-full bg-gradient-to-br from-[#0a1410] via-[#0d1912] to-[#0a0f0a] text-white p-8 lg:p-12 flex flex-col justify-between overflow-y-auto relative">
+    <div className="h-full bg-gradient-to-br from-[#0a1410] via-[#0d1912] to-[#0a0f0a] text-white p-8 lg:p-12 flex flex-col justify-between overflow-hidden relative">
       {/* Green gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-transparent to-green-900/10 pointer-events-none"></div>
       
@@ -200,15 +200,6 @@ const Hero = () => {
               <span className="group-hover:translate-x-1 inline-block transition-transform">Dribbble</span>
             </a>
           </div>
-        </div>
-        
-        <div className="space-y-4 border-t border-emerald-900/20 pt-6">
-        <a 
-          href="#other-projects" 
-          className="block text-gray-400 hover:text-emerald-300 transition-all duration-300 text-sm group"
-        >
-          <span className="group-hover:translate-x-1 inline-block transition-transform">Other Notable Projects →</span>
-        </a>
         </div>
       </motion.div>
     </div>

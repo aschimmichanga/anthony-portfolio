@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  background-color: #0a0f0a;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,15 +20,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #0a0f0a;
+  background-color: #0a0f0a;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0a0f0a;
+  background-color: #0a0f0a;
+  min-height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar for webkit browsers */
