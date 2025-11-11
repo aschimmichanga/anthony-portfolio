@@ -62,7 +62,8 @@ const CaseStudies = () => {
         company: 'Houseform',
         location: 'Boston, MA',
         role: 'Digital Designer and Co-Founder',
-        period: 'Oct 2023 – Present',
+        period: 'Oct 2023 - Present',
+        website: 'https://www.houseform.ai/',
         achievements: [
           'Designed low and high-fidelity B2B user interfaces for two standalone agentic AI products supporting hundreds of monthly users',
           'Crafted internal dashboards for data analysts, ambassador teams, and stakeholders',
@@ -76,7 +77,8 @@ const CaseStudies = () => {
         company: 'Decentagora',
         location: 'Calgary, Canada',
         role: 'Founding Designer',
-        period: 'Feb 2022 – Oct 2023',
+        period: 'Feb 2022 - Oct 2023',
+        website: 'https://decentragora.xyz/',
         achievements: [
           'Created digital campaigns and proposal designs, securing over $100,000 in venture capital funding',
           'Designed core Web3 applications including no-code Solidity contract creator and first mainnet Optimism faucet',
@@ -89,7 +91,8 @@ const CaseStudies = () => {
         company: 'EVM Gas Station Tracker',
         location: 'Boston, MA',
         role: 'Digital Designer',
-        period: 'Sept 2022 – Oct 2023',
+        period: 'Sept 2022 - Oct 2023',
+        website: 'https://www.evmgasstation.xyz/',
         achievements: [
           'Consulted on and designed UI for real-time Ethereum gas price monitoring tool',
           'Improved UX and accessibility for thousands of weekly users',
@@ -101,7 +104,8 @@ const CaseStudies = () => {
         company: 'Scroll Kingdom (now Omni Kingdoms)',
         location: 'Boston, MA',
         role: 'Designer and Consultant',
-        period: 'Jul 2022 – Jan 2023',
+        period: 'Jul 2022 - Jan 2023',
+        website: 'https://scroll-237a2.web.app/',
         achievements: [
           'Designed UI that achieved highest number of transactions on Scroll Testnet in summer 2022',
           'Enhanced player engagement and optimized in-game navigation',
@@ -179,9 +183,9 @@ const CaseStudies = () => {
                   <span className="text-xs uppercase tracking-wider text-emerald-400/60 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {project.category}
                   </span>
-                </div>
+                      </div>
                 <FiArrowUpRight className="text-emerald-400/60 group-hover:text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-xl" />
-              </div>
+                      </div>
               
               {/* Project Image */}
               <div className={`h-[320px] lg:h-[380px] relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-500 ${!project.thumbnail ? `bg-gradient-to-br ${project.bgGradient}` : 'bg-gray-900'}`}>
@@ -198,7 +202,7 @@ const CaseStudies = () => {
                     console.log('Image loaded successfully:', project.thumbnail);
                   }}
                 />
-              </div>
+                  </div>
               
               {/* Project Info */}
               <div className="p-5 lg:p-6 bg-gradient-to-br from-[#0d1912]/50 to-[#0a0f0a]">
@@ -271,56 +275,84 @@ const CaseStudies = () => {
             Professional Experience
           </h3>
           <div className="space-y-6">
-            {resumeData.experience.map((job, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8 hover:border-emerald-500/50 transition-all duration-300"
-              >
-                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-                  <div className="flex-1">
-                    <h4 className="text-white text-xl font-bold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
-                      {job.company}
-                    </h4>
-                    <p className="text-emerald-300 font-medium mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {job.role}
-                    </p>
-                    <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {job.location}
-                    </p>
-                  </div>
-                  <span className="text-gray-400 text-sm mt-2 lg:mt-0" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {job.period}
-                  </span>
-                </div>
-
-                <ul className="space-y-2 mb-4">
-                  {job.achievements.map((achievement, i) => (
-                    <li key={i} className="flex gap-3 text-gray-300 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {job.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      {tag}
+            {resumeData.experience.map((job, index) => {
+              const CardContent = (
+                <>
+                  <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-white text-xl font-bold mb-1 group-hover:text-emerald-300 transition-colors" style={{ fontFamily: "'Sora', sans-serif" }}>
+                          {job.company}
+                      </h4>
+                        {job.website && (
+                          <FiArrowUpRight className="text-emerald-400/60 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-emerald-300 font-medium mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {job.role}
+                      </p>
+                      <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {job.location}
+                      </p>
+                    </div>
+                    <span className="text-gray-400 text-sm mt-2 lg:mt-0" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {job.period}
                     </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                  </div>
+
+                  <ul className="space-y-2 mb-4">
+                    {job.achievements.map((achievement, i) => (
+                      <li key={i} className="flex gap-3 text-gray-300 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        <span className="text-emerald-400 mt-1">•</span>
+                        <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {job.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              );
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8 transition-all duration-300 ${
+                    job.website 
+                      ? 'hover:border-emerald-500/50 cursor-pointer group' 
+                      : ''
+                  }`}
+                >
+                  {job.website ? (
+                    <a
+                      href={job.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      {CardContent}
+                    </a>
+                  ) : (
+                    CardContent
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
-        </div>
+                    </div>
 
         {/* Education */}
         <motion.div
@@ -334,7 +366,7 @@ const CaseStudies = () => {
           </h3>
           <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8">
             <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-              <div>
+                    <div>
                 <h4 className="text-white text-xl font-bold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
                   {resumeData.education.school}
                 </h4>
@@ -418,19 +450,19 @@ const CaseStudies = () => {
             <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6">
               <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Certificates
-              </h4>
-              <ul className="space-y-2">
+                      </h4>
+                      <ul className="space-y-2">
                 {resumeData.skills.certificates.map((cert, i) => (
                   <li key={i} className="flex gap-2 text-gray-300 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     <span className="text-emerald-400">✓</span>
                     <span>{cert}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
         </motion.div>
-      </motion.div>
+            </motion.div>
       </div>
   );
 };
