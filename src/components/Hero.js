@@ -22,20 +22,20 @@ const Hero = () => {
             Hello! 
             <span className="inline-flex items-center ml-3">
               <motion.svg 
-                width="48" 
-                height="48" 
-                viewBox="0 0 48 48" 
+                width="52" 
+                height="52" 
+                viewBox="0 0 52 52" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
                 animate={{ 
-                  rotate: [0, 360],
-                  scale: [1, 1.05, 1]
+                  rotate: [0, 180, 360],
+                  scale: [1, 1.1, 1]
                 }}
                 transition={{
                   rotate: {
-                    duration: 20,
+                    duration: 8,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "easeInOut"
                   },
                   scale: {
                     duration: 2,
@@ -43,15 +43,52 @@ const Hero = () => {
                     ease: "easeInOut"
                   }
                 }}
-                className="drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]"
+                className="drop-shadow-[0_0_20px_rgba(16,185,129,0.7)] cursor-pointer"
+                whileHover={{ 
+                  scale: 1.2, 
+                  rotate: 45,
+                  transition: { duration: 0.3 }
+                }}
               >
-                <circle cx="24" cy="24" r="20" stroke="url(#greenGradient)" strokeWidth="2" fill="none"/>
-                <circle cx="24" cy="24" r="10" fill="url(#greenGradient)"/>
+                {/* Sparkle/Star shape */}
+                <motion.path
+                  d="M26 2 L28 24 L50 26 L28 28 L26 50 L24 28 L2 26 L24 24 Z"
+                  fill="url(#sparkleGradient)"
+                  animate={{
+                    opacity: [0.8, 1, 0.8]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                {/* Inner glow */}
+                <motion.circle 
+                  cx="26" 
+                  cy="26" 
+                  r="8" 
+                  fill="url(#glowGradient)"
+                  animate={{
+                    r: [6, 10, 6],
+                    opacity: [0.6, 0.9, 0.6]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
                 <defs>
-                  <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="sparkleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#10b981" />
-                    <stop offset="100%" stopColor="#34d399" />
+                    <stop offset="50%" stopColor="#34d399" />
+                    <stop offset="100%" stopColor="#6ee7b7" />
                   </linearGradient>
+                  <radialGradient id="glowGradient">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#10b981" stopOpacity="0.4" />
+                  </radialGradient>
                 </defs>
               </motion.svg>
             </span>
