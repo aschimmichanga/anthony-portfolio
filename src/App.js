@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
 import CaseStudies from './components/CaseStudies';
 import BambuLabCaseStudy from './components/BambuLabCaseStudy';
