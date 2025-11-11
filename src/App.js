@@ -1,22 +1,19 @@
 import React from 'react';
-import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import About from './components/About';
 import CaseStudies from './components/CaseStudies';
-import Resume from './components/Resume';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <About />
-      <CaseStudies />
-      <Resume />
-      <Contact />
-      <Footer />
+    <div className="min-h-screen bg-[#0a0a0f] flex">
+      {/* Fixed Left Sidebar */}
+      <div className="w-full lg:w-2/5 xl:w-1/3 fixed lg:sticky top-0 h-screen overflow-hidden">
+        <Hero />
+      </div>
+      
+      {/* Right Content - Scrollable */}
+      <div className="w-full lg:w-3/5 xl:w-2/3 lg:ml-auto">
+        <CaseStudies />
+      </div>
     </div>
   );
 }
