@@ -55,44 +55,102 @@ const CaseStudies = () => {
     },
   ];
 
-  const otherProjects = [
-    {
-      title: 'Fenway CDC Non-Profit iOS App',
-      description: 'Assists Fenway residents with accessing essential services and programs while also promoting local businesses in the Boston Fenway area',
-      tags: ['iOS', 'Non-Profit', 'Community'],
-      year: '2023',
-      link: 'https://apps.apple.com/app/fenway-cdc'
+  const resumeData = {
+    experience: [
+      {
+        company: 'Houseform',
+        location: 'Boston, MA',
+        role: 'Digital Designer and Co-Founder',
+        period: 'Oct 2023 – Present',
+        achievements: [
+          'Designed low and high-fidelity B2B user interfaces for two standalone agentic AI products supporting hundreds of monthly users',
+          'Crafted internal dashboards for data analysts, ambassador teams, and stakeholders',
+          'Increased company revenue from $150 to $5000+ MRR',
+          'Researched Boston real estate market to identify strategic advantages',
+          'Animated demos and trailers for marketing team'
+        ],
+        tags: ['AI/ML', 'B2B SaaS', 'Dashboard Design']
+      },
+      {
+        company: 'Decentagora',
+        location: 'Calgary, Canada',
+        role: 'Founding Designer',
+        period: 'Feb 2022 – Oct 2023',
+        achievements: [
+          'Created digital campaigns and proposal designs, securing over $100,000 in venture capital funding',
+          'Designed core Web3 applications including no-code Solidity contract creator and first mainnet Optimism faucet',
+          'Produced weekly graphic media and animated content across LinkedIn, Instagram, Twitter, and Discord',
+          'Created NFT collections supporting public goods and crafted landing pages'
+        ],
+        tags: ['Web3', 'Fundraising', 'Product Design']
+      },
+      {
+        company: 'EVM Gas Station Tracker',
+        location: 'Boston, MA',
+        role: 'Digital Designer',
+        period: 'Sept 2022 – Oct 2023',
+        achievements: [
+          'Consulted on and designed UI for real-time Ethereum gas price monitoring tool',
+          'Improved UX and accessibility for thousands of weekly users',
+          'Facilitated more informed transaction decisions'
+        ],
+        tags: ['Web3', 'Data Visualization', 'UX']
+      },
+      {
+        company: 'Scroll Kingdom (now Omni Kingdoms)',
+        location: 'Boston, MA',
+        role: 'Designer and Consultant',
+        period: 'Jul 2022 – Jan 2023',
+        achievements: [
+          'Designed UI that achieved highest number of transactions on Scroll Testnet in summer 2022',
+          'Enhanced player engagement and optimized in-game navigation',
+          'Collaborated with development teams for seamless design integration'
+        ],
+        tags: ['Gaming', 'Web3', 'UI Design']
+      }
+    ],
+    education: {
+      school: 'Franklin Pierce University',
+      location: 'Rindge, NH',
+      degree: 'B.S., Business Marketing',
+      graduated: 'November 2024',
+      gpa: '3.66/4.00',
+      awards: ['Dean\'s List (2020, 2021, 2022)', 'Honors Scholarship', 'Digital Literacy Award']
     },
-    {
-      title: 'Impact Networks Book Redesign',
-      description: 'Led a team of three to redesign the Greenpill Network\'s book, revamping the layout and visual identity for V2 print and digital editions',
-      tags: ['Design', 'Publishing', 'Web3'],
-      year: '2023',
-      externalLink: '/downloads/impact-networks-redesign.pdf',
-      linkText: 'View PDF'
-    },
-    {
-      title: 'Multi-chain EVM gwei Tracker',
-      description: 'A real-time multi-chain Ethereum gas tracker that helps users monitor and compare transaction fees across different networks',
-      tags: ['Web3', 'Tools', 'Dashboard'],
-      year: '2022',
-      link: 'https://github.com/anthonyluong/gwei-tracker'
-    },
-    {
-      title: 'The First Mainnet Optimism Faucet',
-      description: 'An on-chain faucet for the Optimism ecosystem, designed to onboard early users by distributing free OP tokens funded through OP DAO grants.',
-      tags: ['Web3', 'DeFi', 'Optimism'],
-      year: '2022',
-      link: 'https://optimism-faucet.xyz'
-    },
-    {
-      title: 'No-code Solidity ERC Contract Creator',
-      description: 'Allows users to create and deploy ERC-standard tokens without writing Solidity code, making Web3 development more accessible since 2021',
-      tags: ['Web3', 'No-Code', 'Developer Tools'],
-      year: '2021',
-      link: 'https://erc-creator.xyz'
-    },
-  ];
+    skills: {
+      proficiencies: [
+        'User Mapping',
+        'Responsive Design',
+        'Motion Design',
+        'Articulating Design Decisions',
+        'Agile Design',
+        'User Research',
+        'Pipeline Generation',
+        'B2B Solutions',
+        'Logo Design'
+      ],
+      tools: [
+        'Figma',
+        'Photoshop',
+        'Rive.app',
+        'Framer',
+        'Dora',
+        'Jitter',
+        'Bezel',
+        'Daz 3D',
+        'Notion',
+        'Canva',
+        'GPT',
+        'Midjourney'
+      ],
+      certificates: [
+        'Bloomberg Market Concepts',
+        'Google UX Course',
+        'Google Analytics 4',
+        'Responsive Web Design'
+      ]
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f0a] p-6">
@@ -184,9 +242,9 @@ const CaseStudies = () => {
         ))}
       </div>
 
-      {/* Other Notable Projects */}
+      {/* Resume Section */}
       <motion.div
-        id="other-projects"
+        id="resume"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -195,65 +253,176 @@ const CaseStudies = () => {
       >
         <div className="flex items-center gap-4 mb-12">
           <h2 className="text-white text-2xl lg:text-3xl font-bold" style={{ fontFamily: "'Sora', sans-serif" }}>
-            Other Notable Projects
+            Experience & Background
           </h2>
           <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
         </div>
-        
-        <div className="grid gap-6 lg:gap-8">
-          {otherProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group cursor-pointer"
-            >
-              <div className="bg-[#0d1912]/30 backdrop-blur-sm border border-emerald-900/30 rounded-2xl p-6 lg:p-8 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-900/20">
-                <div className="flex justify-between items-start mb-4">
+
+        {/* Professional Experience */}
+        <div className="mb-16">
+          <h3 className="text-emerald-400 text-lg font-bold mb-6" style={{ fontFamily: "'Sora', sans-serif" }}>
+            Professional Experience
+          </h3>
+          <div className="space-y-6">
+            {resumeData.experience.map((job, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8 hover:border-emerald-500/50 transition-all duration-300"
+              >
+                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-white text-lg lg:text-xl group-hover:text-emerald-400 transition-colors" style={{ fontFamily: "'Sora', sans-serif" }}>
-                        {project.title}
-                      </h3>
-                      <span className="text-xs text-gray-500">{project.year}</span>
-                    </div>
+                    <h4 className="text-white text-xl font-bold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
+                      {job.company}
+                    </h4>
+                    <p className="text-emerald-300 font-medium mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {job.role}
+                    </p>
+                    <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {job.location}
+                    </p>
                   </div>
-                  <FiArrowUpRight className="text-gray-500 group-hover:text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0" />
+                  <span className="text-gray-400 text-sm mt-2 lg:mt-0" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {job.period}
+                  </span>
                 </div>
-                <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, i) => (
-                    <span 
-                      key={i} 
+
+                <ul className="space-y-2 mb-4">
+                  {job.achievements.map((achievement, i) => (
+                    <li key={i} className="flex gap-3 text-gray-300 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      <span className="text-emerald-400 mt-1">•</span>
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2">
+                  {job.tags.map((tag, i) => (
+                    <span
+                      key={i}
                       className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
                       style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
-                        {tag}
+                      {tag}
                     </span>
-                    ))}
-                  </div>
-                {(project.link || project.externalLink) && (
-                  <a 
-                    href={project.link || project.externalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-400 hover:text-emerald-300 text-sm font-medium inline-flex items-center gap-1 transition-colors"
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h3 className="text-emerald-400 text-lg font-bold mb-6" style={{ fontFamily: "'Sora', sans-serif" }}>
+            Education
+          </h3>
+          <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6 lg:p-8">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
+              <div>
+                <h4 className="text-white text-xl font-bold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
+                  {resumeData.education.school}
+                </h4>
+                <p className="text-emerald-300 font-medium mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {resumeData.education.degree}
+                </p>
+                <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {resumeData.education.location}
+                </p>
+              </div>
+              <div className="text-right mt-2 lg:mt-0">
+                <p className="text-gray-400 text-sm mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {resumeData.education.graduated}
+                </p>
+                <p className="text-emerald-400 font-bold" style={{ fontFamily: "'Sora', sans-serif" }}>
+                  GPA: {resumeData.education.gpa}
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {resumeData.education.awards.map((award, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
+                  {award}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Skills */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-emerald-400 text-lg font-bold mb-6" style={{ fontFamily: "'Sora', sans-serif" }}>
+            Skills & Certifications
+          </h3>
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Proficiencies */}
+            <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6">
+              <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Proficiencies
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {resumeData.skills.proficiencies.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="px-2 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-700/50"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
-                    {project.linkText || 'View Project'}
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
-                    </svg>
-                  </a>
-                )}
+                    {skill}
+                  </span>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+
+            {/* Tools */}
+            <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6">
+              <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Tool Kit
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {resumeData.skills.tools.map((tool, i) => (
+                  <span
+                    key={i}
+                    className="px-2 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-700/50"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Certificates */}
+            <div className="bg-gradient-to-br from-emerald-900/10 to-teal-900/10 border border-emerald-900/30 rounded-2xl p-6">
+              <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Certificates
+              </h4>
+              <ul className="space-y-2">
+                {resumeData.skills.certificates.map((cert, i) => (
+                  <li key={i} className="flex gap-2 text-gray-300 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    <span className="text-emerald-400">✓</span>
+                    <span>{cert}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
       </div>
   );
