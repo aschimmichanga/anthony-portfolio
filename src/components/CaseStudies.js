@@ -58,7 +58,7 @@ const CaseStudies = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] p-6 lg:p-16">
+    <div className="min-h-screen bg-[#0a0f0a] p-6 lg:p-16">
       {/* Main Case Studies */}
       <div className="space-y-6 lg:space-y-8 mb-24">
         {projects.map((project, index) => (
@@ -70,10 +70,10 @@ const CaseStudies = () => {
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
             className="group cursor-pointer"
           >
-            <div className="bg-[#13131a] rounded-2xl lg:rounded-3xl overflow-hidden border border-gray-800/50 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-900/20">
+            <div className="bg-[#0d1912]/50 backdrop-blur-sm rounded-2xl lg:rounded-3xl overflow-hidden border border-emerald-900/30 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-900/30">
               {/* Category Badge */}
-              <div className="p-4 lg:p-6 border-b border-gray-800/50">
-                <span className="text-xs uppercase tracking-wider text-gray-500 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <div className="p-4 lg:p-6 border-b border-emerald-900/20">
+                <span className="text-xs uppercase tracking-wider text-emerald-400/60 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {project.category}
                 </span>
               </div>
@@ -151,7 +151,7 @@ const CaseStudies = () => {
               </div>
               
               {/* Project Info */}
-              <div className="p-6 lg:p-8 flex justify-between items-center bg-gradient-to-br from-[#13131a] to-[#0a0a0f]">
+              <div className="p-6 lg:p-8 flex justify-between items-center bg-gradient-to-br from-[#0d1912]/50 to-[#0a0f0a]">
                 <div>
                   <h3 className="text-white text-lg lg:text-xl font-semibold mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>
                     {project.title}
@@ -160,7 +160,7 @@ const CaseStudies = () => {
                 </div>
                 <motion.a 
                   href="#" 
-                  className="text-gray-400 hover:text-white flex items-center gap-2 transition-colors group/link"
+                  className="text-gray-400 hover:text-emerald-400 flex items-center gap-2 transition-colors group/link"
                   whileHover={{ x: 5 }}
                 >
                   <span className="text-sm font-medium hidden sm:inline" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>View</span>
@@ -179,13 +179,13 @@ const CaseStudies = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-        className="border-t border-gray-800/50 pt-16"
+        className="border-t border-emerald-900/30 pt-16"
       >
         <div className="flex items-center gap-4 mb-12">
           <h2 className="text-white text-2xl lg:text-3xl font-bold" style={{ fontFamily: "'Sora', sans-serif" }}>
             Other Notable Projects
           </h2>
-          <div className="h-px flex-1 bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+          <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/50 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.3)]"></div>
         </div>
         
         <div className="grid gap-6 lg:gap-8">
@@ -198,17 +198,17 @@ const CaseStudies = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="bg-[#13131a] border border-gray-800/50 rounded-2xl p-6 lg:p-8 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-900/10">
+              <div className="bg-[#0d1912]/30 backdrop-blur-sm border border-emerald-900/30 rounded-2xl p-6 lg:p-8 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-900/20">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-semibold text-white text-lg lg:text-xl group-hover:text-purple-400 transition-colors" style={{ fontFamily: "'Sora', sans-serif" }}>
+                  <h3 className="font-semibold text-white text-lg lg:text-xl group-hover:text-emerald-400 transition-colors" style={{ fontFamily: "'Sora', sans-serif" }}>
                     {project.title}
                   </h3>
-                  <FiArrowUpRight className="text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0" />
+                  <FiArrowUpRight className="text-gray-500 group-hover:text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0" />
                 </div>
                 <p className="text-gray-400 leading-relaxed mb-4 text-sm lg:text-base">
                   {project.description}
                   {project.link && (
-                    <a href="#" className="text-purple-400 ml-2 hover:text-purple-300 transition-colors font-medium">
+                    <a href="#" className="text-emerald-400 ml-2 hover:text-emerald-300 transition-colors font-medium">
                       {project.link}
                     </a>
                   )}
@@ -217,7 +217,7 @@ const CaseStudies = () => {
                   {project.tags.map((tag, i) => (
                     <span 
                       key={i} 
-                      className="px-3 py-1 bg-gray-800/50 text-gray-400 text-xs rounded-full border border-gray-700/50"
+                      className="px-3 py-1 bg-emerald-900/20 text-emerald-400/70 text-xs rounded-full border border-emerald-800/30"
                       style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       {tag}

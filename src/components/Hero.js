@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <div className="h-full bg-gradient-to-br from-[#0f0f1e] via-[#1a1a2e] to-[#0a0a0f] text-white p-8 lg:p-12 flex flex-col justify-between overflow-y-auto relative">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-blue-900/10 pointer-events-none"></div>
+    <div className="h-full bg-gradient-to-br from-[#0a1410] via-[#0d1912] to-[#0a0f0a] text-white p-8 lg:p-12 flex flex-col justify-between overflow-y-auto relative">
+      {/* Green gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-transparent to-green-900/10 pointer-events-none"></div>
       
       <div className="relative z-10">
         {/* Header */}
@@ -15,7 +15,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
           className="mb-16"
         >
-          <p className="text-gray-500 text-xs uppercase tracking-wider mb-6 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <p className="text-emerald-400/60 text-xs uppercase tracking-wider mb-6 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Anthony Luong — Product Designer
           </p>
           <h1 className="text-6xl lg:text-7xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>
@@ -43,13 +43,14 @@ const Hero = () => {
                     ease: "easeInOut"
                   }
                 }}
+                className="drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]"
               >
-                <circle cx="24" cy="24" r="20" stroke="url(#gradient)" strokeWidth="2" fill="none"/>
-                <circle cx="24" cy="24" r="10" fill="url(#gradient)"/>
+                <circle cx="24" cy="24" r="20" stroke="url(#greenGradient)" strokeWidth="2" fill="none"/>
+                <circle cx="24" cy="24" r="10" fill="url(#greenGradient)"/>
                 <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#667eea" />
-                    <stop offset="100%" stopColor="#764ba2" />
+                  <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#10b981" />
+                    <stop offset="100%" stopColor="#34d399" />
                   </linearGradient>
                 </defs>
               </motion.svg>
@@ -66,15 +67,15 @@ const Hero = () => {
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           <p>
-            I am a product designer and founder specializing in <span className="text-white font-medium">cutting edge AI applications</span>.
+            I am a product designer and founder specializing in <span className="text-emerald-300 font-medium">cutting edge AI applications</span>.
           </p>
           
           <p>
-            I've built consumer and enterprise-facing systems from the ground up for startups and nonprofits across <span className="text-white font-medium">AI, real estate, blockchain, and other industries</span>, designing for both mobile and desktop.
+            I've built consumer and enterprise-facing systems from the ground up for startups and nonprofits across <span className="text-emerald-300 font-medium">AI, real estate, blockchain, and other industries</span>, designing for both mobile and desktop.
           </p>
           
           <p>
-            As a former VC-backed startup founder, I bring strong business acumen and hands-on experience in turning ideas and features into <span className="text-white font-medium">real-world products that users love</span>.
+            As a former VC-backed startup founder, I bring strong business acumen and hands-on experience in turning ideas and features into <span className="text-emerald-300 font-medium">real-world products that users love</span>.
           </p>
         </motion.div>
       </div>
@@ -87,10 +88,10 @@ const Hero = () => {
         className="mt-12 space-y-6 relative z-10"
         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
-        <div className="h-px w-12 bg-gradient-to-r from-purple-500 to-transparent mb-8"></div>
+        <div className="h-px w-12 bg-gradient-to-r from-emerald-500 to-transparent mb-8 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
         <a 
           href="#other-projects" 
-          className="block text-gray-400 hover:text-white transition-all duration-300 text-sm group"
+          className="block text-gray-400 hover:text-emerald-300 transition-all duration-300 text-sm group"
         >
           <span className="group-hover:translate-x-1 inline-block transition-transform">Other Notable Projects →</span>
         </a>
@@ -98,13 +99,13 @@ const Hero = () => {
           href="https://linkedin.com" 
           target="_blank"
           rel="noopener noreferrer"
-          className="block text-gray-400 hover:text-white transition-all duration-300 text-sm group"
+          className="block text-gray-400 hover:text-emerald-300 transition-all duration-300 text-sm group"
         >
           <span className="group-hover:translate-x-1 inline-block transition-transform">LinkedIn →</span>
         </a>
         <a 
           href="mailto:contact@example.com"
-          className="block text-gray-400 hover:text-white transition-all duration-300 text-sm group"
+          className="block text-gray-400 hover:text-emerald-300 transition-all duration-300 text-sm group"
         >
           <span className="group-hover:translate-x-1 inline-block transition-transform">Contact me →</span>
         </a>

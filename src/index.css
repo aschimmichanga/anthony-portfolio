@@ -15,7 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0a0a0f;
+  background: #0a0f0a;
 }
 
 code {
@@ -33,24 +33,31 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: #0a0f0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #1a3a2a;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #2a5a3a;
 }
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Green glow effect */
+.green-glow {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3),
+              0 0 40px rgba(16, 185, 129, 0.2),
+              0 0 60px rgba(16, 185, 129, 0.1);
 }
 
 /* Outlined text effect */
@@ -58,4 +65,20 @@ html {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
   -webkit-text-fill-color: transparent;
   text-stroke: 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Animated green background */
+@keyframes greenPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.green-pulse {
+  animation: greenPulse 8s ease-in-out infinite;
 }
