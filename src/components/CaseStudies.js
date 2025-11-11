@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 
@@ -163,14 +164,23 @@ const CaseStudies = () => {
               whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
-            className="group cursor-pointer"
+            className="group"
           >
-            <div className="bg-[#0d1912]/50 backdrop-blur-sm rounded-2xl lg:rounded-3xl overflow-hidden border border-emerald-900/30 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-900/30">
+            <Link 
+              to={project.link}
+              className="block bg-[#0d1912]/50 backdrop-blur-sm rounded-2xl lg:rounded-3xl overflow-hidden border border-emerald-900/30 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-900/30 cursor-pointer"
+            >
               {/* Category Badge */}
-              <div className="p-4 lg:p-6 border-b border-emerald-900/20">
-                <span className="text-xs uppercase tracking-wider text-emerald-400/60 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  {project.category}
-                </span>
+              <div className="p-4 lg:p-6 border-b border-emerald-900/20 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wider rounded-full border border-emerald-500/40" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    📚 Case Study
+                  </span>
+                  <span className="text-xs uppercase tracking-wider text-emerald-400/60 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {project.category}
+                  </span>
+                </div>
+                <FiArrowUpRight className="text-emerald-400/60 group-hover:text-emerald-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-xl" />
               </div>
               
               {/* Project Image */}
@@ -225,18 +235,16 @@ const CaseStudies = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center pt-3 border-t border-emerald-900/20">
-                  <motion.a 
-                    href={project.link}
-                    className="text-gray-400 hover:text-emerald-400 flex items-center gap-1.5 transition-colors group/link"
-                    whileHover={{ x: 5 }}
+                <div className="flex justify-end items-center pt-3 border-t border-emerald-900/20">
+                  <div className="px-4 py-2 bg-emerald-500/10 group-hover:bg-emerald-500/20 text-emerald-400 group-hover:text-emerald-300 border border-emerald-500/30 group-hover:border-emerald-500/50 rounded-lg flex items-center gap-2 transition-all duration-300 text-xs font-medium"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
-                    <span className="text-xs font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>View Details</span>
-                    <FiArrowUpRight className="text-base" />
-                  </motion.a>
+                    <span>View Case Study</span>
+                    <FiArrowUpRight className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
                 </div>
               </div>
-                    </div>
+            </Link>
           </motion.div>
         ))}
       </div>
