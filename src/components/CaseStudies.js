@@ -53,37 +53,6 @@ const CaseStudies = () => {
         ]
       }
     },
-    {
-      title: 'Onchain Pets',
-      subtitle: 'How do we connect pet lovers in the web3 community?',
-      description: 'Tokenize your dog',
-      bgGradient: 'from-teal-600 to-emerald-700',
-      category: 'Web3 & Blockchain',
-      metrics: [
-        { label: 'NFTs Minted', value: '10K+' },
-        { label: 'Active Users', value: '5,000+' },
-        { label: 'Trading Volume', value: '$2M+' }
-      ],
-      impact: 'Built a community-driven NFT platform that allows pet owners to immortalize their pets on the blockchain while connecting with like-minded collectors.',
-      technologies: ['Solidity', 'React', 'Web3.js', 'IPFS'],
-      link: '/case-studies/onchain-pets'
-    },
-    {
-      title: 'Klativa',
-      subtitle: 'How can we automate social media marketing for rental agents?',
-      description: 'Automated Social Media Marketing',
-      bgGradient: 'from-indigo-100 to-purple-100',
-      category: 'Marketing Automation',
-      isDark: false,
-      metrics: [
-        { label: 'Agents Onboarded', value: '500+' },
-        { label: 'Posts Generated', value: '50K+' },
-        { label: 'Engagement Up', value: '3.5x' }
-      ],
-      impact: 'Designed an AI-powered social media automation tool that generates property listings posts, saving agents 10+ hours per week.',
-      technologies: ['React', 'OpenAI API', 'AWS', 'Figma'],
-      link: '/case-studies/klativa'
-    },
   ];
 
   const otherProjects = [
@@ -128,7 +97,7 @@ const CaseStudies = () => {
   return (
     <div className="min-h-screen bg-[#0a0f0a] p-6">
       {/* Main Case Studies */}
-      <div className="space-y-6 lg:space-y-8 mb-24">
+      <div className="space-y-6 mb-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -222,7 +191,7 @@ const CaseStudies = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-        className="border-t border-emerald-900/30 pt-16"
+        className="border-t border-emerald-900/30 pt-8"
       >
         <div className="flex items-center gap-4 mb-12">
           <h2 className="text-white text-2xl lg:text-3xl font-bold" style={{ fontFamily: "'Sora', sans-serif" }}>
