@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
 import CaseStudies from './components/CaseStudies';
 import BambuLabCaseStudy from './components/BambuLabCaseStudy';
+import ResumePage from './components/ResumePage';
 
 // Home Page Wrapper with title
 const HomePage = () => {
@@ -55,6 +56,9 @@ function App() {
         
         {/* Case Study Pages */}
         <Route path="/case-studies/bambu-lab" element={<BambuLabPage />} />
+        
+        {/* Resume Page */}
+        <Route path="/resume" element={<ResumePage />} />
       </Routes>
     </Router>
   );
