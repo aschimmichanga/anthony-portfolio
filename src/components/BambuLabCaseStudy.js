@@ -277,7 +277,7 @@ const BambuLabCaseStudy = () => {
         title: 'There is a lack of guidance when prints fail.',
         description: 'When a print fails, users have no structured way to understand what went wrong. They\'re left guessing—was it the model? Their printer settings? Bad filament? The environment?',
         detail: 'This is in contrast to platforms like Thingiverse which provide troubleshooting guides, but MakerWorld offers no guidance at the critical failure moment.',
-        visual: 'placeholder-failure-moment.png'
+        visual: `${process.env.PUBLIC_URL}/images/case-studies/painpoint-1.png`
       },
       {
         number: 2,
@@ -1048,27 +1048,37 @@ const BambuLabCaseStudy = () => {
                   {point.detail}
                 </p>
                 
-                {/* Visual Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 mb-8 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-                  <div className="relative h-full flex flex-col items-center justify-center">
-                    <div className="text-6xl mb-4 opacity-50">📱</div>
-                    <div className="bg-gray-800/50 rounded-lg p-4 mb-3 w-full max-w-md border border-gray-700">
-                      <div className="h-4 bg-gray-700 rounded w-3/4 mb-2"></div>
-                      <div className="h-3 bg-gray-700 rounded w-1/2"></div>
-                    </div>
-                    <div className="bg-gray-800/50 rounded-lg p-4 w-full max-w-md border border-gray-700">
-                      <div className="h-4 bg-gray-700 rounded w-2/3 mb-2"></div>
-                      <div className="h-3 bg-gray-700 rounded w-1/3"></div>
-                    </div>
-                    <p className="text-gray-500 text-xs mt-4 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {point.number === 1 && 'User sees failed print with no guidance'}
-                      {point.number === 2 && 'User leaves angry review blaming creator'}
-                      {point.number === 3 && 'Creator dashboard shows unclear feedback'}
-                      {point.number === 4 && 'No learning opportunity from failure'}
-                    </p>
+                {/* Visual */}
+                {point.visual && !point.visual.includes('placeholder') ? (
+                  <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20">
+                    <img 
+                      src={point.visual} 
+                      alt={point.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 mb-8 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+                    <div className="relative h-full flex flex-col items-center justify-center">
+                      <div className="text-6xl mb-4 opacity-50">📱</div>
+                      <div className="bg-gray-800/50 rounded-lg p-4 mb-3 w-full max-w-md border border-gray-700">
+                        <div className="h-4 bg-gray-700 rounded w-3/4 mb-2"></div>
+                        <div className="h-3 bg-gray-700 rounded w-1/2"></div>
+                      </div>
+                      <div className="bg-gray-800/50 rounded-lg p-4 w-full max-w-md border border-gray-700">
+                        <div className="h-4 bg-gray-700 rounded w-2/3 mb-2"></div>
+                        <div className="h-3 bg-gray-700 rounded w-1/3"></div>
+                      </div>
+                      <p className="text-gray-500 text-xs mt-4 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {point.number === 1 && 'User sees failed print with no guidance'}
+                        {point.number === 2 && 'User leaves angry review blaming creator'}
+                        {point.number === 3 && 'Creator dashboard shows unclear feedback'}
+                        {point.number === 4 && 'No learning opportunity from failure'}
+                      </p>
+                    </div>
+                  </div>
+                )}
                 
                 {i < data.painPoints.length - 1 && (
                   <>
