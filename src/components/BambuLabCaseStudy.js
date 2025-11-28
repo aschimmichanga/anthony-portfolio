@@ -22,9 +22,9 @@ const BambuLabCaseStudy = () => {
     
     // Summary
     summary: {
-      goal: 'Create an AI-powered review system for MakerWorld that helps users learn from failures while giving creators fair, actionable feedback.',
-      solution: 'Designed an attribution system with AI-powered tag suggestions that guide users to self-reflect before leaving reviews. Turns blame into learning opportunities.',
-      outcome: 'Expected to reduce misdirected reviews by 35%, transforming a blame system into a learning system that serves users, creators, and the platform.'
+      goal: 'Design a review system for MakerWorld that helps users learn from failures while providing creators with fair, actionable feedback.',
+      solution: 'An attribution system with AI-powered tag suggestions that prompts users to categorize failure causes before submitting reviews.',
+      outcome: 'Expected to reduce misdirected reviews by 35% and improve feedback quality for both users and creators.'
     },
     
     // Problem Statement
@@ -36,13 +36,13 @@ const BambuLabCaseStudy = () => {
     // Why it matters
     whyItMatters: {
       title: 'Why it matters',
-      content: 'At its core, this isn\'t just a UI flaw. It\'s a broken core business feedback loop that harms the health of Bambu Lab\'s ecosystem. When prints fail and the reviews that reflect them are misattributed with absent constructive feedback, trust breaks down, creators disengage, and content quality declines. Over time, the platform loses its plug-and-play promise. Reducing confidence in the product and impacting printer and accessory sales. Fixing this restores clarity to the system, realigns incentives, and keeps the flywheel spinning for both users and creators.'
+      content: 'This is a broken business feedback loop that damages Bambu Lab\'s ecosystem. When prints fail and reviews misattribute the cause, trust erodes, creators disengage, and content quality declines. This reduces product confidence and impacts printer and accessory sales. Fixing this restores clarity, realigns incentives, and improves outcomes for users and creators.'
     },
     
     // Success Vision
     successVision: {
       title: 'Success Vision',
-      content: 'Turn frustration from failed prints into actionable insights. By guiding users to provide relevant feedback—even after failure—we can turn inaccurate reviews into opportunities for learning and improvement. This ensures printers keep printing, creators keep creating, and the Bambu marketplace flywheel spins faster.'
+      content: 'Convert failed print experiences into actionable feedback. By guiding users to categorize failure causes, we improve review accuracy and create learning opportunities. This increases successful prints, improves creator satisfaction, and strengthens the marketplace.'
     },
     
     // Business Feedback Loop
@@ -50,11 +50,11 @@ const BambuLabCaseStudy = () => {
       title: 'The Bambu Lab Ecosystem',
       description: 'Bambu Lab\'s business model depends on a healthy feedback loop between creators and users.',
       steps: [
-        'Bambu Labs incentivizes Creators',
-        'Creators upload high-quality models on MakerWorld',
-        'Users purchase printers and accessories...',
+        'Bambu Lab incentivizes creators',
+        'Creators upload high-quality models to MakerWorld',
+        'Users purchase printers and accessories',
         'Users complete successful prints',
-        'Bambu grows revenue and reinvests'
+        'Bambu Lab grows revenue and reinvests'
       ]
     },
     
@@ -153,7 +153,7 @@ const BambuLabCaseStudy = () => {
           ]
         }
       ],
-      conclusion: 'Prints can fail for many reasons and most of them aren\'t caused by the model\'s creator. Understanding these helps reframe blame and opens up opportunity for smarter, more constructive feedback.'
+      conclusion: 'Most print failures aren\'t caused by the model creator. Understanding failure categories helps users provide accurate feedback and helps creators prioritize improvements.'
     },
     
     // Evidence Gathering
@@ -163,7 +163,7 @@ const BambuLabCaseStudy = () => {
         description: 'To understand how this issue impacts real users, I reviewed community discussions across Reddit and Bambu\'s official forums. The feedback was consistent: the current review system frustrates creators, misattributes failure, and degrades trust in the platform.'
       },
       constraints: {
-        description: 'To complement these anecdotes with a broader dataset, I attempted to analyze a large sample of reviews from MakerWorld using AI tools like Manus. However, Cloudflare protections blocked automated collection...even after manual human verification.'
+        description: 'To complement these anecdotes with quantitative data, I attempted to analyze a large sample of reviews from MakerWorld using AI tools like Manus. However, Cloudflare protections blocked automated collection, even after manual human verification.'
       },
       manualReview: {
         description: 'In response, I manually scanned hundreds of reviews across the top 12 most downloaded MakerWorld-exclusive models over the past 30 days. I extracted and analyzed all reviews rated 3 stars or below, focusing on:',
@@ -174,14 +174,14 @@ const BambuLabCaseStudy = () => {
       },
       aiAnalysis: {
         description: 'Using AI-assisted classification on a sample of 42 reviews, the analysis revealed:',
-        findings: [
+      findings: [
           '46% of low-star reviews pointed to model quality issues',
           '35% were due to user/setup-related errors',
           '19% lacked sufficient detail to determine attribution',
           '81% of reviews still provided clear feedback, highlighting an opportunity for better feedback capture, not just more of it'
         ]
       },
-      conclusion: 'This analysis confirmed what the forums suggested: there is a need for a more structured review system, one that distinguishes between design flaws and user error, and supports future iteration rather than punishing creators arbitrarily.'
+      conclusion: 'This analysis confirmed the forum feedback: a structured review system is needed that distinguishes between design flaws and user error, and supports iteration rather than arbitrarily penalizing creators.'
     },
     
     // Research findings (for data visualization)
@@ -253,17 +253,17 @@ const BambuLabCaseStudy = () => {
       problems: [
         {
           title: 'Misdirected Blame',
-          description: 'The selectable print issue tag allows users to distinguish between why a print fails. The user setup, hardware malfunction, or environmental factor based print issues that would get blamed on creators would be flagged in the review. This allows other users to view and filter out reviews with issues that may not be model related.',
+          description: 'Selectable print issue tags allow users to categorize failure causes. Issues caused by user setup, hardware malfunction, or environmental factors are flagged separately from model issues. Users can filter reviews to see only model-related problems.',
           color: 'red'
         },
         {
           title: 'Unaware Reviewers',
-          description: 'These common issue cards are informational, creating a positive feedback loop by redirecting frustrated users to learning opportunities instead of negative reviews. These issues are most commonly faced by inexperienced users who are still learning how 3D printing works, which also circumvents creator frustration by reducing the amount of negative reviews from non-model related issues.',
+          description: 'Contextual help cards provide troubleshooting information when users select user error tags. This redirects frustrated users to learning resources instead of leaving negative reviews. This reduces misattributed negative reviews, especially from inexperienced users.',
           color: 'yellow'
         },
         {
           title: 'Frustrated Creators',
-          description: 'Both positive and negative reviews are automatically tagged, allowing creators to easily analyze and fix model related issues, while also being able to see what works best from meaningful feedback. This qualitative-focused review model encourages creators to iterate and invest in high quality uploads.',
+          description: 'All reviews are automatically tagged by attribution type, allowing creators to analyze model-related issues separately from user errors. This helps creators prioritize fixes and identify what works well, encouraging continued investment in quality uploads.',
           color: 'orange'
         }
       ]
@@ -304,15 +304,15 @@ const BambuLabCaseStudy = () => {
     // Synthesis
     synthesis: {
       title: 'Synthesis',
-      insight: 'Now knowing the sources of frustration for users and creators, I hypothesized that…',
-      hypothesis: 'If I guide users through attribution at the moment of failure, I can help them learn from mistakes, reduce misdirected blame, and give creators actionable feedback.',
-      focus: 'The current system deals with blame through ratings. I focused my design on turning failure moments into learning opportunities—helping users understand what went wrong before they blame creators.'
+      insight: 'Based on the sources of frustration for users and creators, I hypothesized that…',
+      hypothesis: 'Guiding users through attribution at the moment of failure will help them learn from mistakes, reduce misdirected blame, and provide creators with actionable feedback.',
+      focus: 'The current system uses ratings to assign blame. The design focuses on converting failure moments into learning opportunities by helping users understand what went wrong before they assign blame.'
     },
     
     // Mapping intervention points
     interventionPoints: {
-      title: 'Mapping out where I needed to intervene.',
-      description: 'Users feel frustrated at many different stages: when prints fail, when they see other users\' reviews, when they write their own review, and when creators can\'t act on feedback. Yet, MakerWorld does nothing to alleviate this.',
+      title: 'Identifying intervention points',
+      description: 'Users experience frustration at multiple stages: when prints fail, when browsing reviews, when writing reviews, and when creators can\'t act on feedback. MakerWorld currently provides no support at these points.',
       points: [
         'At the failure moment: User doesn\'t know what went wrong',
         'During review writing: User blames creator without reflection',
@@ -325,7 +325,7 @@ const BambuLabCaseStudy = () => {
     // Ideation
     ideation: {
       title: 'Ideation',
-      subtitle: 'A short glimpse of my ideation.',
+      subtitle: 'Ideation process',
       concepts: [
         'Pre-review troubleshooting quiz',
         'Post-review attribution questions',
@@ -340,15 +340,15 @@ const BambuLabCaseStudy = () => {
     // The Attribution Concept
     attributionConcept: {
       title: 'The Attribution Concept',
-      description: 'After ideating, I came up with the concept of attribution tags and contextual interventions to combine all the types of ideas I had.',
-      explanation: 'Attribution tags help users categorize what went wrong before they write their review. Contextual interventions provide the right help at critical moments—turning blame into learning.',
+      description: 'The solution combines attribution tags with contextual interventions.',
+      explanation: 'Attribution tags help users categorize failure causes before writing reviews. Contextual interventions provide relevant help at critical moments, converting blame into learning opportunities.',
       visual: 'placeholder-concept-diagram.png' // Placeholder for concept visualization
     },
     
     // Going back to users
     userTesting: {
-      title: 'Going back to the users.',
-      description: 'With the idea solidified, I went through rounds of wireframing, critiques, and user testing with 3D printing enthusiasts on the concept of attribution tags.',
+      title: 'User testing',
+      description: 'I conducted wireframing, design critiques, and user testing with 3D printing enthusiasts to validate the attribution tag concept.',
       feedback: 'Generally, the feedback was to make things more intuitive, less prescriptive, and more helpful without adding friction.',
       versions: [
         {
@@ -374,14 +374,14 @@ const BambuLabCaseStudy = () => {
     
     // Our Solution
     solution: {
-      title: 'My Solution',
-      introduction: 'Introducing my solution',
-      description: 'An AI-powered attribution system that guides users through understanding what went wrong before they leave a review. It lives within the review flow, making failure moments into learning opportunities.',
+      title: 'Solution',
+      introduction: 'Solution overview',
+      description: 'An AI-powered attribution system that guides users to categorize failure causes before submitting reviews. Integrated into the review flow, it converts failure moments into learning opportunities.',
       features: [
         {
           title: 'Smart Attribution Tags',
           problem: 'Users blame creators without understanding why prints fail',
-          solution: 'AI analyzes review text and suggests relevant attribution tags in real-time—helping users self-reflect before submitting',
+          solution: 'AI analyzes review text and suggests relevant attribution tags in real-time, prompting users to categorize failure causes before submitting',
           visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-attribution-tags.png`,
           impact: 'Reduces misdirected blame by 35%',
           highlight: 'Product thinking: Turn negative moments into learning opportunities'
@@ -389,7 +389,7 @@ const BambuLabCaseStudy = () => {
         {
           title: 'Contextual Help Cards',
           problem: 'Frustrated users leave angry reviews instead of learning',
-          solution: 'When users select "user error," show troubleshooting tips inline—transforming complaints into education',
+          solution: 'When users select "user error," display troubleshooting tips inline, converting complaints into learning opportunities',
           visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-help-cards.png`,
           impact: 'Transforms complaints into education',
           highlight: 'UX craft: Progressive disclosure—help without overwhelming'
@@ -405,7 +405,7 @@ const BambuLabCaseStudy = () => {
         {
           title: 'Creator Insights Dashboard',
           problem: 'Creators can\'t tell which feedback to act on',
-          solution: 'AI-powered analytics showing real issues vs misdirected feedback—empowering data-driven iteration',
+          solution: 'AI-powered analytics distinguish real issues from misdirected feedback, enabling data-driven iteration',
           visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-dashboard.png`,
           impact: 'Empowers data-driven iteration',
           highlight: 'Business value: Retain creators by making feedback fair'
@@ -415,10 +415,10 @@ const BambuLabCaseStudy = () => {
     
     // Insights answered
     insightsAnswered: {
-      title: 'Insights, answered.',
+      title: 'Problem-solution mapping',
       mappings: [
         { problem: 'Lack of guidance when prints fail', solution: 'AI-powered tag suggestions' },
-        { problem: 'Misdirected blame', solution: 'Attribution system that encourages self-reflection' },
+        { problem: 'Misdirected blame', solution: 'Attribution system prompts self-reflection' },
         { problem: 'No learning from failure', solution: 'Contextual help cards and troubleshooting tips' },
         { problem: 'Creators can\'t act on feedback', solution: 'Creator insights dashboard with AI analysis' }
       ]
@@ -426,30 +426,30 @@ const BambuLabCaseStudy = () => {
     
     // Wishes
     wishes: {
-      title: 'Wishes',
+      title: 'Future considerations',
       items: [
         {
-          title: 'Test with more real MakerWorld users.',
-          description: 'Given the time constraints, I only had one round of user testing with 3D printing enthusiasts. It would have been insightful to test with actual MakerWorld users who had recently experienced print failures.'
+          title: 'Test with MakerWorld users',
+          description: 'Due to time constraints, testing was limited to one round with 3D printing enthusiasts. Testing with actual MakerWorld users who recently experienced print failures would provide more relevant insights.'
         },
         {
-          title: 'Explore gamification for helpful reviews.',
-          description: 'It would have been useful to explore how to reward users for leaving detailed, helpful reviews—turning review writing into a positive experience rather than just a complaint mechanism.'
+          title: 'Explore review incentives',
+          description: 'Future work could explore rewarding users for detailed, helpful reviews to make review writing a positive experience rather than primarily a complaint mechanism.'
         }
       ]
     },
     
     // Learnings
     learnings: {
-      title: 'Learnings',
+      title: 'Key learnings',
       items: [
         {
-          title: 'Systems thinking matters.',
-          description: 'A large part of this project was understanding how one broken feature (reviews) affected the entire ecosystem—users, creators, and platform growth. Designing for ecosystem health, not just one user type, led to better solutions.'
+          title: 'Systems thinking is essential',
+          description: 'Understanding how one broken feature (reviews) affects the entire ecosystem—users, creators, and platform growth—was critical. Designing for ecosystem health rather than a single user type led to better solutions.'
         },
         {
-          title: 'AI can reduce friction, not add it.',
-          description: 'I got lost in the middle trying to force users through attribution flows. In the end, I decided to focus on what was most important: meeting users where they are. AI suggestions felt natural, not prescriptive.'
+          title: 'AI should reduce friction, not add it',
+          description: 'Early iterations forced users through attribution flows, which created friction. The final approach uses AI suggestions that feel natural and non-prescriptive, meeting users where they are.'
         }
       ]
     }
@@ -523,26 +523,20 @@ const BambuLabCaseStudy = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>Summary</h2>
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               <p>
-                <span className="font-semibold text-white">The goal</span> given by MakerWorld was to create a review system that helps users learn from failures while giving creators fair, actionable feedback.
+                <span className="font-semibold text-white">Goal:</span> Design a review system that helps users learn from failures while providing creators with fair, actionable feedback.
               </p>
                 <p>
-                I created an <span className="font-semibold text-emerald-400">AI-powered attribution system</span> that guides users through understanding what went wrong before they leave a review. I was the product designer and UX researcher for this project.
+                <span className="font-semibold text-emerald-400">Solution:</span> An AI-powered attribution system that guides users to categorize failure causes before submitting reviews. Role: Product Designer & UX Researcher.
               </p>
               <p>
-                Through comprehensive research and iterative design, I designed a solution that transforms blame into learning—serving users, creators, and the platform.
+                Through research and iterative design, the solution improves feedback accuracy and creates learning opportunities for users, creators, and the platform.
               </p>
-            </div>
-            
-            <div className="mt-12 text-center">
-              <a href="#solution" className="inline-block px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-all duration-300 shadow-lg shadow-emerald-900/30" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Jump to the solution!
-              </a>
             </div>
           </motion.div>
         </section>
 
         {/* Problem Statement */}
-        <section className="mb-32">
+        <section className="mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -557,7 +551,7 @@ const BambuLabCaseStudy = () => {
         </section>
 
         {/* Why it matters */}
-        <section className="mb-32">
+        <section className="mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -572,7 +566,7 @@ const BambuLabCaseStudy = () => {
         </section>
 
         {/* Success Vision */}
-        <section className="mb-32">
+        <section className="mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -601,19 +595,44 @@ const BambuLabCaseStudy = () => {
               <div className="flex flex-wrap items-center justify-center gap-4">
                 {(data.businessLoop?.steps || []).map((step, i) => (
                   <React.Fragment key={i}>
-                    <div className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-6 py-4 text-center min-w-[200px]">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.2, duration: 0.5 }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-6 py-4 text-center min-w-[200px] cursor-pointer"
+                    >
                       <p className="text-gray-200 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{step}</p>
-                    </div>
+                    </motion.div>
                     {i < data.businessLoop.steps.length - 1 && (
-                      <div className="text-blue-400 text-2xl">→</div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ 
+                          delay: i * 0.2 + 0.3, 
+                          duration: 0.5,
+                          repeat: Infinity,
+                          repeatDelay: i * 0.3
+                        }}
+                        className="text-blue-400 text-2xl"
+                      >
+                        →
+                      </motion.div>
                     )}
                   </React.Fragment>
                 ))}
-              </div>
-              <div className="mt-6 text-center">
+            </div>
+              <motion.div
+                className="mt-6 text-center"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              >
                 <div className="text-blue-400 text-2xl">↻</div>
                 <p className="text-sm text-gray-400 mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Continuous feedback loop</p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </section>
@@ -681,13 +700,29 @@ const BambuLabCaseStudy = () => {
             {/* Key Metrics */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {(data.research?.metrics || []).map((metric, i) => (
-                <div key={i} className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-6 text-center">
-                  <div className="text-5xl font-bold text-emerald-400 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>{metric.value}</div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.6, type: "spring" }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-6 text-center cursor-pointer"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 + 0.3, type: "spring", stiffness: 200 }}
+                    className="text-5xl font-bold text-emerald-400 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}
+                  >
+                    {metric.value}
+                  </motion.div>
                   <div className="text-sm font-bold text-emerald-300 uppercase mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{metric.label}</div>
                   <p className="text-xs text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{metric.detail}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+                </div>
             
             {/* Attribution Breakdown */}
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
@@ -695,40 +730,74 @@ const BambuLabCaseStudy = () => {
                 <h3 className="text-xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Attribution Categories</h3>
                 <div className="space-y-4">
                   {(data.research?.attributionBreakdown || []).map((item, i) => (
-                    <div key={i}>
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1, duration: 0.5 }}
+                    >
                       <div className="flex justify-between mb-2">
                         <span className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.category}</span>
-                        <span className="text-emerald-400 font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.percentage}%</span>
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 + 0.5 }}
+                          className="text-emerald-400 font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                        >
+                          {item.percentage}%
+                        </motion.span>
                       </div>
-                      <div className="w-full bg-gray-700 rounded-full h-3">
-                        <div 
-                          className="bg-emerald-500 h-3 rounded-full transition-all duration-500"
-                          style={{ width: `${item.percentage}%` }}
-                        ></div>
+                      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${item.percentage}%` }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 + 0.3, duration: 1, ease: "easeOut" }}
+                          className="bg-emerald-500 h-3 rounded-full"
+                        ></motion.div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
-              
+            </div>
+            
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Comment Clarity</h3>
                 <div className="space-y-4">
                   {(data.research?.commentClarity || []).map((item, i) => {
                     const percentage = Math.round((item.count / data.research.totalReviews) * 100);
                     return (
-                      <div key={i}>
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1, duration: 0.5 }}
+                      >
                         <div className="flex justify-between mb-2">
                           <span className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.type}</span>
-                          <span className="text-emerald-400 font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.count} ({percentage}%)</span>
+                          <motion.span
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 + 0.5 }}
+                            className="text-emerald-400 font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                          >
+                            {item.count} ({percentage}%)
+                          </motion.span>
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-3">
-                          <div 
-                            className="bg-blue-500 h-3 rounded-full transition-all duration-500"
-                            style={{ width: `${percentage}%` }}
-                          ></div>
+                        <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${percentage}%` }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 + 0.3, duration: 1, ease: "easeOut" }}
+                            className="bg-blue-500 h-3 rounded-full"
+                          ></motion.div>
                         </div>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
@@ -775,21 +844,44 @@ const BambuLabCaseStudy = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-12" style={{ fontFamily: "'Sora', sans-serif" }}>{data.quoteBoard?.title}</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {(data.quoteBoard?.categories || []).map((category, i) => (
-                <div 
-                  key={i} 
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${
                     category.color === 'pink' ? 'from-pink-900/30 to-rose-900/30 border-pink-800/30' :
                     category.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
                     'from-orange-900/30 to-red-900/30 border-orange-800/30'
-                  } border rounded-xl p-6`}
+                  } border rounded-xl p-6 cursor-pointer`}
                 >
-                  <h3 className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{category.title}</h3>
+                  <motion.h3
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.2 }}
+                    className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}
+                  >
+                    {category.title}
+                  </motion.h3>
                   <div className="space-y-4">
                     {(category?.quotes || []).map((quote, j) => (
-                      <p key={j} className="text-sm text-gray-200 italic leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{quote}</p>
+                      <motion.p
+                        key={j}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.15 + j * 0.1 + 0.3 }}
+                        whileHover={{ x: 5 }}
+                        className="text-sm text-gray-200 italic leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
+                        {quote}
+                      </motion.p>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -1007,21 +1099,28 @@ const BambuLabCaseStudy = () => {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
               <div className="relative h-full grid grid-cols-3 gap-4">
                 {data.ideation.concepts.map((concept, i) => (
-                  <div 
+                  <motion.div
                     key={i}
+                    initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: i % 2 === 0 ? -2 : 2 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5, type: "spring" }}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      rotate: 0,
+                      zIndex: 10,
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
+                    }}
                     className={`bg-gradient-to-br ${
                       i % 3 === 0 ? 'from-yellow-900/40 to-amber-900/40 border-yellow-700/50' :
                       i % 3 === 1 ? 'from-blue-900/40 to-cyan-900/40 border-blue-700/50' :
                       'from-purple-900/40 to-pink-900/40 border-purple-700/50'
-                    } border rounded-lg p-4 transform rotate-[-2deg] hover:rotate-0 transition-transform`}
-                    style={{ 
-                      transform: `rotate(${(i % 2 === 0 ? -2 : 2)}deg)`,
-                    }}
+                    } border rounded-lg p-4 cursor-pointer`}
                   >
                     <p className="text-sm text-gray-200 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       {concept}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
               <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -1049,23 +1148,55 @@ const BambuLabCaseStudy = () => {
             <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
               <div className="relative h-full flex flex-col items-center justify-center">
-                <div className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 mb-6 max-w-md text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: -30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 mb-6 max-w-md text-center cursor-pointer"
+                >
                   <h4 className="text-lg font-bold text-emerald-300 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>Attribution Tags</h4>
                   <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Categorize failure causes</p>
-                </div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-4 py-2">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
+                  className="flex items-center gap-4 mb-6"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-4 py-2 cursor-pointer"
+                  >
                     <p className="text-xs text-blue-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>User Error</p>
-                  </div>
-                  <div className="text-gray-500">+</div>
-                  <div className="bg-purple-900/40 border border-purple-700/50 rounded-lg px-4 py-2">
+                  </motion.div>
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="text-gray-500 text-xl"
+                  >
+                    +
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="bg-purple-900/40 border border-purple-700/50 rounded-lg px-4 py-2 cursor-pointer"
+                  >
                     <p className="text-xs text-purple-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Contextual Help</p>
-                  </div>
-                </div>
-                <div className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 max-w-md text-center">
+                  </motion.div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 max-w-md text-center cursor-pointer"
+                >
                   <h4 className="text-lg font-bold text-emerald-300 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>Learning System</h4>
                   <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Turn blame into education</p>
-                </div>
+                </motion.div>
               </div>
               <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Attribution concept framework
