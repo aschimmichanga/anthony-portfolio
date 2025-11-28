@@ -6,8 +6,8 @@ import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 const BambuLabCaseStudy = () => {
   const data = {
     // Hero
-    title: 'Improving a 3D Print Review System',
-    subtitle: 'Using AI to help users learn from failures while giving creators actionable feedback',
+    title: 'Bambu Lab Case Study',
+    subtitle: 'Improving Review System Accuracy and Transparency',
     hero: `${process.env.PUBLIC_URL}/images/case-studies/bambu-lab.png`,
     
     // Metadata
@@ -27,6 +27,37 @@ const BambuLabCaseStudy = () => {
       outcome: 'Expected to reduce misdirected reviews by 35%, transforming a blame system into a learning system that serves users, creators, and the platform.'
     },
     
+    // Problem Statement
+    problemStatement: {
+      title: 'Problem Statement',
+      content: 'Bambu Lab\'s current post-print rating flow prompts users to rate the 3D model—whether or not the print succeeded—without surfacing relevant troubleshooting context or attribution. This leads to inaccurate low-star reviews driven by user error or "invisible" setup issues, not inherent model flaws. As a result, creators are unfairly penalized, and feedback is reduced to an ambiguous 1-5 star count. Rather than a learning opportunity, both parties are left in the dark about what went wrong or why, making it harder to iterate—especially as more inexperienced (novice) users enter the ecosystem expecting a seamless, plug-and-print experience.'
+    },
+    
+    // Why it matters
+    whyItMatters: {
+      title: 'Why it matters',
+      content: 'At its core, this isn\'t just a UI flaw. It\'s a broken core business feedback loop that harms the health of Bambu Lab\'s ecosystem. When prints fail and the reviews that reflect them are misattributed with absent constructive feedback, trust breaks down, creators disengage, and content quality declines. Over time, the platform loses its plug-and-play promise. Reducing confidence in the product and impacting printer and accessory sales. Fixing this restores clarity to the system, realigns incentives, and keeps the flywheel spinning for both users and creators.'
+    },
+    
+    // Success Vision
+    successVision: {
+      title: 'Success Vision',
+      content: 'Turn frustration from failed prints into actionable insights. By guiding users to provide relevant feedback—even after failure—we can turn inaccurate reviews into opportunities for learning and improvement. This ensures printers keep printing, creators keep creating, and the Bambu marketplace flywheel spins faster.'
+    },
+    
+    // Business Feedback Loop
+    businessLoop: {
+      title: 'The Bambu Lab Ecosystem',
+      description: 'Bambu Lab\'s business model depends on a healthy feedback loop between creators and users.',
+      steps: [
+        'Bambu Labs incentivizes Creators',
+        'Creators upload high-quality models on MakerWorld',
+        'Users purchase printers and accessories...',
+        'Users complete successful prints',
+        'Bambu grows revenue and reinvests'
+      ]
+    },
+    
     // What MakerWorld told us
     problemContext: {
       headline: 'MakerWorld connects 10M+ users with creators sharing 3D printable designs. Reviews drive discovery and creator compensation.',
@@ -34,53 +65,239 @@ const BambuLabCaseStudy = () => {
       stat: 'People quit after failed prints, leaving angry reviews without understanding why things went wrong.'
     },
     
-    // Research findings
-    research: {
-      title: 'So, what exactly is the problem?',
-      subtitle: 'I knew that the review system was punishing creators unfairly. But I needed to understand why users were misattributing blame in the first place.',
-      methods: [
-        { icon: '📊', title: 'Analyzed 400+ reviews', detail: 'Top 12 most-downloaded models on MakerWorld' },
-        { icon: '💬', title: 'Studied Reddit & forums', detail: 'Found patterns in creator frustration and user confusion' },
-        { icon: '🤖', title: 'AI-assisted classification', detail: 'Categorized reviews by attribution type: product issues vs user error vs unclear' }
-      ],
-      findings: [
-        { stat: '46%', label: 'Legit Issues', detail: 'Actual model problems' },
-        { stat: '35%', label: 'User Error', detail: 'Wrong setup or technique' },
-        { stat: '19%', label: 'Unclear', detail: 'Not enough context' },
-        { stat: '81%', label: 'Had Potential', detail: 'Clear feedback if captured right' }
-      ],
-      insight: 'I found that new users have to do the most work in the least motivating phase of their journey—when prints fail and they don\'t know why.'
+    // Quote Board
+    quoteBoard: {
+      title: 'Quote Board',
+      categories: [
+        {
+          title: 'Misdirected Blame',
+          color: 'pink',
+          quotes: [
+            '"I got rated a ✰✰✰✰✰ because they couldn\'t print more than one?" - VictorLagina',
+            '"Power outage was their reason for giving me a 1." - GrassP',
+            '"Thanks for screwing me because you store your filament in the shower." - IntoxicatedBurrito',
+            '"They rate it like an Uber ride—if it fails, it\'s 1 star." - EviGL'
+          ]
+        },
+        {
+          title: 'Unaware Reviewers',
+          color: 'yellow',
+          quotes: [
+            '"The UI really wants you to rate things. It\'s hard to ignore the prompt." - One_Bathroom5607',
+            '"It\'s a half-assed system where people rate whatever\'s on their mind after the print." - esotericapybara',
+            '"Most people aren\'t aware of any money being attached to this." - britishwonder'
+          ]
+        },
+        {
+          title: 'Frustrated Creators',
+          color: 'orange',
+          quotes: [
+            '"We work hard to design cool models only to be kneecapped by beginners that don\'t even know how to print." - VictorLagina',
+            '"Got a 2-star rating... no explanation. Probably printed it sideways." - snapwich',
+            '"99.99% of people don\'t have issues with my model... but I keep getting bad adhesion reviews." - Maxx_Design',
+            '"Here you are placing a rating <5 in complete silence." - Claudio_CloClo'
+          ]
+        }
+      ]
     },
     
-    // Pain Points
+    // Why Prints Fail
+    whyPrintsFail: {
+      title: 'Why Prints Fail: Mapping a Complex System',
+      subtitle: 'Most failures aren\'t the creator\'s fault.',
+      description: 'The data made it clear that the feedback loop between creators and reviewers is broken. Behind a simple star rating lies a complex system where print failures often stem from invisible variables outside the creator\'s control.',
+      categories: [
+        {
+          title: 'User Error',
+          items: [
+            'Dirty build plate (leads to poor bed adhesion)',
+            'Wet filament',
+            'Wrong filament type',
+            'Poor printer maintenance',
+            'Incorrect settings (wrong build plate or printer)',
+            'Manual handling issues (removing parts too early)'
+          ]
+        },
+        {
+          title: 'Printer / System Error',
+          items: [
+            'Clogged nozzle',
+            'System heat creep',
+            'Failed nozzle cleaning',
+            'Over extrusion / under extrusion (filament flow rate issues)',
+            'Print bed leveling failure',
+            'Mechanical failure (belt tension, loose parts)',
+            'AMS (automated material system) feed errors',
+            'Slicing software bug or G-code error'
+          ]
+        },
+        {
+          title: 'External Errors',
+          items: [
+            'Environmental temperatures and humidity',
+            'Open window or drafts',
+            'Power outage/surge',
+            'Excessive vibration during print'
+          ]
+        },
+        {
+          title: 'Creator Model Error',
+          items: [
+            'Unsupported overhangs',
+            'Inaccurate model photos / renders',
+            'Poor part orientation',
+            'Model not manifold (bad geometry)',
+            'Tolerances too tight / loose',
+            'Weak structural areas',
+            'Poor instructions'
+          ]
+        }
+      ],
+      conclusion: 'Prints can fail for many reasons and most of them aren\'t caused by the model\'s creator. Understanding these helps reframe blame and opens up opportunity for smarter, more constructive feedback.'
+    },
+    
+    // Evidence Gathering
+    evidenceGathering: {
+      title: 'Evidence Gathering',
+      onlineQuotes: {
+        description: 'To understand how this issue impacts real users, I reviewed community discussions across Reddit and Bambu\'s official forums. The feedback was consistent: the current review system frustrates creators, misattributes failure, and degrades trust in the platform.'
+      },
+      constraints: {
+        description: 'To complement these anecdotes with a broader dataset, I attempted to analyze a large sample of reviews from MakerWorld using AI tools like Manus. However, Cloudflare protections blocked automated collection...even after manual human verification.'
+      },
+      manualReview: {
+        description: 'In response, I manually scanned hundreds of reviews across the top 12 most downloaded MakerWorld-exclusive models over the past 30 days. I extracted and analyzed all reviews rated 3 stars or below, focusing on:',
+        focusAreas: [
+          'Attribution Category (e.g., user error, model quality issue, environmental/setup, unclear)',
+          'Comment Clarity (clear, vague, or missing)'
+        ]
+      },
+      aiAnalysis: {
+        description: 'Using AI-assisted classification on a sample of 42 reviews, the analysis revealed:',
+        findings: [
+          '46% of low-star reviews pointed to model quality issues',
+          '35% were due to user/setup-related errors',
+          '19% lacked sufficient detail to determine attribution',
+          '81% of reviews still provided clear feedback, highlighting an opportunity for better feedback capture, not just more of it'
+        ]
+      },
+      conclusion: 'This analysis confirmed what the forums suggested: there is a need for a more structured review system, one that distinguishes between design flaws and user error, and supports future iteration rather than punishing creators arbitrarily.'
+    },
+    
+    // Research findings (for data visualization)
+    research: {
+      title: 'MakerWorld Review Analysis',
+      subtitle: 'UX Case Study: Improving Review System Accuracy and Transparency',
+      description: 'Analysis of 37 user reviews to identify patterns in low-star ratings.',
+      totalReviews: 37,
+      metrics: [
+        { label: 'Total Reviews', value: 37, detail: 'Low-star ratings analyzed' },
+        { label: 'Model Quality Issues', value: 17, detail: '46% of reviews' },
+        { label: 'Clear Feedback', value: 30, detail: '81% of reviews' }
+      ],
+      attributionBreakdown: [
+        { category: 'Model Quality Issue', percentage: 46, count: 17 },
+        { category: 'User Error', percentage: 16, count: 6 },
+        { category: 'Environmental/Setup Issue', percentage: 19, count: 7 },
+        { category: 'Unclear Attribution', percentage: 19, count: 7 }
+      ],
+      commentClarity: [
+        { type: 'Clear', count: 28 },
+        { type: 'Vague', count: 5 },
+        { type: 'Missing', count: 2 }
+      ],
+      starRatingDistribution: [
+        { rating: 1, count: 8 },
+        { rating: 2, count: 11 },
+        { rating: 3, count: 17 }
+      ],
+      keyFindings: [
+        {
+          title: 'Model Quality Issues',
+          description: '46% of reviews indicate actual design flaws in 3D models, including missing supports, difficult support removal, and structural weaknesses.',
+          color: 'red'
+        },
+        {
+          title: 'User/Setup Issues',
+          description: '35% of reviews stem from printer calibration, material settings, or user technique issues.',
+          color: 'gray'
+        },
+        {
+          title: 'Unclear Feedback',
+          description: '19% of reviews lack sufficient detail to determine the actual cause of issues.',
+          color: 'gray'
+        }
+      ],
+      recommendations: [
+        {
+          title: 'Improve Review Prompts',
+          description: 'Guide users to provide specific details about print failures, including settings used and troubleshooting steps attempted.',
+          color: 'green'
+        },
+        {
+          title: 'Model Quality Verification',
+          description: 'Implement pre-publication testing requirements for models to reduce design-related failures.',
+          color: 'yellow'
+        },
+        {
+          title: 'Attribution Classification',
+          description: 'Add structured feedback forms to help users categorize issues and provide more actionable reviews.',
+          color: 'purple'
+        }
+      ]
+    },
+    
+    // Problems Being Addressed
+    problemsAddressed: {
+      title: 'Problems Being Addressed',
+      problems: [
+        {
+          title: 'Misdirected Blame',
+          description: 'The selectable print issue tag allows users to distinguish between why a print fails. The user setup, hardware malfunction, or environmental factor based print issues that would get blamed on creators would be flagged in the review. This allows other users to view and filter out reviews with issues that may not be model related.',
+          color: 'red'
+        },
+        {
+          title: 'Unaware Reviewers',
+          description: 'These common issue cards are informational, creating a positive feedback loop by redirecting frustrated users to learning opportunities instead of negative reviews. These issues are most commonly faced by inexperienced users who are still learning how 3D printing works, which also circumvents creator frustration by reducing the amount of negative reviews from non-model related issues.',
+          color: 'yellow'
+        },
+        {
+          title: 'Frustrated Creators',
+          description: 'Both positive and negative reviews are automatically tagged, allowing creators to easily analyze and fix model related issues, while also being able to see what works best from meaningful feedback. This qualitative-focused review model encourages creators to iterate and invest in high quality uploads.',
+          color: 'orange'
+        }
+      ]
+    },
+    
+    // Pain Points (kept for backward compatibility but restructured)
     painPoints: [
       {
         number: 1,
         title: 'There is a lack of guidance when prints fail.',
         description: 'When a print fails, users have no structured way to understand what went wrong. They\'re left guessing—was it the model? Their printer settings? Bad filament? The environment?',
         detail: 'This is in contrast to platforms like Thingiverse which provide troubleshooting guides, but MakerWorld offers no guidance at the critical failure moment.',
-        visual: 'placeholder-failure-moment.png' // Placeholder for visual showing user confusion
+        visual: 'placeholder-failure-moment.png'
       },
       {
         number: 2,
         title: 'Users blame creators without understanding attribution.',
         description: 'Frustrated users leave 1-star reviews blaming creators for failures that were actually their own mistakes. They don\'t realize their reviews directly impact creator income.',
         detail: '35% of negative reviews were misdirected—blaming creators for user error. Most users didn\'t know their reviews hurt creator compensation.',
-        visual: 'placeholder-angry-review.png' // Placeholder for visual showing misdirected blame
+        visual: 'placeholder-angry-review.png'
       },
       {
         number: 3,
         title: 'Creators can\'t distinguish actionable feedback from noise.',
         description: 'Creators receive reviews but can\'t tell which feedback to act on. Is this a real product issue or just user error? They\'re left guessing what to improve.',
         detail: 'Without clear attribution, creators can\'t prioritize fixes. Real issues get buried in a sea of misdirected complaints.',
-        visual: 'placeholder-creator-dashboard.png' // Placeholder for visual showing creator confusion
+        visual: 'placeholder-creator-dashboard.png'
       },
       {
         number: 4,
         title: 'The review process doesn\'t help users learn.',
         description: 'Users leave reviews but gain no knowledge from the experience. They don\'t understand why their print failed, so they\'re likely to make the same mistake again.',
         detail: 'The current system focuses on rating, not learning. Users miss opportunities to improve their 3D printing skills through failure.',
-        visual: 'placeholder-no-learning.png' // Placeholder for visual showing missed learning opportunity
+        visual: 'placeholder-no-learning.png'
       }
     ],
     
@@ -324,7 +541,7 @@ const BambuLabCaseStudy = () => {
           </motion.div>
         </section>
 
-        {/* What MakerWorld told us */}
+        {/* Problem Statement */}
         <section className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -332,23 +549,124 @@ const BambuLabCaseStudy = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>What MakerWorld told us</h2>
-            <div className="space-y-6 text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              <p>{data.problemContext.headline}</p>
-              <p className="text-xl text-white font-medium">{data.problemContext.challenge}</p>
-              <p className="text-emerald-400 italic">"{data.problemContext.stat}"</p>
-            </div>
-            
-            {/* Placeholder for visual */}
-            <div className="mt-12 aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-              <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                [Visual placeholder: Screenshot of MakerWorld review system showing misdirected reviews]
-              </p>
+            <div className="bg-gradient-to-br from-orange-900/30 to-red-900/30 border-l-4 border-orange-500 rounded-r-xl p-8 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
+              <h2 className="text-3xl font-bold mb-6 text-orange-300" style={{ fontFamily: "'Sora', sans-serif" }}>{data.problemStatement.title}</h2>
+              <p className="text-lg text-gray-200 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.problemStatement.content}</p>
             </div>
           </motion.div>
         </section>
 
-        {/* So, what exactly is the problem? */}
+        {/* Why it matters */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 border-l-4 border-emerald-500 rounded-r-xl p-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+              <h2 className="text-3xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>{data.whyItMatters.title}</h2>
+              <p className="text-lg text-gray-200 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.whyItMatters.content}</p>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Success Vision */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 border-l-4 border-emerald-500 rounded-r-xl p-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+              <h2 className="text-3xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>{data.successVision.title}</h2>
+              <p className="text-lg text-gray-200 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.successVision.content}</p>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Business Feedback Loop */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.businessLoop.title}</h2>
+            <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.businessLoop.description}</p>
+            
+            <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-800/30 rounded-2xl p-8">
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                {(data.businessLoop?.steps || []).map((step, i) => (
+                  <React.Fragment key={i}>
+                    <div className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-6 py-4 text-center min-w-[200px]">
+                      <p className="text-gray-200 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{step}</p>
+                    </div>
+                    {i < data.businessLoop.steps.length - 1 && (
+                      <div className="text-blue-400 text-2xl">→</div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className="mt-6 text-center">
+                <div className="text-blue-400 text-2xl">↻</div>
+                <p className="text-sm text-gray-400 mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Continuous feedback loop</p>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Evidence Gathering */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.evidenceGathering.title}</h2>
+            
+            <div className="space-y-8 mb-12">
+              <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Online Quotes</h3>
+                <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.onlineQuotes.description}</p>
+              </div>
+              
+              <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4 text-yellow-300" style={{ fontFamily: "'Sora', sans-serif" }}>Constraints</h3>
+                <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.constraints.description}</p>
+              </div>
+              
+              <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4 text-blue-300" style={{ fontFamily: "'Sora', sans-serif" }}>Manual Review</h3>
+                <p className="text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.manualReview.description}</p>
+                <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                  {(data.evidenceGathering?.manualReview?.focusAreas || []).map((area, i) => (
+                    <li key={i} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{area}</li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4 text-purple-300" style={{ fontFamily: "'Sora', sans-serif" }}>AI-Assisted Classification</h3>
+                <p className="text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.aiAnalysis.description}</p>
+                <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                  {(data.evidenceGathering?.aiAnalysis?.findings || []).map((finding, i) => (
+                    <li key={i} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{finding}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
+            <div className="bg-emerald-900/30 border-l-4 border-emerald-500 rounded-r-xl p-6">
+              <p className="text-lg text-emerald-100 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.conclusion}</p>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* MakerWorld Review Analysis - Data Visualization */}
         <section className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -357,45 +675,193 @@ const BambuLabCaseStudy = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.research.title}</h2>
-            <p className="text-xl text-gray-400 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.research.subtitle}</p>
+            <p className="text-xl text-gray-400 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.research.subtitle}</p>
+            <p className="text-lg text-gray-500 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.research.description}</p>
             
-            {/* Research Methods */}
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
-              {data.research.methods.map((method, i) => (
-                <div key={i} className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-6">
-                  <div className="text-4xl mb-3">{method.icon}</div>
-                  <h4 className="font-bold mb-2 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>{method.title}</h4>
-                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{method.detail}</p>
-                </div>
-              ))}
-            </div>
-            
-            {/* Research Summary Visual Placeholder */}
-            <div className="mb-16 aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-              <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                [Visual placeholder: Research summary visualization showing findings]
-              </p>
-            </div>
-            
-            <h3 className="text-2xl font-bold mb-6 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>I found that new users have to do the most work in the least motivating phase of their journey.</h3>
-            <p className="text-lg text-gray-300 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>But why?</p>
-            
-            {/* Findings Stats */}
-            <div className="grid md:grid-cols-4 gap-4 mb-12">
-              {data.research.findings.map((finding, i) => (
+            {/* Key Metrics */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {(data.research?.metrics || []).map((metric, i) => (
                 <div key={i} className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-6 text-center">
-                  <div className="text-5xl font-bold text-emerald-400 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>{finding.stat}</div>
-                  <div className="text-sm font-bold text-emerald-300 uppercase mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{finding.label}</div>
-                  <p className="text-xs text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{finding.detail}</p>
+                  <div className="text-5xl font-bold text-emerald-400 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>{metric.value}</div>
+                  <div className="text-sm font-bold text-emerald-300 uppercase mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{metric.label}</div>
+                  <p className="text-xs text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{metric.detail}</p>
                 </div>
               ))}
             </div>
             
-            <div className="bg-emerald-900/30 border-l-4 border-emerald-500 rounded-r-xl p-6 shadow-[0_0_10px_rgba(16,185,129,0.2)]">
-              <p className="text-lg italic text-emerald-100" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>"{data.research.insight}"</p>
+            {/* Attribution Breakdown */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-12">
+              <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Attribution Categories</h3>
+                <div className="space-y-4">
+                  {(data.research?.attributionBreakdown || []).map((item, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between mb-2">
+                        <span className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.category}</span>
+                        <span className="text-emerald-400 font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.percentage}%</span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-3">
+                        <div 
+                          className="bg-emerald-500 h-3 rounded-full transition-all duration-500"
+                          style={{ width: `${item.percentage}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Comment Clarity</h3>
+                <div className="space-y-4">
+                  {(data.research?.commentClarity || []).map((item, i) => {
+                    const percentage = Math.round((item.count / data.research.totalReviews) * 100);
+                    return (
+                      <div key={i}>
+                        <div className="flex justify-between mb-2">
+                          <span className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.type}</span>
+                          <span className="text-emerald-400 font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.count} ({percentage}%)</span>
+                        </div>
+                        <div className="w-full bg-gray-700 rounded-full h-3">
+                          <div 
+                            className="bg-blue-500 h-3 rounded-full transition-all duration-500"
+                            style={{ width: `${percentage}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            
+            {/* Key Findings */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {(data.research?.keyFindings || []).map((finding, i) => (
+                <div key={i} className={`bg-gradient-to-br ${
+                  finding.color === 'red' ? 'from-red-900/20 to-orange-900/20 border-red-800/30' :
+                  'from-gray-900/20 to-gray-800/20 border-gray-700/30'
+                } border rounded-xl p-6`}>
+                  <h4 className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{finding.title}</h4>
+                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{finding.description}</p>
+                </div>
+              ))}
+            </div>
+            
+            {/* Recommendations */}
+            <div className="grid md:grid-cols-3 gap-6">
+              {(data.research?.recommendations || []).map((rec, i) => (
+                <div key={i} className={`bg-gradient-to-br ${
+                  rec.color === 'green' ? 'from-emerald-900/20 to-teal-900/20 border-emerald-800/30' :
+                  rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
+                  'from-purple-900/20 to-pink-900/20 border-purple-800/30'
+                } border rounded-xl p-6`}>
+                  <h4 className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{rec.title}</h4>
+                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{rec.description}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </section>
+
+        {/* Quote Board */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-12" style={{ fontFamily: "'Sora', sans-serif" }}>{data.quoteBoard?.title}</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {(data.quoteBoard?.categories || []).map((category, i) => (
+                <div 
+                  key={i} 
+                  className={`bg-gradient-to-br ${
+                    category.color === 'pink' ? 'from-pink-900/30 to-rose-900/30 border-pink-800/30' :
+                    category.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
+                    'from-orange-900/30 to-red-900/30 border-orange-800/30'
+                  } border rounded-xl p-6`}
+                >
+                  <h3 className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{category.title}</h3>
+                  <div className="space-y-4">
+                    {(category?.quotes || []).map((quote, j) => (
+                      <p key={j} className="text-sm text-gray-200 italic leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{quote}</p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Why Prints Fail */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.whyPrintsFail.title}</h2>
+            <p className="text-2xl text-emerald-400 mb-8 font-semibold" style={{ fontFamily: "'Sora', sans-serif" }}>{data.whyPrintsFail.subtitle}</p>
+            <p className="text-lg text-gray-300 mb-12 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.whyPrintsFail.description}</p>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              {(data.whyPrintsFail?.categories || []).map((category, i) => (
+                <div 
+                  key={i} 
+                  className={`bg-gradient-to-br ${
+                    category.title === 'Creator Model Error' ? 'from-orange-900/30 to-red-900/30 border-orange-800/30' :
+                    'from-gray-900/30 to-gray-800/30 border-gray-700/30'
+                  } border rounded-xl p-6`}
+                >
+                  <h3 className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{category.title}</h3>
+                  <ul className="space-y-2">
+                    {(category?.items || []).map((item, j) => (
+                      <li key={j} className="text-sm text-gray-300 flex items-start" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        <span className="text-emerald-400 mr-2">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            
+            <div className="bg-emerald-900/30 border-l-4 border-emerald-500 rounded-r-xl p-6">
+              <p className="text-lg text-emerald-100 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.whyPrintsFail.conclusion}</p>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Problems Being Addressed */}
+        <section className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-12" style={{ fontFamily: "'Sora', sans-serif" }}>{data.problemsAddressed?.title}</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {(data.problemsAddressed?.problems || []).map((problem, i) => (
+                <div 
+                  key={i} 
+                  className={`bg-gradient-to-br ${
+                    problem.color === 'red' ? 'from-red-900/30 to-orange-900/30 border-red-800/30' :
+                    problem.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
+                    'from-orange-900/30 to-red-900/30 border-orange-800/30'
+                  } border rounded-xl p-6`}
+                >
+                  <h3 className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{problem.title}</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{problem.description}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
 
         {/* Pain Points */}
         <section className="mb-32">
@@ -420,10 +886,25 @@ const BambuLabCaseStudy = () => {
                 </p>
                 
                 {/* Visual Placeholder */}
-                <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center mb-8">
-                  <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    [Visual placeholder: {point.visual}]
-                  </p>
+                <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 mb-8 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+                  <div className="relative h-full flex flex-col items-center justify-center">
+                    <div className="text-6xl mb-4 opacity-50">📱</div>
+                    <div className="bg-gray-800/50 rounded-lg p-4 mb-3 w-full max-w-md border border-gray-700">
+                      <div className="h-4 bg-gray-700 rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-gray-700 rounded w-1/2"></div>
+                    </div>
+                    <div className="bg-gray-800/50 rounded-lg p-4 w-full max-w-md border border-gray-700">
+                      <div className="h-4 bg-gray-700 rounded w-2/3 mb-2"></div>
+                      <div className="h-3 bg-gray-700 rounded w-1/3"></div>
+                    </div>
+                    <p className="text-gray-500 text-xs mt-4 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {point.number === 1 && 'User sees failed print with no guidance'}
+                      {point.number === 2 && 'User leaves angry review blaming creator'}
+                      {point.number === 3 && 'Creator dashboard shows unclear feedback'}
+                      {point.number === 4 && 'No learning opportunity from failure'}
+                    </p>
+                  </div>
                 </div>
                 
                 {i < data.painPoints.length - 1 && (
@@ -476,9 +957,27 @@ const BambuLabCaseStudy = () => {
             </div>
             
             {/* Journey Map Placeholder */}
-            <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-              <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                [Visual placeholder: {data.interventionPoints.visual}]
+            <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+              <div className="relative h-full flex items-center justify-center">
+                <div className="flex items-center gap-4 flex-wrap justify-center">
+                  {data.interventionPoints.points.map((point, i) => (
+                    <React.Fragment key={i}>
+                      <div className="bg-emerald-900/40 border border-emerald-700/50 rounded-lg px-4 py-3 min-w-[180px] text-center">
+                        <div className="w-3 h-3 bg-emerald-500 rounded-full mx-auto mb-2"></div>
+                        <p className="text-xs text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {point.split(':')[0]}
+                        </p>
+                      </div>
+                      {i < data.interventionPoints.points.length - 1 && (
+                        <div className="text-emerald-400 text-xl">→</div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+              <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                User journey with intervention points
               </p>
             </div>
           </motion.div>
@@ -504,9 +1003,29 @@ const BambuLabCaseStudy = () => {
             </div>
             
             {/* Ideation Board Placeholder */}
-            <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-              <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                [Visual placeholder: {data.ideation.visual}]
+            <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+              <div className="relative h-full grid grid-cols-3 gap-4">
+                {data.ideation.concepts.map((concept, i) => (
+                  <div 
+                    key={i}
+                    className={`bg-gradient-to-br ${
+                      i % 3 === 0 ? 'from-yellow-900/40 to-amber-900/40 border-yellow-700/50' :
+                      i % 3 === 1 ? 'from-blue-900/40 to-cyan-900/40 border-blue-700/50' :
+                      'from-purple-900/40 to-pink-900/40 border-purple-700/50'
+                    } border rounded-lg p-4 transform rotate-[-2deg] hover:rotate-0 transition-transform`}
+                    style={{ 
+                      transform: `rotate(${(i % 2 === 0 ? -2 : 2)}deg)`,
+                    }}
+                  >
+                    <p className="text-sm text-gray-200 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {concept}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Ideation concepts explored
               </p>
             </div>
           </motion.div>
@@ -527,9 +1046,29 @@ const BambuLabCaseStudy = () => {
             </div>
             
             {/* Concept Diagram Placeholder */}
-            <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-              <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                [Visual placeholder: {data.attributionConcept.visual}]
+            <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+              <div className="relative h-full flex flex-col items-center justify-center">
+                <div className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 mb-6 max-w-md text-center">
+                  <h4 className="text-lg font-bold text-emerald-300 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>Attribution Tags</h4>
+                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Categorize failure causes</p>
+                </div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-4 py-2">
+                    <p className="text-xs text-blue-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>User Error</p>
+                  </div>
+                  <div className="text-gray-500">+</div>
+                  <div className="bg-purple-900/40 border border-purple-700/50 rounded-lg px-4 py-2">
+                    <p className="text-xs text-purple-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Contextual Help</p>
+                  </div>
+                </div>
+                <div className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 max-w-md text-center">
+                  <h4 className="text-lg font-bold text-emerald-300 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>Learning System</h4>
+                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Turn blame into education</p>
+                </div>
+              </div>
+              <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Attribution concept framework
               </p>
             </div>
           </motion.div>
@@ -559,10 +1098,51 @@ const BambuLabCaseStudy = () => {
                   <p className="text-sm text-gray-400 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.learning}</p>
                   
                   {/* Wireframe Placeholder */}
-                  <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-                    <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      [Visual placeholder: {version.visual}]
-                    </p>
+                  <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+                    <div className="relative h-full flex flex-col">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="h-3 bg-gray-700 rounded w-24"></div>
+                        <div className="h-3 bg-gray-700 rounded w-16"></div>
+                      </div>
+                      <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+                        <div className="h-6 bg-gray-700 rounded w-3/4 mb-3"></div>
+                        {version.version.includes('V1') && (
+                          <>
+                            <div className="space-y-2 mb-4">
+                              <div className="h-4 bg-gray-700 rounded w-full"></div>
+                              <div className="h-4 bg-gray-700 rounded w-5/6"></div>
+                              <div className="h-4 bg-gray-700 rounded w-4/6"></div>
+                            </div>
+                            <div className="h-10 bg-gray-700 rounded w-32"></div>
+                          </>
+                        )}
+                        {version.version.includes('V2') && (
+                          <>
+                            <div className="h-20 bg-gray-700 rounded mb-4"></div>
+                            <div className="space-y-2 mb-4">
+                              <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+                              <div className="h-4 bg-gray-700 rounded w-2/3"></div>
+                            </div>
+                            <div className="h-10 bg-gray-700 rounded w-32"></div>
+                          </>
+                        )}
+                        {version.version.includes('V3') && (
+                          <>
+                            <div className="h-20 bg-gray-700 rounded mb-4"></div>
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              <div className="h-6 bg-emerald-700/50 rounded-full w-20"></div>
+                              <div className="h-6 bg-emerald-700/50 rounded-full w-24"></div>
+                              <div className="h-6 bg-emerald-700/50 rounded-full w-28"></div>
+                            </div>
+                            <div className="h-10 bg-emerald-600 rounded w-32"></div>
+                          </>
+                        )}
+                      </div>
+                      <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {version.version} - {version.approach.split('.')[0]}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -583,19 +1163,62 @@ const BambuLabCaseStudy = () => {
             {/* Current State Placeholder */}
             <div className="mb-12">
               <p className="text-lg text-gray-400 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>This is what MakerWorld reviews look like now.</p>
-              <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-                <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  [Visual placeholder: Current MakerWorld review interface]
-                </p>
+              <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-red-800/30 rounded-2xl p-6 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(239,68,68,0.1),transparent)]"></div>
+                <div className="relative h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className={`w-5 h-5 rounded ${i < 1 ? 'bg-red-500' : 'bg-gray-700'}`}></div>
+                      ))}
+                    </div>
+                    <div className="text-red-400 text-sm ml-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>1 Star</div>
+                  </div>
+                  <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+                    <div className="h-4 bg-gray-700 rounded w-3/4 mb-3"></div>
+                    <div className="h-3 bg-gray-700 rounded w-full mb-2"></div>
+                    <div className="h-3 bg-gray-700 rounded w-5/6"></div>
+                  </div>
+                  <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    Simple star rating with text - no attribution guidance
+                  </p>
+                </div>
               </div>
             </div>
             
             <div className="mb-12">
               <p className="text-lg text-gray-400 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>This is what I imagine it to be.</p>
-              <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl flex items-center justify-center">
-                <p className="text-gray-500 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  [Visual placeholder: New review interface with attribution system]
-                </p>
+              <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+                <div className="relative h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className={`w-5 h-5 rounded ${i < 3 ? 'bg-emerald-500' : 'bg-gray-700'}`}></div>
+                      ))}
+                    </div>
+                    <div className="text-emerald-400 text-sm ml-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>4 Stars</div>
+                  </div>
+                  <div className="mb-3">
+                    <div className="text-xs text-gray-400 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Print Issues (select all that apply):</div>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="h-6 bg-emerald-700/50 rounded-full px-3 flex items-center">
+                        <span className="text-xs text-emerald-300">Bed Adhesion</span>
+                      </div>
+                      <div className="h-6 bg-emerald-700/50 rounded-full px-3 flex items-center">
+                        <span className="text-xs text-emerald-300">User Error</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+                    <div className="h-4 bg-gray-700 rounded w-3/4 mb-3"></div>
+                    <div className="h-3 bg-gray-700 rounded w-full mb-2"></div>
+                    <div className="h-3 bg-gray-700 rounded w-5/6"></div>
+                  </div>
+                  <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    Attribution tags guide users to reflect before reviewing
+                  </p>
+                </div>
               </div>
             </div>
             
