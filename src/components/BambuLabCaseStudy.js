@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import BambuLoop from './BambuLoop';
+import ReviewInfographic from './ReviewInfographic';
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -1049,7 +1050,11 @@ const BambuLabCaseStudy = () => {
                 </p>
                 
                 {/* Visual */}
-                {point.visual && !point.visual.includes('placeholder') ? (
+                {point.number === 2 ? (
+                  <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20 py-6">
+                    <ReviewInfographic />
+                  </div>
+                ) : point.visual && !point.visual.includes('placeholder') ? (
                   <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20">
                     <img 
                       src={point.visual} 
@@ -1072,7 +1077,6 @@ const BambuLabCaseStudy = () => {
                       </div>
                       <p className="text-gray-500 text-xs mt-4 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {point.number === 1 && 'User sees failed print with no guidance'}
-                        {point.number === 2 && 'User leaves angry review blaming creator'}
                         {point.number === 3 && 'Creator dashboard shows unclear feedback'}
                         {point.number === 4 && 'No learning opportunity from failure'}
                       </p>
