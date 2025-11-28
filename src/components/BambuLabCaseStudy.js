@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
+import BambuLoop from './BambuLoop';
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -591,48 +592,8 @@ const BambuLabCaseStudy = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.businessLoop.title}</h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.businessLoop.description}</p>
             
-            <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 border border-blue-800/30 rounded-2xl p-8">
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                {(data.businessLoop?.steps || []).map((step, i) => (
-                  <React.Fragment key={i}>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.2, duration: 0.5 }}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-6 py-4 text-center min-w-[200px] cursor-pointer"
-                    >
-                      <p className="text-gray-200 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{step}</p>
-                    </motion.div>
-                    {i < data.businessLoop.steps.length - 1 && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ 
-                          delay: i * 0.2 + 0.3, 
-                          duration: 0.5,
-                          repeat: Infinity,
-                          repeatDelay: i * 0.3
-                        }}
-                        className="text-blue-400 text-2xl"
-                      >
-                        →
-                      </motion.div>
-                    )}
-                  </React.Fragment>
-                ))}
-            </div>
-              <motion.div
-                className="mt-6 text-center"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                <div className="text-blue-400 text-2xl">↻</div>
-                <p className="text-sm text-gray-400 mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Continuous feedback loop</p>
-              </motion.div>
+            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-emerald-800/30 rounded-2xl p-4 sm:p-6 md:p-8 overflow-visible">
+              <BambuLoop />
             </div>
           </motion.div>
         </section>
