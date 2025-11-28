@@ -666,21 +666,38 @@ const BambuLabCaseStudy = () => {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.6, type: "spring" }}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-6 text-center cursor-pointer"
                 >
                   <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.3, type: "spring", stiffness: 200 }}
+                    transition={{ delay: i * 0.15 + 0.2, type: "spring", stiffness: 200 }}
                     className="text-5xl font-bold text-emerald-400 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}
                   >
                     {metric.value}
                   </motion.div>
-                  <div className="text-sm font-bold text-emerald-300 uppercase mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{metric.label}</div>
-                  <p className="text-xs text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{metric.detail}</p>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.3 }}
+                    className="text-sm font-bold text-emerald-300 uppercase mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {metric.label}
+                  </motion.div>
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.4 }}
+                    whileHover={{ x: 5 }}
+                    className="text-xs text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {metric.detail}
+                  </motion.p>
                 </motion.div>
               ))}
                 </div>
@@ -768,29 +785,79 @@ const BambuLabCaseStudy = () => {
             {/* Key Findings */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {(data.research?.keyFindings || []).map((finding, i) => (
-                <div key={i} className={`bg-gradient-to-br ${
-                  finding.color === 'red' ? 'from-red-900/20 to-orange-900/20 border-red-800/30' :
-                  'from-gray-900/20 to-gray-800/20 border-gray-700/30'
-                } border rounded-xl p-6`}>
-                  <h4 className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{finding.title}</h4>
-                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{finding.description}</p>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className={`bg-gradient-to-br ${
+                    finding.color === 'red' ? 'from-red-900/20 to-orange-900/20 border-red-800/30' :
+                    'from-gray-900/20 to-gray-800/20 border-gray-700/30'
+                  } border rounded-xl p-6 cursor-pointer`}
+                >
+                  <motion.h4
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.2 }}
+                    className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "'Sora', sans-serif" }}
+                  >
+                    {finding.title}
+                  </motion.h4>
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.3 }}
+                    whileHover={{ x: 5 }}
+                    className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {finding.description}
+                  </motion.p>
+                </motion.div>
               ))}
             </div>
             
             {/* Recommendations */}
             <div className="grid md:grid-cols-3 gap-6">
               {(data.research?.recommendations || []).map((rec, i) => (
-                <div key={i} className={`bg-gradient-to-br ${
-                  rec.color === 'green' ? 'from-emerald-900/20 to-teal-900/20 border-emerald-800/30' :
-                  rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
-                  'from-purple-900/20 to-pink-900/20 border-purple-800/30'
-                } border rounded-xl p-6`}>
-                  <h4 className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{rec.title}</h4>
-                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{rec.description}</p>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className={`bg-gradient-to-br ${
+                    rec.color === 'green' ? 'from-emerald-900/20 to-teal-900/20 border-emerald-800/30' :
+                    rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
+                    'from-purple-900/20 to-pink-900/20 border-purple-800/30'
+                  } border rounded-xl p-6 cursor-pointer`}
+                >
+                  <motion.h4
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.2 }}
+                    className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "'Sora', sans-serif" }}
+                  >
+                    {rec.title}
+                  </motion.h4>
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.3 }}
+                    whileHover={{ x: 5 }}
+                    className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {rec.description}
+                  </motion.p>
+                </motion.div>
               ))}
-            </div>
+                </div>
           </motion.div>
         </section>
 
@@ -840,8 +907,8 @@ const BambuLabCaseStudy = () => {
                       >
                         {quote}
                       </motion.p>
-                    ))}
-                  </div>
+              ))}
+            </div>
                 </motion.div>
               ))}
             </div>
@@ -862,23 +929,44 @@ const BambuLabCaseStudy = () => {
             
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {(data.whyPrintsFail?.categories || []).map((category, i) => (
-                <div 
-                  key={i} 
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${
                     category.title === 'Creator Model Error' ? 'from-orange-900/30 to-red-900/30 border-orange-800/30' :
                     'from-gray-900/30 to-gray-800/30 border-gray-700/30'
-                  } border rounded-xl p-6`}
+                  } border rounded-xl p-6 cursor-pointer`}
                 >
-                  <h3 className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{category.title}</h3>
+                  <motion.h3
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.2 }}
+                    className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}
+                  >
+                    {category.title}
+                  </motion.h3>
                   <ul className="space-y-2">
                     {(category?.items || []).map((item, j) => (
-                      <li key={j} className="text-sm text-gray-300 flex items-start" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      <motion.li
+                        key={j}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.15 + j * 0.1 + 0.3 }}
+                        whileHover={{ x: 5 }}
+                        className="text-sm text-gray-300 flex items-start" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                      >
                         <span className="text-emerald-400 mr-2">•</span>
                         <span>{item}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               ))}
             </div>
             
@@ -899,17 +987,39 @@ const BambuLabCaseStudy = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-12" style={{ fontFamily: "'Sora', sans-serif" }}>{data.problemsAddressed?.title}</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {(data.problemsAddressed?.problems || []).map((problem, i) => (
-                <div 
-                  key={i} 
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${
                     problem.color === 'red' ? 'from-red-900/30 to-orange-900/30 border-red-800/30' :
                     problem.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
                     'from-orange-900/30 to-red-900/30 border-orange-800/30'
-                  } border rounded-xl p-6`}
+                  } border rounded-xl p-6 cursor-pointer`}
                 >
-                  <h3 className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>{problem.title}</h3>
-                  <p className="text-sm text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{problem.description}</p>
-                </div>
+                  <motion.h3
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.2 }}
+                    className="text-xl font-bold mb-4 text-white" style={{ fontFamily: "'Sora', sans-serif" }}
+                  >
+                    {problem.title}
+                  </motion.h3>
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.3 }}
+                    whileHover={{ x: 5 }}
+                    className="text-sm text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {problem.description}
+                  </motion.p>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -929,7 +1039,7 @@ const BambuLabCaseStudy = () => {
             {data.painPoints.map((point, i) => (
               <div key={i} className="mb-24">
                 <h3 className="text-3xl font-bold mb-4 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>
-                  There is {point.title.toLowerCase()}
+                  {point.title}
                 </h3>
                 <p className="text-lg text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {point.description}
@@ -1049,9 +1159,26 @@ const BambuLabCaseStudy = () => {
             
             <div className="grid md:grid-cols-2 gap-4 mb-12">
               {data.ideation.concepts.map((concept, i) => (
-                <div key={i} className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-4">
-                  <p className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{concept}</p>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-4 cursor-pointer"
+                >
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.3 }}
+                    whileHover={{ x: 5 }}
+                    className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {concept}
+                  </motion.p>
+                </motion.div>
               ))}
             </div>
             
