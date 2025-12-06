@@ -38,39 +38,39 @@ const BambuLabCaseStudy = () => {
     // Problem Statement
     problemStatement: {
       title: 'Problem Statement',
-      content: 'Bambu Lab\'s current post-print rating flow prompts users to rate the 3D model—whether or not the print succeeded—without surfacing relevant troubleshooting context or attribution. This leads to inaccurate low-star reviews driven by user error or "invisible" setup issues, not inherent model flaws. As a result, creators are unfairly penalized, and feedback is reduced to an ambiguous 1-5 star count. Rather than a learning opportunity, both parties are left in the dark about what went wrong or why, making it harder to iterate—especially as more inexperienced (novice) users enter the ecosystem expecting a seamless, plug-and-print experience.'
+      content: 'The Core Issue: Bambu Lab\'s current post-print rating flow prompts users to rate the 3D model — whether or not the print succeeded — without surfacing relevant troubleshooting context or attribution.\n\nThe Consequence: This leads to inaccurate low-star reviews driven by user error or "invisible" setup issues, not inherent model flaws. As a result, creators are unfairly penalized, and feedback is reduced to an ambiguous 1-5 star count. Both parties are left in the dark, making it harder to iterate — especially as more inexperienced (novice) users enter the ecosystem expecting a seamless, "plug-and-print" experience.'
     },
 
     // Why it matters
     whyItMatters: {
-      title: 'Why it matters',
-      content: 'This is a broken business feedback loop that damages Bambu Lab\'s ecosystem. When prints fail and reviews misattribute the cause, trust erodes, creators disengage, and content quality declines. This reduces product confidence and impacts printer and accessory sales. Fixing this restores clarity, realigns incentives, and improves outcomes for users and creators.'
+      title: 'Why It Matters (The Broken Flywheel)',
+      content: 'At its core, this isn\'t just a UI flaw. It\'s a broken core business feedback loop that harms the health of Bambu Lab\'s ecosystem.'
     },
 
     // Success Vision
     successVision: {
       title: 'Success Vision',
-      content: 'Convert failed print experiences into actionable feedback. By guiding users to categorize failure causes, we improve review accuracy and create learning opportunities. This increases successful prints, improves creator satisfaction, and strengthens the marketplace.'
+      content: 'Turn frustration from failed prints into actionable insights. By guiding users to provide relevant feedback — even after failure — we can turn inaccurate reviews into opportunities for learning and improvement. This ensures printers keep printing, creators keep creating, and the Bambu marketplace flywheel spins faster.'
     },
 
     // Business Feedback Loop
     businessLoop: {
-      title: 'The Bambu Lab Ecosystem',
+      title: 'The Ideal Flywheel',
       description: 'Bambu Lab\'s business model depends on a healthy feedback loop between creators and users.',
       steps: [
-        'Bambu Lab incentivizes creators',
-        'Creators upload high-quality models to MakerWorld',
+        'Bambu Lab incentivizes Creators',
+        'Creators upload high-quality models on MakerWorld',
         'Users complete successful prints',
         'Users purchase printers, filament, & accessories',
-        'Bambu Lab grows revenue and reinvests'
+        'Bambu grows revenue and reinvests (Loop back to 1)'
       ]
     },
 
     // What MakerWorld told us
     problemContext: {
-      headline: 'The Broken Flywheel',
+      headline: 'The Breakpoint',
       challenge: 'When prints fail and reviews misattribute blame, trust breaks down. Creators disengage, and content quality declines. Over time, the platform loses its "plug-and-play" promise.',
-      stat: 'Reducing confidence in the product and impacting printer and accessory sales.'
+      stat: 'Reducing confidence in the product and impacting printer/accessory sales. Fixing this restores clarity, realigns incentives, and keeps the flywheel spinning.'
     },
 
     // Quote Board
@@ -111,52 +111,49 @@ const BambuLabCaseStudy = () => {
 
     // Why Prints Fail
     whyPrintsFail: {
-      title: 'Why Prints Fail: Mapping a Complex System',
-      subtitle: 'Most failures aren\'t the creator\'s fault.',
+      title: 'Problem Breakdown: Why Prints Fail',
+      subtitle: 'It is not always the creator\'s fault. Failures fall into four distinct categories:',
       description: 'The data made it clear that the feedback loop between creators and reviewers is broken. Behind a simple star rating lies a complex system where print failures often stem from invisible variables outside the creator\'s control.',
       categories: [
         {
           title: 'User Error',
           items: [
-            'Dirty build plate (leads to poor bed adhesion)',
+            'Dirty build plate',
             'Wet filament',
             'Wrong filament type',
-            'Poor printer maintenance',
-            'Incorrect settings (wrong build plate or printer)',
-            'Manual handling issues (removing parts too early)'
+            'Poor maintenance',
+            'Incorrect settings',
+            'Manual handling issues'
           ]
         },
         {
           title: 'Printer / System Error',
           items: [
             'Clogged nozzle',
-            'System heat creep',
-            'Failed nozzle cleaning',
-            'Over extrusion / under extrusion (filament flow rate issues)',
-            'Print bed leveling failure',
-            'Mechanical failure (belt tension, loose parts)',
-            'AMS (automated material system) feed errors',
-            'Slicing software bug or G-code error'
+            'Heat creep',
+            'Bed leveling failure',
+            'Mechanical failure',
+            'AMS errors',
+            'Slicing bugs'
           ]
         },
         {
           title: 'External Errors',
           items: [
-            'Environmental temperatures and humidity',
-            'Open window or drafts',
-            'Power outage/surge',
-            'Excessive vibration during print'
+            'Environmental temp/humidity',
+            'Drafts',
+            'Power outages',
+            'Vibrations'
           ]
         },
         {
           title: 'Creator Model Error',
           items: [
             'Unsupported overhangs',
-            'Inaccurate model photos / renders',
-            'Poor part orientation',
-            'Model not manifold (bad geometry)',
-            'Tolerances too tight / loose',
-            'Weak structural areas',
+            'Inaccurate photos',
+            'Poor orientation',
+            'Non-manifold geometry',
+            'Tight tolerances',
             'Poor instructions'
           ]
         }
@@ -168,28 +165,28 @@ const BambuLabCaseStudy = () => {
     evidenceGathering: {
       title: 'Evidence Gathering',
       onlineQuotes: {
-        description: 'To understand how this issue impacts real users, I reviewed community discussions across Reddit and Bambu\'s official forums. The feedback was consistent: the current review system frustrates creators, misattributes failure, and degrades trust in the platform.'
+        description: 'Methodology: Analyzed discussions on Reddit and Bambu\'s official forums.'
       },
       constraints: {
-        description: 'To complement these anecdotes with quantitative data, I attempted to analyze a large sample of reviews from MakerWorld using AI tools like Manus. However, Cloudflare protections blocked automated collection, even after manual human verification.'
+        description: 'Manual Data Analysis: Due to Cloudflare blocking automated scraping, a manual review of hundreds of reviews across the top 12 MakerWorld-exclusive models (past 30 days) was conducted.'
       },
       manualReview: {
-        description: 'In response, I manually scanned hundreds of reviews across the top 12 most downloaded MakerWorld-exclusive models over the past 30 days. I extracted and analyzed all reviews rated 3 stars or below, focusing on:',
+        description: 'Sample Size: 42 low-star reviews (3 stars or below) were analyzed in depth.',
         focusAreas: [
-          'Attribution Category (e.g., user error, model quality issue, environmental/setup, unclear)',
-          'Comment Clarity (clear, vague, or missing)'
+          'Attribution Category',
+          'Comment Clarity'
         ]
       },
       aiAnalysis: {
-        description: 'Using AI-assisted classification on a sample of 42 reviews, the analysis revealed:',
+        description: 'Key Statistics:',
         findings: [
-          '46% of low-star reviews pointed to model quality issues',
+          '46% of low-star reviews pointed to actual model quality issues',
           '35% were due to user/setup-related errors',
           '19% lacked sufficient detail to determine attribution',
-          '81% of reviews still provided clear feedback, highlighting an opportunity for better feedback capture, not just more of it'
+          '81% of reviews provided clear feedback, indicating a missed opportunity for structured data capture'
         ]
       },
-      conclusion: 'This analysis confirmed the forum feedback: a structured review system is needed that distinguishes between design flaws and user error, and supports iteration rather than arbitrarily penalizing creators.'
+      conclusion: 'Conclusion: The system flattens nuance. There is a critical need to separate user mistakes from design flaws to support iteration rather than punishment.'
     },
 
     // Research findings (for data visualization)
@@ -257,21 +254,21 @@ const BambuLabCaseStudy = () => {
 
     // Problems Being Addressed
     problemsAddressed: {
-      title: 'Problems Being Addressed',
+      title: 'Core Insights',
       problems: [
         {
           title: 'Misdirected Blame',
-          description: 'Selectable print issue tags allow users to categorize failure causes. Issues caused by user setup, hardware malfunction, or environmental factors are flagged separately from model issues. Users can filter reviews to see only model-related problems.',
+          description: 'The system fails to distinguish why a print failed. User setup errors, hardware malfunctions, and environmental factors are all conflated with model quality ratings. This damages creator reputations unjustly.',
           color: 'red'
         },
         {
           title: 'Unaware Reviewers',
-          description: 'Contextual help cards provide troubleshooting information when users select user error tags. This redirects frustrated users to learning resources instead of leaving negative reviews. This reduces misattributed negative reviews, especially from inexperienced users.',
+          description: 'Users often don\'t realize that their feedback directly impacts creator compensation. Reviews are often emotional reactions to failed prints rather than objective critiques of the model file itself.',
           color: 'yellow'
         },
         {
           title: 'Frustrated Creators',
-          description: 'All reviews are automatically tagged by attribution type, allowing creators to analyze model-related issues separately from user errors. This helps creators prioritize fixes and identify what works well, encouraging continued investment in quality uploads.',
+          description: 'Designers feel penalized for factors outside their control (e.g., a user\'s wet filament or dirty build plate). This lack of actionable, fair feedback disincentivizes investment in high-quality uploads.',
           color: 'orange'
         }
       ]
@@ -397,78 +394,35 @@ const BambuLabCaseStudy = () => {
       visual: 'placeholder-concept-diagram.png' // Placeholder for concept visualization
     },
 
-    // Going back to users
-    userTesting: {
-      title: 'User testing',
-      description: 'I conducted wireframing, design critiques, and user testing with 3D printing enthusiasts to validate the attribution tag concept.',
-      feedback: 'Generally, the feedback was to make things more intuitive, less prescriptive, and more helpful without adding friction.',
-      versions: [
-        {
-          version: 'V1: Pre-Review Quiz',
-          approach: 'Force users to answer troubleshooting questions before reviewing',
-          learning: '❌ Too much friction—users abandoned reviews',
-          visual: `${process.env.PUBLIC_URL}/images/case-studies/v1-wireframe.png`
-        },
-        {
-          version: 'V2: Post-Review Attribution',
-          approach: 'Let users review first, then ask "what went wrong?"',
-          learning: '⚠️ Better, but users already blamed creators mentally',
-          visual: 'placeholder-v2-wireframe.png'
-        },
-        {
-          version: 'V3: AI Suggestions (Final)',
-          approach: 'Analyze review text + suggest attribution tags in real-time',
-          learning: '✅ Low friction + helps users self-reflect + fair to creators',
-          visual: 'placeholder-v3-wireframe.png'
-        }
-      ]
-    },
-
     // Our Solution
     solution: {
-      title: 'Solution',
+      title: 'Proposed Design Solutions',
       introduction: 'Solution overview',
       description: 'An AI-powered attribution system that guides users to categorize failure causes before submitting reviews. Integrated into the review flow, it converts failure moments into learning opportunities.',
       features: [
         {
-          title: 'Slicer Wizard (AI Chatbot)',
+          title: 'Solution 1: Slicer Wizard (AI Chatbot)',
           problem: 'Users make preventable mistakes before printing even starts',
-          solution: 'A preventive AI plugin guides users on correct settings and best practices (e.g., suggesting a brim for adhesion) before they slice the file',
+          solution: 'A preventive AI plugin guides users on correct settings and best practices (e.g., suggesting a brim for adhesion) before they slice the file. Example: "Do you think my print needs a brim?" -> AI suggests "Outer Brim Only" for better adhesion without scarring.',
           component: <SlicerWizardFlow />,
           impact: 'Prevents failure before it happens',
           highlight: 'Preventive Design: Catching errors upstream'
         },
         {
-          title: 'Smart Attribution Tags',
+          title: 'Solution 2: Revamped Post-Print Review System',
           problem: 'Users blame creators without understanding why prints fail',
-          solution: 'AI analyzes review text and suggests relevant attribution tags in real-time, prompting users to categorize failure causes before submitting',
+          solution: 'A structured review flow that replaces the simple 5-star system with context-aware attribution. Positive Attribution (> 4 Stars) for what worked. Negative Attribution (< 3 Stars) requires selecting a failure reason (e.g., "Bed adhesion issue").',
           visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-attribution-tags.png`,
           impact: 'Reduces misdirected blame by 35%',
-          highlight: 'Product thinking: Turn negative moments into learning opportunities'
+          highlight: 'Educational Deflection: Linking to Wiki docs for self-debugging'
         },
         {
-          title: 'Contextual Help Cards',
-          problem: 'Frustrated users leave angry reviews instead of learning',
-          solution: 'When users select "user error," display troubleshooting tips inline, converting complaints into learning opportunities',
-          visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-help-cards.png`,
-          impact: 'Transforms complaints into education',
-          highlight: 'UX craft: Progressive disclosure—help without overwhelming'
-        },
-        {
-          title: 'MakerWorld Web Parity',
+          title: 'Solution 3: MakerWorld Web Parity',
           problem: 'Inconsistent experience across Slicer and Web platforms',
-          solution: 'Brings the enhanced review system to the browser, ensuring users have the same structured feedback tools regardless of where they interact',
+          solution: 'Bringing the enhanced review system from the slicer to the browser-based MakerWorld platform. Ensures a consistent experience across all touchpoints.',
           visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-filters.png`,
           impact: 'Unified ecosystem experience',
           highlight: 'Systems thinking: Consistent standards across all touchpoints'
-        },
-        {
-          title: 'Creator Insights Dashboard',
-          problem: 'Creators can\'t tell which feedback to act on',
-          solution: 'AI-powered analytics distinguish real issues from misdirected feedback, enabling data-driven iteration',
-          visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-dashboard.png`,
-          impact: 'Empowers data-driven iteration',
-          highlight: 'Business value: Retain creators by making feedback fair'
         }
       ]
     },
@@ -1184,12 +1138,12 @@ const BambuLabCaseStudy = () => {
             <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {data.interventionPoints.description}
             </p>
-            
+
             {/* Intervention Points Infographic */}
             <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20 mb-8">
               <InterventionPointsInfographic />
             </div>
-            
+
             {/* Points List */}
             <div className="space-y-4">
               {data.interventionPoints.points.map((point, i) => (
@@ -1360,91 +1314,6 @@ const BambuLabCaseStudy = () => {
           </motion.div>
         </section>
 
-        {/* Going back to users */}
-        <section className="mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.userTesting.title}</h2>
-            <p className="text-lg text-gray-300 mb-12 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              {data.userTesting.description}
-            </p>
-            <p className="text-gray-400 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              {data.userTesting.feedback}
-            </p>
-
-            <div className="space-y-16">
-              {data.userTesting.versions.map((version, i) => (
-                <div key={i}>
-                  <h4 className="text-2xl font-bold mb-4 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>{version.version}</h4>
-                  <p className="text-gray-300 mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.approach}</p>
-                  <p className="text-sm text-gray-400 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.learning}</p>
-
-                  {/* Wireframe Image or Placeholder */}
-                  {version.visual && !version.visual.includes('placeholder') ? (
-                    <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
-                      <img
-                        src={version.visual}
-                        alt={version.version}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                  ) : (
-                    <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-                      <div className="relative h-full flex flex-col">
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="h-3 bg-gray-700 rounded w-24"></div>
-                          <div className="h-3 bg-gray-700 rounded w-16"></div>
-                        </div>
-                        <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                          <div className="h-6 bg-gray-700 rounded w-3/4 mb-3"></div>
-                          {version.version.includes('V1') && (
-                            <>
-                              <div className="space-y-2 mb-4">
-                                <div className="h-4 bg-gray-700 rounded w-full"></div>
-                                <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                                <div className="h-4 bg-gray-700 rounded w-4/6"></div>
-                              </div>
-                              <div className="h-10 bg-gray-700 rounded w-32"></div>
-                            </>
-                          )}
-                          {version.version.includes('V2') && (
-                            <>
-                              <div className="h-20 bg-gray-700 rounded mb-4"></div>
-                              <div className="space-y-2 mb-4">
-                                <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                                <div className="h-4 bg-gray-700 rounded w-2/3"></div>
-                              </div>
-                              <div className="h-10 bg-gray-700 rounded w-32"></div>
-                            </>
-                          )}
-                          {version.version.includes('V3') && (
-                            <>
-                              <div className="h-20 bg-gray-700 rounded mb-4"></div>
-                              <div className="flex flex-wrap gap-2 mb-4">
-                                <div className="h-6 bg-emerald-700/50 rounded-full w-20"></div>
-                                <div className="h-6 bg-emerald-700/50 rounded-full w-24"></div>
-                                <div className="h-6 bg-emerald-700/50 rounded-full w-28"></div>
-                              </div>
-                              <div className="h-10 bg-emerald-600 rounded w-32"></div>
-                            </>
-                          )}
-                        </div>
-                        <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                          {version.version} - {version.approach.split('.')[0]}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
 
         {/* Our Solution */}
         <section id="solution" className="mb-32">
