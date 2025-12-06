@@ -15,7 +15,7 @@ const BambuLabCaseStudy = () => {
     title: 'Bambu Lab Case Study',
     subtitle: 'Improving Review System Accuracy and Transparency',
     hero: `${process.env.PUBLIC_URL}/images/case-studies/bambu-lab.png`,
-    
+
     // Metadata
     metadata: {
       discipline: 'User Research, Product Design, AI/ML Design, Interaction Design',
@@ -25,32 +25,32 @@ const BambuLabCaseStudy = () => {
       team: 'Solo project',
       tools: 'Figma, AI/ML Analysis'
     },
-    
+
     // Summary
     summary: {
       goal: 'Design a review system for MakerWorld that helps users learn from failures while providing creators with fair, actionable feedback.',
       solution: 'An attribution system with AI-powered tag suggestions that prompts users to categorize failure causes before submitting reviews.',
       outcome: 'Expected to reduce misdirected reviews by 35% and improve feedback quality for both users and creators.'
     },
-    
+
     // Problem Statement
     problemStatement: {
       title: 'Problem Statement',
       content: 'Bambu Lab\'s current post-print rating flow prompts users to rate the 3D model—whether or not the print succeeded—without surfacing relevant troubleshooting context or attribution. This leads to inaccurate low-star reviews driven by user error or "invisible" setup issues, not inherent model flaws. As a result, creators are unfairly penalized, and feedback is reduced to an ambiguous 1-5 star count. Rather than a learning opportunity, both parties are left in the dark about what went wrong or why, making it harder to iterate—especially as more inexperienced (novice) users enter the ecosystem expecting a seamless, plug-and-print experience.'
     },
-    
+
     // Why it matters
     whyItMatters: {
       title: 'Why it matters',
       content: 'This is a broken business feedback loop that damages Bambu Lab\'s ecosystem. When prints fail and reviews misattribute the cause, trust erodes, creators disengage, and content quality declines. This reduces product confidence and impacts printer and accessory sales. Fixing this restores clarity, realigns incentives, and improves outcomes for users and creators.'
     },
-    
+
     // Success Vision
     successVision: {
       title: 'Success Vision',
       content: 'Convert failed print experiences into actionable feedback. By guiding users to categorize failure causes, we improve review accuracy and create learning opportunities. This increases successful prints, improves creator satisfaction, and strengthens the marketplace.'
     },
-    
+
     // Business Feedback Loop
     businessLoop: {
       title: 'The Bambu Lab Ecosystem',
@@ -58,19 +58,19 @@ const BambuLabCaseStudy = () => {
       steps: [
         'Bambu Lab incentivizes creators',
         'Creators upload high-quality models to MakerWorld',
-        'Users purchase printers and accessories',
         'Users complete successful prints',
+        'Users purchase printers, filament, & accessories',
         'Bambu Lab grows revenue and reinvests'
       ]
     },
-    
+
     // What MakerWorld told us
     problemContext: {
-      headline: 'MakerWorld connects 10M+ users with creators sharing 3D printable designs. Reviews drive discovery and creator compensation.',
-      challenge: 'The review system was broken. Users blamed creators for their own mistakes, creators got punished unfairly, and no one learned anything.',
-      stat: 'People quit after failed prints, leaving angry reviews without understanding why things went wrong.'
+      headline: 'The Broken Flywheel',
+      challenge: 'When prints fail and reviews misattribute blame, trust breaks down. Creators disengage, and content quality declines. Over time, the platform loses its "plug-and-play" promise.',
+      stat: 'Reducing confidence in the product and impacting printer and accessory sales.'
     },
-    
+
     // Quote Board
     quoteBoard: {
       title: 'Quote Board',
@@ -106,7 +106,7 @@ const BambuLabCaseStudy = () => {
         }
       ]
     },
-    
+
     // Why Prints Fail
     whyPrintsFail: {
       title: 'Why Prints Fail: Mapping a Complex System',
@@ -161,7 +161,7 @@ const BambuLabCaseStudy = () => {
       ],
       conclusion: 'Most print failures aren\'t caused by the model creator. Understanding failure categories helps users provide accurate feedback and helps creators prioritize improvements.'
     },
-    
+
     // Evidence Gathering
     evidenceGathering: {
       title: 'Evidence Gathering',
@@ -180,7 +180,7 @@ const BambuLabCaseStudy = () => {
       },
       aiAnalysis: {
         description: 'Using AI-assisted classification on a sample of 42 reviews, the analysis revealed:',
-      findings: [
+        findings: [
           '46% of low-star reviews pointed to model quality issues',
           '35% were due to user/setup-related errors',
           '19% lacked sufficient detail to determine attribution',
@@ -189,7 +189,7 @@ const BambuLabCaseStudy = () => {
       },
       conclusion: 'This analysis confirmed the forum feedback: a structured review system is needed that distinguishes between design flaws and user error, and supports iteration rather than arbitrarily penalizing creators.'
     },
-    
+
     // Research findings (for data visualization)
     research: {
       title: 'MakerWorld Review Analysis',
@@ -252,7 +252,7 @@ const BambuLabCaseStudy = () => {
         }
       ]
     },
-    
+
     // Problems Being Addressed
     problemsAddressed: {
       title: 'Problems Being Addressed',
@@ -274,7 +274,7 @@ const BambuLabCaseStudy = () => {
         }
       ]
     },
-    
+
     // Pain Points (kept for backward compatibility but restructured)
     painPoints: [
       {
@@ -306,7 +306,7 @@ const BambuLabCaseStudy = () => {
         visual: 'placeholder-no-learning.png'
       }
     ],
-    
+
     // Synthesis
     synthesis: {
       title: 'Synthesis',
@@ -314,7 +314,7 @@ const BambuLabCaseStudy = () => {
       hypothesis: 'Guiding users through attribution at the moment of failure will help them learn from mistakes, reduce misdirected blame, and provide creators with actionable feedback.',
       focus: 'The current system uses ratings to assign blame. The design focuses on converting failure moments into learning opportunities by helping users understand what went wrong before they assign blame.'
     },
-    
+
     // Mapping intervention points
     interventionPoints: {
       title: 'Identifying intervention points',
@@ -327,7 +327,7 @@ const BambuLabCaseStudy = () => {
       ],
       visual: 'placeholder-journey-map.png' // Placeholder for journey map visualization
     },
-    
+
     // Ideation
     ideation: {
       title: 'Ideation',
@@ -386,7 +386,7 @@ const BambuLabCaseStudy = () => {
       process: 'I started with high-friction approaches (pre-review quiz) and iterated toward lower-friction solutions. The key insight was that attribution needs to happen before blame is assigned, but without feeling punitive or prescriptive.',
       keyInsight: 'The winning approach combines AI suggestions (low friction) with contextual help (high learning value), creating a system that guides without forcing.'
     },
-    
+
     // The Attribution Concept
     attributionConcept: {
       title: 'The Attribution Concept',
@@ -394,7 +394,7 @@ const BambuLabCaseStudy = () => {
       explanation: 'Attribution tags help users categorize failure causes before writing reviews. Contextual interventions provide relevant help at critical moments, converting blame into learning opportunities.',
       visual: 'placeholder-concept-diagram.png' // Placeholder for concept visualization
     },
-    
+
     // Going back to users
     userTesting: {
       title: 'User testing',
@@ -421,13 +421,21 @@ const BambuLabCaseStudy = () => {
         }
       ]
     },
-    
+
     // Our Solution
     solution: {
       title: 'Solution',
       introduction: 'Solution overview',
       description: 'An AI-powered attribution system that guides users to categorize failure causes before submitting reviews. Integrated into the review flow, it converts failure moments into learning opportunities.',
       features: [
+        {
+          title: 'Slicer Wizard (AI Chatbot)',
+          problem: 'Users make preventable mistakes before printing even starts',
+          solution: 'A preventive AI plugin guides users on correct settings and best practices (e.g., suggesting a brim for adhesion) before they slice the file',
+          visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-slicer-wizard.png`,
+          impact: 'Prevents failure before it happens',
+          highlight: 'Preventive Design: Catching errors upstream'
+        },
         {
           title: 'Smart Attribution Tags',
           problem: 'Users blame creators without understanding why prints fail',
@@ -445,12 +453,12 @@ const BambuLabCaseStudy = () => {
           highlight: 'UX craft: Progressive disclosure—help without overwhelming'
         },
         {
-          title: 'Review Filters by Attribution',
-          problem: 'Users can\'t distinguish real issues from user mistakes',
-          solution: 'Filter reviews by cause type—see only what\'s relevant to your situation',
+          title: 'MakerWorld Web Parity',
+          problem: 'Inconsistent experience across Slicer and Web platforms',
+          solution: 'Brings the enhanced review system to the browser, ensuring users have the same structured feedback tools regardless of where they interact',
           visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-filters.png`,
-          impact: 'Makes feedback actionable for both users and creators',
-          highlight: 'Systems thinking: One feature serves multiple stakeholders'
+          impact: 'Unified ecosystem experience',
+          highlight: 'Systems thinking: Consistent standards across all touchpoints'
         },
         {
           title: 'Creator Insights Dashboard',
@@ -462,7 +470,7 @@ const BambuLabCaseStudy = () => {
         }
       ]
     },
-    
+
     // Insights answered
     insightsAnswered: {
       title: 'Problem-solution mapping',
@@ -473,7 +481,7 @@ const BambuLabCaseStudy = () => {
         { problem: 'Creators can\'t act on feedback', solution: 'Creator insights dashboard with AI analysis' }
       ]
     },
-    
+
     // Wishes
     wishes: {
       title: 'Future considerations',
@@ -488,7 +496,7 @@ const BambuLabCaseStudy = () => {
         }
       ]
     },
-    
+
     // Learnings
     learnings: {
       title: 'Key learnings',
@@ -509,24 +517,24 @@ const BambuLabCaseStudy = () => {
     <div className="min-h-screen bg-[#0a0f0a] text-white">
       {/* Hero */}
       <div className="relative h-[70vh] overflow-hidden">
-        <img 
+        <img
           src={data.hero}
           alt={data.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-[#0a0f0a]"></div>
-        
+
         <Link to="/" className="absolute top-8 left-8 flex items-center gap-2 text-white/80 hover:text-emerald-400 transition-colors z-10" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
           <FiArrowLeft className="text-xl" />
           <span className="text-sm font-medium">Back to Portfolio</span>
         </Link>
-        
+
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
           <div className="max-w-4xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6" style={{ fontFamily: "'Sora', sans-serif" }}>{data.title}</h1>
               <p className="text-xl text-gray-300 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.subtitle}</p>
-              
+
               {/* Metadata */}
               <div className="grid md:grid-cols-2 gap-6 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 <div>
@@ -561,7 +569,7 @@ const BambuLabCaseStudy = () => {
 
       {/* Content */}
       <div className="max-w-5xl mx-auto px-6 lg:px-12 py-20">
-        
+
         {/* Summary */}
         <section className="mb-32">
           <motion.div
@@ -575,7 +583,7 @@ const BambuLabCaseStudy = () => {
               <p>
                 <span className="font-semibold text-white">Goal:</span> Design a review system that helps users learn from failures while providing creators with fair, actionable feedback.
               </p>
-                <p>
+              <p>
                 <span className="font-semibold text-emerald-400">Solution:</span> An AI-powered attribution system that guides users to categorize failure causes before submitting reviews. Role: Product Designer & UX Researcher.
               </p>
               <p>
@@ -640,7 +648,7 @@ const BambuLabCaseStudy = () => {
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.businessLoop.title}</h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.businessLoop.description}</p>
-            
+
             <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-emerald-800/30 rounded-2xl p-4 sm:p-6 md:p-8 overflow-visible">
               <BambuLoop />
             </div>
@@ -656,18 +664,18 @@ const BambuLabCaseStudy = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.evidenceGathering.title}</h2>
-            
+
             <div className="space-y-8 mb-12">
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-xl font-bold mb-4 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Online Quotes</h3>
                 <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.onlineQuotes.description}</p>
               </div>
-              
+
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-xl font-bold mb-4 text-yellow-300" style={{ fontFamily: "'Sora', sans-serif" }}>Constraints</h3>
                 <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.constraints.description}</p>
               </div>
-              
+
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-xl font-bold mb-4 text-blue-300" style={{ fontFamily: "'Sora', sans-serif" }}>Manual Review</h3>
                 <p className="text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.manualReview.description}</p>
@@ -677,7 +685,7 @@ const BambuLabCaseStudy = () => {
                   ))}
                 </ul>
               </div>
-              
+
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-xl font-bold mb-4 text-purple-300" style={{ fontFamily: "'Sora', sans-serif" }}>AI-Assisted Classification</h3>
                 <p className="text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.aiAnalysis.description}</p>
@@ -688,7 +696,7 @@ const BambuLabCaseStudy = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="bg-emerald-900/30 border-l-4 border-emerald-500 rounded-r-xl p-6">
               <p className="text-lg text-emerald-100 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.evidenceGathering.conclusion}</p>
             </div>
@@ -706,7 +714,7 @@ const BambuLabCaseStudy = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.research.title}</h2>
             <p className="text-xl text-gray-400 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.research.subtitle}</p>
             <p className="text-lg text-gray-500 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.research.description}</p>
-            
+
             {/* Key Metrics */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {(data.research?.metrics || []).map((metric, i) => (
@@ -749,8 +757,8 @@ const BambuLabCaseStudy = () => {
                   </motion.p>
                 </motion.div>
               ))}
-                </div>
-            
+            </div>
+
             {/* Attribution Breakdown */}
             <div className="grid lg:grid-cols-2 gap-8 mb-12">
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
@@ -788,8 +796,8 @@ const BambuLabCaseStudy = () => {
                     </motion.div>
                   ))}
                 </div>
-            </div>
-            
+              </div>
+
               <div className="bg-white/5 border border-gray-700 rounded-xl p-6">
                 <h3 className="text-xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Comment Clarity</h3>
                 <div className="space-y-4">
@@ -830,7 +838,7 @@ const BambuLabCaseStudy = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Key Findings */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {(data.research?.keyFindings || []).map((finding, i) => (
@@ -841,10 +849,9 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`bg-gradient-to-br ${
-                    finding.color === 'red' ? 'from-red-900/20 to-orange-900/20 border-red-800/30' :
-                    'from-gray-900/20 to-gray-800/20 border-gray-700/30'
-                  } border rounded-xl p-6 cursor-pointer`}
+                  className={`bg-gradient-to-br ${finding.color === 'red' ? 'from-red-900/20 to-orange-900/20 border-red-800/30' :
+                      'from-gray-900/20 to-gray-800/20 border-gray-700/30'
+                    } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h4
                     initial={{ opacity: 0 }}
@@ -868,7 +875,7 @@ const BambuLabCaseStudy = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Recommendations */}
             <div className="grid md:grid-cols-3 gap-6">
               {(data.research?.recommendations || []).map((rec, i) => (
@@ -879,11 +886,10 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`bg-gradient-to-br ${
-                    rec.color === 'green' ? 'from-emerald-900/20 to-teal-900/20 border-emerald-800/30' :
-                    rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
-                    'from-purple-900/20 to-pink-900/20 border-purple-800/30'
-                  } border rounded-xl p-6 cursor-pointer`}
+                  className={`bg-gradient-to-br ${rec.color === 'green' ? 'from-emerald-900/20 to-teal-900/20 border-emerald-800/30' :
+                      rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
+                        'from-purple-900/20 to-pink-900/20 border-purple-800/30'
+                    } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h4
                     initial={{ opacity: 0 }}
@@ -906,7 +912,7 @@ const BambuLabCaseStudy = () => {
                   </motion.p>
                 </motion.div>
               ))}
-                </div>
+            </div>
           </motion.div>
         </section>
 
@@ -928,11 +934,10 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`bg-gradient-to-br ${
-                    category.color === 'pink' ? 'from-pink-900/30 to-rose-900/30 border-pink-800/30' :
-                    category.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
-                    'from-orange-900/30 to-red-900/30 border-orange-800/30'
-                  } border rounded-xl p-6 cursor-pointer`}
+                  className={`bg-gradient-to-br ${category.color === 'pink' ? 'from-pink-900/30 to-rose-900/30 border-pink-800/30' :
+                      category.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
+                        'from-orange-900/30 to-red-900/30 border-orange-800/30'
+                    } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h3
                     initial={{ opacity: 0 }}
@@ -956,8 +961,8 @@ const BambuLabCaseStudy = () => {
                       >
                         {quote}
                       </motion.p>
-              ))}
-            </div>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -975,7 +980,7 @@ const BambuLabCaseStudy = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.whyPrintsFail.title}</h2>
             <p className="text-2xl text-emerald-400 mb-8 font-semibold" style={{ fontFamily: "'Sora', sans-serif" }}>{data.whyPrintsFail.subtitle}</p>
             <p className="text-lg text-gray-300 mb-12 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.whyPrintsFail.description}</p>
-            
+
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {(data.whyPrintsFail?.categories || []).map((category, i) => (
                 <motion.div
@@ -985,10 +990,9 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`bg-gradient-to-br ${
-                    category.title === 'Creator Model Error' ? 'from-orange-900/30 to-red-900/30 border-orange-800/30' :
-                    'from-gray-900/30 to-gray-800/30 border-gray-700/30'
-                  } border rounded-xl p-6 cursor-pointer`}
+                  className={`bg-gradient-to-br ${category.title === 'Creator Model Error' ? 'from-orange-900/30 to-red-900/30 border-orange-800/30' :
+                      'from-gray-900/30 to-gray-800/30 border-gray-700/30'
+                    } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h3
                     initial={{ opacity: 0 }}
@@ -1018,7 +1022,7 @@ const BambuLabCaseStudy = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             <div className="bg-emerald-900/30 border-l-4 border-emerald-500 rounded-r-xl p-6">
               <p className="text-lg text-emerald-100 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.whyPrintsFail.conclusion}</p>
             </div>
@@ -1043,11 +1047,10 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`bg-gradient-to-br ${
-                    problem.color === 'red' ? 'from-red-900/30 to-orange-900/30 border-red-800/30' :
-                    problem.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
-                    'from-orange-900/30 to-red-900/30 border-orange-800/30'
-                  } border rounded-xl p-6 cursor-pointer`}
+                  className={`bg-gradient-to-br ${problem.color === 'red' ? 'from-red-900/30 to-orange-900/30 border-red-800/30' :
+                      problem.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
+                        'from-orange-900/30 to-red-900/30 border-orange-800/30'
+                    } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h3
                     initial={{ opacity: 0 }}
@@ -1084,7 +1087,7 @@ const BambuLabCaseStudy = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-12" style={{ fontFamily: "'Sora', sans-serif" }}>Pain Point #{data.painPoints[0].number}</h2>
-            
+
             {data.painPoints.map((point, i) => (
               <div key={i} className="mb-24">
                 <h3 className="text-3xl font-bold mb-4 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>
@@ -1096,7 +1099,7 @@ const BambuLabCaseStudy = () => {
                 <p className="text-gray-400 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {point.detail}
                 </p>
-                
+
                 {/* Visual */}
                 {point.number === 2 ? (
                   <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20 py-6">
@@ -1112,8 +1115,8 @@ const BambuLabCaseStudy = () => {
                   </div>
                 ) : point.visual && !point.visual.includes('placeholder') ? (
                   <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20">
-                    <img 
-                      src={point.visual} 
+                    <img
+                      src={point.visual}
                       alt={point.title}
                       className="w-full h-full object-cover"
                     />
@@ -1139,7 +1142,7 @@ const BambuLabCaseStudy = () => {
                     </div>
                   </div>
                 )}
-                
+
                 {i < data.painPoints.length - 1 && (
                   <>
                     <h2 className="text-4xl lg:text-5xl font-bold mb-12 mt-20" style={{ fontFamily: "'Sora', sans-serif" }}>Pain Point #{data.painPoints[i + 1].number}</h2>
@@ -1374,7 +1377,7 @@ const BambuLabCaseStudy = () => {
             <p className="text-gray-400 mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {data.userTesting.feedback}
             </p>
-            
+
             <div className="space-y-16">
               {data.userTesting.versions.map((version, i) => (
                 <div key={i}>
@@ -1454,7 +1457,7 @@ const BambuLabCaseStudy = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.solution.title}</h2>
-            
+
             {/* Current State Placeholder */}
             <div className="mb-12">
               <p className="text-lg text-gray-400 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>This is what MakerWorld reviews look like now.</p>
@@ -1480,7 +1483,7 @@ const BambuLabCaseStudy = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mb-12">
               <p className="text-lg text-gray-400 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>This is what I imagine it to be.</p>
               <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
@@ -1516,12 +1519,12 @@ const BambuLabCaseStudy = () => {
                 </div>
               </div>
             </div>
-            
+
             <h3 className="text-3xl font-bold mb-8 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>{data.solution.introduction}</h3>
             <p className="text-lg text-gray-300 mb-16 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {data.solution.description}
             </p>
-            
+
             {/* Features */}
             <div className="space-y-24">
               {data.solution.features.map((feature, i) => (
@@ -1538,7 +1541,7 @@ const BambuLabCaseStudy = () => {
                       <img src={feature.visual} alt={feature.title} className="w-full h-full object-cover" />
                     </div>
                   </div>
-                  
+
                   {/* Content */}
                   <div>
                     <div className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-semibold rounded-full mb-4 border border-emerald-500/30" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
