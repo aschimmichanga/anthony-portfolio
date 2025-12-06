@@ -6,6 +6,7 @@ import BambuLoop from './BambuLoop';
 import ReviewInfographic from './ReviewInfographic';
 import CreatorDashboardInfographic from './CreatorDashboardInfographic';
 import LearningInfographic from './LearningInfographic';
+import AttributionConceptInfographic from './AttributionConceptInfographic';
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -329,16 +330,60 @@ const BambuLabCaseStudy = () => {
     // Ideation
     ideation: {
       title: 'Ideation',
-      subtitle: 'Ideation process',
+      subtitle: 'Exploring multiple approaches to attribution',
+      description: 'I explored several concepts to address the core problem: how to help users understand failure attribution before leaving reviews. Each concept had different trade-offs between user friction, learning value, and implementation complexity.',
       concepts: [
-        'Pre-review troubleshooting quiz',
-        'Post-review attribution questions',
-        'AI-powered tag suggestions',
-        'Contextual help cards',
-        'Review filters by attribution',
-        'Creator insights dashboard'
+        {
+          name: 'Pre-review troubleshooting quiz',
+          description: 'Force users through a structured troubleshooting flow before they can submit a review',
+          pros: ['Ensures reflection before blame', 'Comprehensive failure analysis', 'Strong learning opportunity'],
+          cons: ['High friction - users abandon reviews', 'Feels punitive after failure', 'Too prescriptive'],
+          status: 'Rejected - too much friction',
+          color: 'red'
+        },
+        {
+          name: 'Post-review attribution questions',
+          description: 'Let users write reviews first, then prompt them to categorize what went wrong',
+          pros: ['Lower friction than pre-review', 'Captures attribution data', 'Less intrusive'],
+          cons: ['Users already blamed creators mentally', 'Attribution happens too late', 'Less effective learning'],
+          status: 'Iterated - moved earlier in flow',
+          color: 'yellow'
+        },
+        {
+          name: 'AI-powered tag suggestions',
+          description: 'Analyze review text in real-time and suggest relevant attribution tags as users type',
+          pros: ['Low friction - feels natural', 'Prompts self-reflection', 'Fair to creators', 'Scalable'],
+          cons: ['Requires AI/ML infrastructure', 'Need training data'],
+          status: 'Selected - final solution',
+          color: 'green'
+        },
+        {
+          name: 'Contextual help cards',
+          description: 'Display troubleshooting tips when users select "user error" tags',
+          pros: ['Converts complaints into learning', 'Progressive disclosure', 'Reduces misdirected reviews'],
+          cons: ['Requires content creation', 'May feel condescending if not done well'],
+          status: 'Selected - part of final solution',
+          color: 'green'
+        },
+        {
+          name: 'Review filters by attribution',
+          description: 'Allow users to filter reviews by failure cause type when browsing models',
+          pros: ['Helps users find relevant feedback', 'Makes reviews actionable', 'Serves multiple stakeholders'],
+          cons: ['Requires attribution data', 'UI complexity'],
+          status: 'Selected - part of final solution',
+          color: 'green'
+        },
+        {
+          name: 'Creator insights dashboard',
+          description: 'Analytics dashboard showing attribution breakdown and actionable feedback for creators',
+          pros: ['Empowers data-driven iteration', 'Distinguishes real issues from noise', 'Retains creators'],
+          cons: ['Requires backend infrastructure', 'Complex data visualization'],
+          status: 'Selected - part of final solution',
+          color: 'green'
+        }
       ],
-      visual: 'placeholder-ideation-board.png' // Placeholder for ideation board
+      process: 'I started with high-friction approaches (pre-review quiz) and iterated toward lower-friction solutions. The key insight was that attribution needs to happen before blame is assigned, but without feeling punitive or prescriptive.',
+      keyInsight: 'The winning approach combines AI suggestions (low friction) with contextual help (high learning value), creating a system that guides without forcing.'
     },
 
     // The Attribution Concept
@@ -359,7 +404,7 @@ const BambuLabCaseStudy = () => {
           version: 'V1: Pre-Review Quiz',
           approach: 'Force users to answer troubleshooting questions before reviewing',
           learning: '❌ Too much friction—users abandoned reviews',
-          visual: 'placeholder-v1-wireframe.png'
+          visual: `${process.env.PUBLIC_URL}/images/case-studies/v1-wireframe.png`
         },
         {
           version: 'V2: Post-Review Attribution',
@@ -1182,64 +1227,134 @@ const BambuLabCaseStudy = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>{data.ideation.title}</h2>
-            <p className="text-xl text-gray-400 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.ideation.subtitle}</p>
-
-            <div className="grid md:grid-cols-2 gap-4 mb-12">
+            <p className="text-xl text-gray-400 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.ideation.subtitle}</p>
+            <p className="text-lg text-gray-300 mb-12 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              {data.ideation.description}
+            </p>
+            
+            {/* Concept Cards Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {data.ideation.concepts.map((concept, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-xl p-4 cursor-pointer"
+                  className={`bg-gradient-to-br ${
+                    concept.color === 'green' ? 'from-emerald-900/30 to-teal-900/30 border-emerald-700/50' :
+                    concept.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-700/50' :
+                    'from-red-900/30 to-orange-900/30 border-red-700/50'
+                  } border rounded-xl p-6 cursor-pointer relative overflow-hidden`}
                 >
-                  <motion.p
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.15 + 0.3 }}
-                    whileHover={{ x: 5 }}
-                    className="text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
-                    {concept}
-                  </motion.p>
+                  {/* Status Badge */}
+                  <div className={`absolute top-4 right-4 px-2 py-1 rounded text-xs font-semibold ${
+                    concept.status.includes('Selected') ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
+                    concept.status.includes('Rejected') ? 'bg-red-500/20 text-red-300 border border-red-500/30' :
+                    'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
+                  }`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {concept.status.split(' - ')[0]}
+                  </div>
+                  
+                  <h3 className="text-lg font-bold mb-3 text-white pr-16" style={{ fontFamily: "'Sora', sans-serif" }}>
+                    {concept.name}
+                  </h3>
+                  <p className="text-sm text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {concept.description}
+                  </p>
+                  
+                  {/* Pros */}
+                  <div className="mb-3">
+                    <div className="text-xs font-semibold text-emerald-400 mb-2 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Pros</div>
+                    <ul className="space-y-1">
+                      {concept.pros.map((pro, j) => (
+                        <li key={j} className="text-xs text-gray-400 flex items-start" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          <span className="text-emerald-400 mr-2">+</span>
+                          <span>{pro}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Cons */}
+                  <div>
+                    <div className="text-xs font-semibold text-red-400 mb-2 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Cons</div>
+                    <ul className="space-y-1">
+                      {concept.cons.map((con, j) => (
+                        <li key={j} className="text-xs text-gray-400 flex items-start" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          <span className="text-red-400 mr-2">−</span>
+                          <span>{con}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </motion.div>
               ))}
             </div>
-
-            {/* Ideation Board Placeholder */}
-            <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-              <div className="relative h-full grid grid-cols-3 gap-4">
-                {data.ideation.concepts.map((concept, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: i % 2 === 0 ? -2 : 2 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.5, type: "spring" }}
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: 0,
-                      zIndex: 10,
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
-                    }}
-                    className={`bg-gradient-to-br ${i % 3 === 0 ? 'from-yellow-900/40 to-amber-900/40 border-yellow-700/50' :
-                        i % 3 === 1 ? 'from-blue-900/40 to-cyan-900/40 border-blue-700/50' :
-                          'from-purple-900/40 to-pink-900/40 border-purple-700/50'
-                      } border rounded-lg p-4 cursor-pointer`}
-                  >
-                    <p className="text-sm text-gray-200 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      {concept}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-              <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Ideation concepts explored
+            
+            {/* Process Narrative */}
+            <div className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border-l-4 border-emerald-500 rounded-r-xl p-8 mb-8">
+              <h3 className="text-xl font-bold mb-4 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>The Ideation Process</h3>
+              <p className="text-lg text-gray-200 leading-relaxed mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                {data.ideation.process}
               </p>
+              <p className="text-lg text-emerald-100 font-medium leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                {data.ideation.keyInsight}
+              </p>
+            </div>
+            
+            {/* Evolution Visualization */}
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+              <div className="relative">
+                <h3 className="text-xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>Concept Evolution</h3>
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                  {data.ideation.concepts.slice(0, 3).map((concept, i) => (
+                    <React.Fragment key={i}>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.2, duration: 0.5 }}
+                        className={`flex-1 bg-gradient-to-br ${
+                          concept.color === 'green' ? 'from-emerald-900/40 to-teal-900/40 border-emerald-700/50' :
+                          concept.color === 'yellow' ? 'from-yellow-900/40 to-amber-900/40 border-yellow-700/50' :
+                          'from-red-900/40 to-orange-900/40 border-red-700/50'
+                        } border rounded-lg p-4 text-center`}
+                      >
+                        <div className="text-xs font-semibold mb-2 text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          V{i + 1}
+                        </div>
+                        <div className="text-sm font-medium text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {concept.name.split(' ')[0]} {concept.name.split(' ')[1]}
+                        </div>
+                        <div className={`text-xs px-2 py-1 rounded inline-block ${
+                          concept.status.includes('Selected') ? 'bg-emerald-500/20 text-emerald-300' :
+                          concept.status.includes('Rejected') ? 'bg-red-500/20 text-red-300' :
+                          'bg-yellow-500/20 text-yellow-300'
+                        }`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {concept.status.split(' - ')[0]}
+                        </div>
+                      </motion.div>
+                      {i < 2 && (
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.2 + 0.3 }}
+                          className="text-emerald-400 text-2xl hidden md:block"
+                        >
+                          →
+                        </motion.div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+                <p className="text-center text-gray-500 text-xs mt-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Iterative refinement: from high-friction quiz to low-friction AI suggestions
+                </p>
+              </div>
             </div>
           </motion.div>
         </section>
@@ -1253,68 +1368,14 @@ const BambuLabCaseStudy = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.attributionConcept.title}</h2>
-            <div className="space-y-6 text-lg text-gray-300 leading-relaxed mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <div className="space-y-6 text-lg text-gray-300 leading-relaxed mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               <p>{data.attributionConcept.description}</p>
               <p>{data.attributionConcept.explanation}</p>
             </div>
-
-            {/* Concept Diagram Placeholder */}
-            <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-              <div className="relative h-full flex flex-col items-center justify-center">
-                <motion.div
-                  initial={{ opacity: 0, y: -30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 mb-6 max-w-md text-center cursor-pointer"
-                >
-                  <h4 className="text-lg font-bold text-emerald-300 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>Attribution Tags</h4>
-                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Categorize failure causes</p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
-                  className="flex items-center gap-4 mb-6"
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="bg-blue-900/40 border border-blue-700/50 rounded-lg px-4 py-2 cursor-pointer"
-                  >
-                    <p className="text-xs text-blue-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>User Error</p>
-                  </motion.div>
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="text-gray-500 text-xl"
-                  >
-                    +
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="bg-purple-900/40 border border-purple-700/50 rounded-lg px-4 py-2 cursor-pointer"
-                  >
-                    <p className="text-xs text-purple-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Contextual Help</p>
-                  </motion.div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-emerald-900/40 border border-emerald-700/50 rounded-xl p-6 max-w-md text-center cursor-pointer"
-                >
-                  <h4 className="text-lg font-bold text-emerald-300 mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>Learning System</h4>
-                  <p className="text-sm text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Turn blame into education</p>
-                </motion.div>
-              </div>
-              <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Attribution concept framework
-              </p>
+            
+            {/* Attribution Concept Infographic */}
+            <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
+              <AttributionConceptInfographic />
             </div>
           </motion.div>
         </section>
@@ -1341,54 +1402,64 @@ const BambuLabCaseStudy = () => {
                   <h4 className="text-2xl font-bold mb-4 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>{version.version}</h4>
                   <p className="text-gray-300 mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.approach}</p>
                   <p className="text-sm text-gray-400 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.learning}</p>
-
-                  {/* Wireframe Placeholder */}
-                  <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-                    <div className="relative h-full flex flex-col">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="h-3 bg-gray-700 rounded w-24"></div>
-                        <div className="h-3 bg-gray-700 rounded w-16"></div>
-                      </div>
-                      <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                        <div className="h-6 bg-gray-700 rounded w-3/4 mb-3"></div>
-                        {version.version.includes('V1') && (
-                          <>
-                            <div className="space-y-2 mb-4">
-                              <div className="h-4 bg-gray-700 rounded w-full"></div>
-                              <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                              <div className="h-4 bg-gray-700 rounded w-4/6"></div>
-                            </div>
-                            <div className="h-10 bg-gray-700 rounded w-32"></div>
-                          </>
-                        )}
-                        {version.version.includes('V2') && (
-                          <>
-                            <div className="h-20 bg-gray-700 rounded mb-4"></div>
-                            <div className="space-y-2 mb-4">
-                              <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                              <div className="h-4 bg-gray-700 rounded w-2/3"></div>
-                            </div>
-                            <div className="h-10 bg-gray-700 rounded w-32"></div>
-                          </>
-                        )}
-                        {version.version.includes('V3') && (
-                          <>
-                            <div className="h-20 bg-gray-700 rounded mb-4"></div>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              <div className="h-6 bg-emerald-700/50 rounded-full w-20"></div>
-                              <div className="h-6 bg-emerald-700/50 rounded-full w-24"></div>
-                              <div className="h-6 bg-emerald-700/50 rounded-full w-28"></div>
-                            </div>
-                            <div className="h-10 bg-emerald-600 rounded w-32"></div>
-                          </>
-                        )}
-                      </div>
-                      <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        {version.version} - {version.approach.split('.')[0]}
-                      </p>
+                  
+                  {/* Wireframe Image or Placeholder */}
+                  {version.visual && !version.visual.includes('placeholder') ? (
+                    <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
+                      <img 
+                        src={version.visual} 
+                        alt={version.version}
+                        className="w-full h-full object-contain"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+                      <div className="relative h-full flex flex-col">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="h-3 bg-gray-700 rounded w-24"></div>
+                          <div className="h-3 bg-gray-700 rounded w-16"></div>
+                        </div>
+                        <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+                          <div className="h-6 bg-gray-700 rounded w-3/4 mb-3"></div>
+                          {version.version.includes('V1') && (
+                            <>
+                              <div className="space-y-2 mb-4">
+                                <div className="h-4 bg-gray-700 rounded w-full"></div>
+                                <div className="h-4 bg-gray-700 rounded w-5/6"></div>
+                                <div className="h-4 bg-gray-700 rounded w-4/6"></div>
+                              </div>
+                              <div className="h-10 bg-gray-700 rounded w-32"></div>
+                            </>
+                          )}
+                          {version.version.includes('V2') && (
+                            <>
+                              <div className="h-20 bg-gray-700 rounded mb-4"></div>
+                              <div className="space-y-2 mb-4">
+                                <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+                                <div className="h-4 bg-gray-700 rounded w-2/3"></div>
+                              </div>
+                              <div className="h-10 bg-gray-700 rounded w-32"></div>
+                            </>
+                          )}
+                          {version.version.includes('V3') && (
+                            <>
+                              <div className="h-20 bg-gray-700 rounded mb-4"></div>
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                <div className="h-6 bg-emerald-700/50 rounded-full w-20"></div>
+                                <div className="h-6 bg-emerald-700/50 rounded-full w-24"></div>
+                                <div className="h-6 bg-emerald-700/50 rounded-full w-28"></div>
+                              </div>
+                              <div className="h-10 bg-emerald-600 rounded w-32"></div>
+                            </>
+                          )}
+                        </div>
+                        <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {version.version} - {version.approach.split('.')[0]}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
