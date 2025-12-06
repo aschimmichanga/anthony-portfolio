@@ -6,7 +6,9 @@ import BambuLoop from './BambuLoop';
 import ReviewInfographic from './ReviewInfographic';
 import CreatorDashboardInfographic from './CreatorDashboardInfographic';
 import LearningInfographic from './LearningInfographic';
+
 import AttributionConceptInfographic from './AttributionConceptInfographic';
+import SlicerWizardFlow from './SlicerWizardFlow';
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -431,7 +433,7 @@ const BambuLabCaseStudy = () => {
           title: 'Slicer Wizard (AI Chatbot)',
           problem: 'Users make preventable mistakes before printing even starts',
           solution: 'A preventive AI plugin guides users on correct settings and best practices (e.g., suggesting a brim for adhesion) before they slice the file',
-          visual: `${process.env.PUBLIC_URL}/images/case-studies/bambu-slicer-wizard.png`,
+          component: <SlicerWizardFlow />,
           impact: 'Prevents failure before it happens',
           highlight: 'Preventive Design: Catching errors upstream'
         },
@@ -849,7 +851,7 @@ const BambuLabCaseStudy = () => {
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${finding.color === 'red' ? 'from-red-900/20 to-orange-900/20 border-red-800/30' :
-                      'from-gray-900/20 to-gray-800/20 border-gray-700/30'
+                    'from-gray-900/20 to-gray-800/20 border-gray-700/30'
                     } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h4
@@ -886,8 +888,8 @@ const BambuLabCaseStudy = () => {
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${rec.color === 'green' ? 'from-emerald-900/20 to-teal-900/20 border-emerald-800/30' :
-                      rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
-                        'from-purple-900/20 to-pink-900/20 border-purple-800/30'
+                    rec.color === 'yellow' ? 'from-yellow-900/20 to-amber-900/20 border-yellow-800/30' :
+                      'from-purple-900/20 to-pink-900/20 border-purple-800/30'
                     } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h4
@@ -934,8 +936,8 @@ const BambuLabCaseStudy = () => {
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${category.color === 'pink' ? 'from-pink-900/30 to-rose-900/30 border-pink-800/30' :
-                      category.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
-                        'from-orange-900/30 to-red-900/30 border-orange-800/30'
+                    category.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
+                      'from-orange-900/30 to-red-900/30 border-orange-800/30'
                     } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h3
@@ -990,7 +992,7 @@ const BambuLabCaseStudy = () => {
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${category.title === 'Creator Model Error' ? 'from-orange-900/30 to-red-900/30 border-orange-800/30' :
-                      'from-gray-900/30 to-gray-800/30 border-gray-700/30'
+                    'from-gray-900/30 to-gray-800/30 border-gray-700/30'
                     } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h3
@@ -1047,8 +1049,8 @@ const BambuLabCaseStudy = () => {
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   className={`bg-gradient-to-br ${problem.color === 'red' ? 'from-red-900/30 to-orange-900/30 border-red-800/30' :
-                      problem.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
-                        'from-orange-900/30 to-red-900/30 border-orange-800/30'
+                    problem.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-800/30' :
+                      'from-orange-900/30 to-red-900/30 border-orange-800/30'
                     } border rounded-xl p-6 cursor-pointer`}
                 >
                   <motion.h3
@@ -1231,7 +1233,7 @@ const BambuLabCaseStudy = () => {
             <p className="text-lg text-gray-300 mb-12 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {data.ideation.description}
             </p>
-            
+
             {/* Concept Cards Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {data.ideation.concepts.map((concept, i) => (
@@ -1242,28 +1244,26 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.6 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className={`bg-gradient-to-br ${
-                    concept.color === 'green' ? 'from-emerald-900/30 to-teal-900/30 border-emerald-700/50' :
+                  className={`bg-gradient-to-br ${concept.color === 'green' ? 'from-emerald-900/30 to-teal-900/30 border-emerald-700/50' :
                     concept.color === 'yellow' ? 'from-yellow-900/30 to-amber-900/30 border-yellow-700/50' :
-                    'from-red-900/30 to-orange-900/30 border-red-700/50'
-                  } border rounded-xl p-6 cursor-pointer relative overflow-hidden`}
+                      'from-red-900/30 to-orange-900/30 border-red-700/50'
+                    } border rounded-xl p-6 cursor-pointer relative overflow-hidden`}
                 >
                   {/* Status Badge */}
-                  <div className={`absolute top-4 right-4 px-2 py-1 rounded text-xs font-semibold ${
-                    concept.status.includes('Selected') ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
+                  <div className={`absolute top-4 right-4 px-2 py-1 rounded text-xs font-semibold ${concept.status.includes('Selected') ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
                     concept.status.includes('Rejected') ? 'bg-red-500/20 text-red-300 border border-red-500/30' :
-                    'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
-                  }`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'
+                    }`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {concept.status.split(' - ')[0]}
                   </div>
-                  
+
                   <h3 className="text-lg font-bold mb-3 text-white pr-16" style={{ fontFamily: "'Sora', sans-serif" }}>
                     {concept.name}
                   </h3>
                   <p className="text-sm text-gray-300 mb-4 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {concept.description}
                   </p>
-                  
+
                   {/* Pros */}
                   <div className="mb-3">
                     <div className="text-xs font-semibold text-emerald-400 mb-2 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Pros</div>
@@ -1276,7 +1276,7 @@ const BambuLabCaseStudy = () => {
                       ))}
                     </ul>
                   </div>
-                  
+
                   {/* Cons */}
                   <div>
                     <div className="text-xs font-semibold text-red-400 mb-2 uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Cons</div>
@@ -1292,7 +1292,7 @@ const BambuLabCaseStudy = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Process Narrative */}
             <div className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border-l-4 border-emerald-500 rounded-r-xl p-8 mb-8">
               <h3 className="text-xl font-bold mb-4 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>The Ideation Process</h3>
@@ -1303,7 +1303,7 @@ const BambuLabCaseStudy = () => {
                 {data.ideation.keyInsight}
               </p>
             </div>
-            
+
             {/* Evolution Visualization */}
             <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
@@ -1317,11 +1317,10 @@ const BambuLabCaseStudy = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.2, duration: 0.5 }}
-                        className={`flex-1 bg-gradient-to-br ${
-                          concept.color === 'green' ? 'from-emerald-900/40 to-teal-900/40 border-emerald-700/50' :
+                        className={`flex-1 bg-gradient-to-br ${concept.color === 'green' ? 'from-emerald-900/40 to-teal-900/40 border-emerald-700/50' :
                           concept.color === 'yellow' ? 'from-yellow-900/40 to-amber-900/40 border-yellow-700/50' :
-                          'from-red-900/40 to-orange-900/40 border-red-700/50'
-                        } border rounded-lg p-4 text-center`}
+                            'from-red-900/40 to-orange-900/40 border-red-700/50'
+                          } border rounded-lg p-4 text-center`}
                       >
                         <div className="text-xs font-semibold mb-2 text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           V{i + 1}
@@ -1329,11 +1328,10 @@ const BambuLabCaseStudy = () => {
                         <div className="text-sm font-medium text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           {concept.name.split(' ')[0]} {concept.name.split(' ')[1]}
                         </div>
-                        <div className={`text-xs px-2 py-1 rounded inline-block ${
-                          concept.status.includes('Selected') ? 'bg-emerald-500/20 text-emerald-300' :
+                        <div className={`text-xs px-2 py-1 rounded inline-block ${concept.status.includes('Selected') ? 'bg-emerald-500/20 text-emerald-300' :
                           concept.status.includes('Rejected') ? 'bg-red-500/20 text-red-300' :
-                          'bg-yellow-500/20 text-yellow-300'
-                        }`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            'bg-yellow-500/20 text-yellow-300'
+                          }`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           {concept.status.split(' - ')[0]}
                         </div>
                       </motion.div>
@@ -1372,7 +1370,7 @@ const BambuLabCaseStudy = () => {
               <p>{data.attributionConcept.description}</p>
               <p>{data.attributionConcept.explanation}</p>
             </div>
-            
+
             {/* Attribution Concept Infographic */}
             <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
               <AttributionConceptInfographic />
@@ -1402,12 +1400,12 @@ const BambuLabCaseStudy = () => {
                   <h4 className="text-2xl font-bold mb-4 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>{version.version}</h4>
                   <p className="text-gray-300 mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.approach}</p>
                   <p className="text-sm text-gray-400 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.learning}</p>
-                  
+
                   {/* Wireframe Image or Placeholder */}
                   {version.visual && !version.visual.includes('placeholder') ? (
                     <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
-                      <img 
-                        src={version.visual} 
+                      <img
+                        src={version.visual}
                         alt={version.version}
                         className="w-full h-full object-contain"
                       />
@@ -1553,11 +1551,17 @@ const BambuLabCaseStudy = () => {
                   viewport={{ once: true }}
                   className="grid lg:grid-cols-2 gap-12 items-center"
                 >
-                  {/* Image */}
+                  {/* Image or Component */}
                   <div className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
-                      <img src={feature.visual} alt={feature.title} className="w-full h-full object-cover" />
-                    </div>
+                    {feature.component ? (
+                      <div className="bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
+                        {feature.component}
+                      </div>
+                    ) : (
+                      <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
+                        <img src={feature.visual} alt={feature.title} className="w-full h-full object-cover" />
+                      </div>
+                    )}
                   </div>
 
                   {/* Content */}
