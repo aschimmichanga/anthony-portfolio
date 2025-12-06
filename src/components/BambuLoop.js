@@ -1,435 +1,388 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Printer, 
-  UploadCloud, 
   Gift, 
+  UploadCloud, 
+  Printer, 
+  ShoppingCart,
+  TrendingUp,
   AlertTriangle,
-  ShoppingCart
+  ArrowRight
 } from 'lucide-react';
 
-// --- Data ---
+const BambuLoop = () => {
+  const [activeStep, setActiveStep] = useState(0);
 
 const steps = [
   { 
     id: 1, 
-    text: "Bambu Lab incentivizes creators", 
-    icon: Gift 
+      text: 'Bambu Lab incentivizes creators', 
+      icon: Gift,
+      color: 'emerald'
   },
   { 
     id: 2, 
-    text: "Creators upload high quality models on MakerWorld", 
-    icon: UploadCloud 
+      text: 'Creators upload high-quality models to MakerWorld', 
+      icon: UploadCloud,
+      color: 'blue'
   },
   { 
     id: 3, 
-    text: "Users complete successful prints", 
-    icon: Printer 
+      text: 'Users complete successful prints', 
+      icon: Printer,
+      color: 'emerald',
+      isProblem: true
   },
   { 
     id: 4, 
-    text: "Users purchase printers, filament, and accessories", 
-    icon: ShoppingCart 
-  }
-];
-
-// --- Math Helpers for Circular Layout ---
-
-const RADIUS = 340; 
-const CENTER = { x: 400, y: 400 }; // Center of the SVG canvas
-
-/**
- * Calculates coordinates for card positioning.
- * Cards are positioned outside the circle, with their inner edge aligned with the circle border.
- * -90 deg offset ensures Step 1 starts at the top.
- */
-const getCardPosition = (index, total) => {
-  const angle = (index * 360) / total - 90; 
-  const rad = (angle * Math.PI) / 180;
-  
-  // Card dimensions
-  const cardWidth = 220; // Actual card width
-  const cardHeight = 120; // Approximate card height
-  const cardPadding = 10; // Small space between circle border and card inner edge
-  
-  // Calculate where we want the card's inner edge (closest to circle) to be
-  // Inner edge should be at: RADIUS + padding from center
-  // Card center should be at: RADIUS + padding + (cardWidth / 2) from center
-  const cardCenterDistance = RADIUS + cardPadding + (cardWidth / 2);
-  
-  // Calculate card center position
-  const cardCenterX = CENTER.x + cardCenterDistance * Math.cos(rad);
-  const cardCenterY = CENTER.y + cardCenterDistance * Math.sin(rad);
-  
-  // Adjust vertical position for top/bottom cards
-  // Top card (index 0, angle -90°) needs to move down
-  // Bottom card (index 2, angle 90°) needs to move up
-  let verticalAdjustment = 0;
-  if (index === 0) { // Top card
-    verticalAdjustment = 75; // Move down
-  } else if (index === 2) { // Bottom card
-    verticalAdjustment = -50; // Move up
-  }
-  
-  // Position top-left corner (since we're not using transform)
-  // Subtract half width/height from center to get top-left
-  const topLeftX = cardCenterX - (cardWidth / 2);
-  const topLeftY = cardCenterY - (cardHeight / 2) + verticalAdjustment;
-  
-  return {
-    x: topLeftX,
-    y: topLeftY,
-    angle: angle,
-    rad: rad
-  };
-};
-
-// --- Sub-Components ---
-
-/**
- * NodeCard: The visual representation of a step
- * Positioned with center point on the circle perimeter
- */
-const NodeCard = ({ step, position, index }) => {
-  const isProblemStart = step.id === 2;
-  const isProblemEnd = step.id === 3;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: index * 0.15, duration: 0.6, type: "spring" }}
-      className="absolute pointer-events-none z-10" 
-      style={{ 
-        left: `${position.x}px`, 
-        top: `${position.y}px`
-      }}
-    >
-      <div 
-        className={`
-          relative rounded-xl border backdrop-blur-md transition-all duration-500
-          flex flex-col items-center justify-center gap-2.5 shadow-2xl
-          w-[220px] py-4 px-3
-          ${isProblemStart 
-            ? "bg-slate-900/90 border-slate-600 shadow-orange-500/20" 
-            : isProblemEnd 
-              ? "bg-slate-900/90 border-slate-600" 
-              : "bg-slate-900/70 border-slate-800"
-          }
-        `}
-      >
-        {/* Glow effect for regular cards */}
-        {!isProblemStart && !isProblemEnd && (
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-emerald-500/5 to-transparent opacity-50" />
-        )}
-        
-        {/* Icon */}
-        <div className={`
-            p-2.5 rounded-full relative z-10 flex-shrink-0 mb-0.5
-            ${isProblemStart 
-              ? "bg-orange-500/20 text-orange-400 ring-1 ring-orange-500/50" 
-              : "bg-slate-800 text-slate-200 ring-1 ring-white/10"
-            }
-          `}>
-          <step.icon size={20} />
-        </div>
-
-        {/* Text */}
-        <p className={`
-          text-xs font-medium leading-tight z-10 text-center w-full
-          ${isProblemStart ? "text-slate-100" : "text-slate-400"}
-        `}
-        style={{ 
-          wordBreak: 'break-word',
-          hyphens: 'auto'
-        }}
-        >
-          {step.text}
-        </p>
-      </div>
-    </motion.div>
-  );
-};
-
-/**
- * MobileCard: The visual representation of a step (Mobile/Vertical)
- */
-const MobileCard = ({ step, isActive }) => {
-  const isProblemEnd = step.id === 3;
-  const isBroken = isProblemEnd;
-
-  // Determine styles based on active state and broken status
-  let containerStyle = "bg-slate-900/70 border-slate-800";
-  let iconStyle = "bg-slate-800 text-slate-400 ring-1 ring-white/10";
-  let textStyle = "text-slate-400";
-
-  if (isActive) {
-    if (isBroken) {
-      // Active but Broken -> Red/Orange Warning
-      containerStyle = "bg-slate-900/95 border-red-500/50 shadow-red-500/20 shadow-lg scale-[1.02]";
-      iconStyle = "bg-red-500/20 text-red-400 ring-1 ring-red-500/50";
-      textStyle = "text-slate-200";
-    } else {
-      // Active and Healthy -> Green
-      containerStyle = "bg-slate-900/95 border-emerald-500/50 shadow-emerald-500/20 shadow-lg scale-[1.02]";
-      iconStyle = "bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/50";
-      textStyle = "text-slate-100";
+      text: 'Users purchase printers, filament, & accessories', 
+      icon: ShoppingCart,
+      color: 'purple'
+    },
+    { 
+      id: 5, 
+      text: 'Bambu Lab grows revenue and reinvests', 
+      icon: TrendingUp,
+      color: 'emerald'
     }
-  } else if (isBroken) {
-    // Inactive Broken Node (Optional subtle hint)
-    containerStyle = "bg-slate-900/70 border-slate-800";
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`
-        relative rounded-xl border backdrop-blur-md transition-all duration-500
-        flex items-center gap-4 p-4 w-full max-w-sm mx-auto z-10
-        ${containerStyle}
-      `}
-    >
-      <div className={`
-        p-3 rounded-full flex-shrink-0 relative z-10 transition-colors duration-500
-        ${iconStyle}
-      `}>
-        <step.icon size={20} />
-      </div>
-      <p className={`
-        text-sm font-medium leading-snug z-10 transition-colors duration-500
-        ${textStyle}
-      `}>
-        {step.text}
-      </p>
-    </motion.div>
-  );
-};
-
-const MobileConnector = ({ isFriction }) => {
-  return (
-    <div className="flex flex-col items-center justify-center relative my-1 w-full h-8">
-      {isFriction ? (
-        <div className="h-full flex flex-col items-center justify-center relative w-full">
-          <div className="absolute inset-y-0 w-px border-l-2 border-dashed border-red-500/30 h-full" />
-          <div className="z-10 bg-slate-950 border border-red-500/30 rounded-full p-1 shadow-lg">
-            <AlertTriangle size={10} className="text-red-500/70" />
-          </div>
-        </div>
-      ) : (
-        <div className="h-full w-px bg-slate-800" />
-      )}
-    </div>
-  );
-};
-
-const MobileLoop = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 2500); // Switch every 2.5 seconds
+    }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [steps.length]);
+
+  const getColorClasses = (color, isActive, isProblem) => {
+    if (isProblem && isActive) {
+      return {
+        bg: 'from-red-900/30 to-orange-900/30',
+        border: 'border-red-500/50',
+        icon: 'text-red-400',
+        text: 'text-red-200',
+        glow: 'shadow-red-500/20'
+      };
+    }
+    
+    switch (color) {
+      case 'emerald':
+        return {
+          bg: isActive ? 'from-emerald-900/40 to-teal-900/40' : 'from-emerald-900/20 to-teal-900/20',
+          border: isActive ? 'border-emerald-500/50' : 'border-emerald-800/30',
+          icon: isActive ? 'text-emerald-400' : 'text-emerald-500/50',
+          text: isActive ? 'text-emerald-100' : 'text-gray-400',
+          glow: isActive ? 'shadow-emerald-500/20' : ''
+        };
+      case 'blue':
+        return {
+          bg: isActive ? 'from-blue-900/40 to-cyan-900/40' : 'from-blue-900/20 to-cyan-900/20',
+          border: isActive ? 'border-blue-500/50' : 'border-blue-800/30',
+          icon: isActive ? 'text-blue-400' : 'text-blue-500/50',
+          text: isActive ? 'text-blue-100' : 'text-gray-400',
+          glow: isActive ? 'shadow-blue-500/20' : ''
+        };
+      case 'purple':
+        return {
+          bg: isActive ? 'from-purple-900/40 to-pink-900/40' : 'from-purple-900/20 to-pink-900/20',
+          border: isActive ? 'border-purple-500/50' : 'border-purple-800/30',
+          icon: isActive ? 'text-purple-400' : 'text-purple-500/50',
+          text: isActive ? 'text-purple-100' : 'text-gray-400',
+          glow: isActive ? 'shadow-purple-500/20' : ''
+        };
+      default:
+  return {
+          bg: 'from-gray-900/20 to-gray-800/20',
+          border: 'border-gray-700/30',
+          icon: 'text-gray-500/50',
+          text: 'text-gray-400',
+          glow: ''
+        };
+    }
+  };
 
   return (
-    <div className="flex flex-col items-center w-full py-8 px-2">
-      {steps.map((step, i) => {
-        // The problem link is leading INTO step 3 (index 2) - "Users complete successful prints"
-        const showFrictionConnector = step.id === 3;
+    <div className="relative w-full flex flex-col items-center justify-center p-6 lg:p-8">
+      {/* Title */}
+    <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-8 lg:mb-10 text-center"
+      >
+        <h3 className="text-xl lg:text-2xl font-bold mb-2 text-white" style={{ fontFamily: "'Sora', sans-serif" }}>
+          The Bambu Lab Ecosystem
+        </h3>
+        <p className="text-xs lg:text-sm text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          A healthy feedback loop drives growth
+        </p>
+      </motion.div>
 
-        return (
-          <React.Fragment key={step.id}>
-            {/* Connector before card (except first) */}
-            {i > 0 && (
-              <MobileConnector isFriction={showFrictionConnector} />
-            )}
-            <MobileCard 
-              step={step} 
-              isActive={activeStep === i} 
-            />
+      {/* Desktop: 3-2 Grid Layout */}
+      <div className="hidden lg:block w-full max-w-5xl px-4">
+        <div className="relative">
+          {/* Grid Container */}
+          <div className="relative" style={{ minHeight: '400px' }}>
+            {/* Top Row: Steps 1, 2, 3 */}
+            <div className="flex items-center justify-center gap-6 mb-8">
+              {[0, 1, 2].map((index) => {
+                const step = steps[index];
+                const isActive = activeStep === index;
+                const colors = getColorClasses(step.color, isActive, step.isProblem);
+                const Icon = step.icon;
+
+                return (
+                  <React.Fragment key={step.id}>
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ 
+                        opacity: 1, 
+                        y: 0,
+                        scale: isActive ? 1.05 : 1
+                      }}
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      className="flex flex-col items-center relative z-10"
+                    >
+                      {/* Step Card */}
+                      <motion.div
+                        whileHover={{ scale: 1.05, y: -5 }}
+                        className={`bg-gradient-to-br ${colors.bg} border-2 ${colors.border} rounded-xl p-4 w-[180px] cursor-pointer transition-all duration-300 ${colors.glow} ${isActive ? 'shadow-lg' : ''}`}
+                      >
+        {/* Icon */}
+                        <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center mb-3 mx-auto`}>
+                          <Icon className={`w-6 h-6 ${colors.icon}`} />
+        </div>
+
+        {/* Text */}
+                        <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          {step.text}
+        </p>
+    </motion.div>
+
+                      {/* Problem Warning */}
+                      {step.isProblem && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: isActive ? 1 : 0.6, y: 0 }}
+                          className="mt-3 bg-red-900/40 border border-red-500/50 rounded-lg px-2 py-1.5 flex items-center gap-1.5 shadow-lg shadow-red-500/20"
+                        >
+                          <AlertTriangle className="w-3 h-3 text-red-400" />
+                          <span className="text-xs text-red-300 font-medium whitespace-nowrap" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                            Breaks here
+                          </span>
+                        </motion.div>
+                      )}
+                    </motion.div>
+
+                    {/* Arrow to next */}
+                    {index < 2 && (
+    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: isActive || activeStep > index ? 0.8 : 0.2 }}
+                        transition={{ delay: index * 0.1 + 0.3 }}
+                        className="flex-shrink-0"
+                      >
+                        <ArrowRight 
+                          className={`w-6 h-6 ${step.isProblem ? 'text-red-500' : 'text-emerald-500'}`}
+                        />
+    </motion.div>
+                    )}
           </React.Fragment>
         );
       })}
     </div>
-  );
-};
 
-// --- Main Component ---
-
-export default function BambuLoop() {
-  const cardPositions = useMemo(() => {
-    return steps.map((_, i) => getCardPosition(i, steps.length));
-  }, []);
-
-  // Calculate position for the warning label
-  const warningAngleRad = 45 * (Math.PI / 180); // 45 degrees in radians
-  const warningDist = RADIUS + 120; // Increased distance from center to prevent cutoff
-  const warningPos = {
-    x: CENTER.x + warningDist * Math.cos(warningAngleRad),
-    y: CENTER.y + warningDist * Math.sin(warningAngleRad)
-  };
-
-  // Calculate midpoint of the problematic arc (Step 2 to Step 3)
-  // Step 2 is at 0 deg (3 o'clock), Step 3 is at 90 deg (6 o'clock)
-  // Midpoint is 45 deg (Bottom Right)
-  const problemArcMidRad = (45 * Math.PI) / 180;
-  const problemArcMidPoint = {
-    x: CENTER.x + RADIUS * Math.cos(problemArcMidRad),
-    y: CENTER.y + RADIUS * Math.sin(problemArcMidRad)
-  };
-
-  const GREEN = "#10b981";
-  const RED = "#ef4444";
-
-  return (
-    <div className="relative w-full flex items-center justify-center py-4 md:py-8 px-0 md:px-4 min-h-0 md:min-h-[800px] lg:min-h-[1000px]">
-      {/* --- Desktop: Circular Layout (Hidden on Mobile) --- */}
-      <div className="hidden md:block relative w-[800px] h-[800px] md:scale-[0.75] lg:scale-100 origin-center transition-transform duration-500 overflow-visible">
-        
-        {/* SVG Layer */}
-        <svg 
-          width="800" 
-          height="800" 
-          viewBox="-50 -50 900 900" 
-          className="absolute top-0 left-0 pointer-events-none overflow-visible"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <defs>
-            {/* Filter for glow */}
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-
-          {/* 1. Background Track (Uniform Continuous Circle) */}
-          <circle
-            cx={CENTER.x}
-            cy={CENTER.y}
-            r={RADIUS}
-            fill="none"
-            stroke="#334155" // Slate-700
-            strokeWidth="2"
-            opacity="0.5"
-          />
-
-          {/* 2. Active Animated Sweep (Single Continuous Path) */}
-          {/* 
-              Rotated by -90deg so 0 pathLength is at 12 o'clock.
-              The problem area (Step 2 -> 3) corresponds to 25% -> 50% of the circle length.
-          */}
-          <motion.circle
-            cx={CENTER.x}
-            cy={CENTER.y}
-            r={RADIUS}
-            fill="none"
-            strokeWidth="4"
-            strokeLinecap="round"
-            transform={`rotate(-90 ${CENTER.x} ${CENTER.y})`}
-            style={{ filter: "url(#glow)" }}
-            initial={{ pathLength: 0.15, pathOffset: 0 }}
-            animate={{ 
-              pathOffset: [0, 1],
-              stroke: [GREEN, GREEN, RED, RED, GREEN, GREEN]
-            }}
-            transition={{
-              pathOffset: {
-                duration: 6,
-                repeat: Infinity,
-                ease: "linear"
-              },
-              stroke: {
-                duration: 6,
-                repeat: Infinity,
-                ease: "linear",
-                // Adjusted Timings:
-                // 0.15: Head enters zone (Start turning Red)
-                // 0.25: Tail enters zone (Fully Red)
-                // 0.35: Head leaves zone (Start turning Green - earlier)
-                // 0.45: Tail leaves zone (Fully Green - earlier)
-                times: [0, 0.15, 0.25, 0.35, 0.45, 1]
-              }
-            }}
-          />
-          
-          {/* Warning Connector Line */}
-          <line
-            x1={warningPos.x}
-            y1={warningPos.y}
-            x2={problemArcMidPoint.x}
-            y2={problemArcMidPoint.y}
-            stroke="#ef4444" 
-            strokeWidth="2"
-            strokeDasharray="4 4"
-            opacity="0.6"
-          />
-        </svg>
-
-        {/* Nodes Layer */}
-        {steps.map((step, i) => (
-          <NodeCard 
-            key={step.id} 
-            step={step} 
-            index={i} 
-            position={cardPositions[i]}
-          />
-        ))}
-
-        {/* --- The "Break" Annotation --- */}
-        <motion.div
-          className="absolute z-20 pointer-events-none"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          style={{
-            top: `${warningPos.y}px`,
-            left: `${warningPos.x}px`,
-            transform: 'translate(-50%, -50%)' // Center the div itself
-          }}
-        >
-          <motion.div 
-            className="flex items-center gap-3 bg-red-950/80 border border-red-500/50 px-4 py-2 rounded-lg backdrop-blur-md shadow-[0_0_30px_-5px_rgba(249,115,22,0.3)]"
-            animate={{
-              x: [0, -1, 1, -1, 0], // Subtle shake
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 4,
-              repeatDelay: 2
-            }}
-          >
-            <div className="relative shrink-0">
-              <AlertTriangle className="w-5 h-5 text-orange-500" />
-              <motion.div 
-                className="absolute inset-0 bg-orange-500 rounded-full blur-md"
-                animate={{ opacity: [0, 0.5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+            {/* Vertical Arrow: Step 3 to Step 4 - positioned to connect the cards */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: activeStep >= 2 ? 0.8 : 0.2 }}
+              className="absolute"
+              style={{ 
+                left: 'calc(50% + 90px + 24px + 90px)',
+                top: '180px',
+                transform: 'translateX(-50%) rotate(90deg)'
+              }}
+            >
+              <ArrowRight 
+                className={`w-6 h-6 text-emerald-500`}
               />
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-orange-300 font-bold text-[10px] uppercase tracking-wider">Warning</span>
-              <span className="text-white text-sm font-medium whitespace-nowrap">Print reliability breaks here</span>
-            </div>
-          </motion.div>
-        </motion.div>
+            </motion.div>
 
-        {/* Center Label */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-slate-800 pointer-events-none">
-           <div className="w-32 h-32 rounded-full border border-slate-800/50 flex items-center justify-center bg-slate-900/30 backdrop-blur-sm">
-              <span className="text-xs font-mono text-slate-600 tracking-widest uppercase text-center">Growth<br/>Engine</span>
-           </div>
+            {/* Bottom Row: Steps 5, 4 (5 on left, 4 on right) */}
+            <div className="flex items-center justify-center gap-6 mt-8">
+              {/* Step 5 (left side) */}
+              {(() => {
+                const index = 4;
+                const step = steps[index];
+                const isActive = activeStep === index;
+                const colors = getColorClasses(step.color, isActive, step.isProblem);
+                const Icon = step.icon;
+
+                return (
+                  <motion.div
+                    key={step.id}
+                    initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+                      opacity: 1, 
+                      y: 0,
+                      scale: isActive ? 1.05 : 1
+                    }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="flex flex-col items-center relative z-10"
+                  >
+                    {/* Step Card */}
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className={`bg-gradient-to-br ${colors.bg} border-2 ${colors.border} rounded-xl p-4 w-[180px] cursor-pointer transition-all duration-300 ${colors.glow} ${isActive ? 'shadow-lg' : ''}`}
+                    >
+                      {/* Icon */}
+                      <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center mb-3 mx-auto`}>
+                        <Icon className={`w-6 h-6 ${colors.icon}`} />
+                      </div>
+                      
+                      {/* Text */}
+                      <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {step.text}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                );
+              })()}
+
+              {/* Arrow from Step 4 to Step 5 (left arrow, since 4 is right and 5 is left) */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeStep >= 3 ? 0.8 : 0.2 }}
+                transition={{ delay: 0.4 }}
+                className="flex-shrink-0"
+              >
+                <ArrowRight 
+                  className="w-6 h-6 text-emerald-500 rotate-180"
+                />
+              </motion.div>
+
+              {/* Step 4 (right side) */}
+              {(() => {
+                const index = 3;
+                const step = steps[index];
+                const isActive = activeStep === index;
+                const colors = getColorClasses(step.color, isActive, step.isProblem);
+                const Icon = step.icon;
+
+                return (
+                  <motion.div
+            key={step.id} 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0,
+                      scale: isActive ? 1.05 : 1
+                    }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="flex flex-col items-center relative z-10"
+                  >
+                    {/* Step Card */}
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className={`bg-gradient-to-br ${colors.bg} border-2 ${colors.border} rounded-xl p-4 w-[180px] cursor-pointer transition-all duration-300 ${colors.glow} ${isActive ? 'shadow-lg' : ''}`}
+                    >
+                      {/* Icon */}
+                      <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center mb-3 mx-auto`}>
+                        <Icon className={`w-6 h-6 ${colors.icon}`} />
+                      </div>
+                      
+                      {/* Text */}
+                      <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                        {step.text}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                );
+              })()}
+            </div>
+
+            {/* Arrow: Step 5 back to Step 1 (up arrow on left side) */}
+        <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: activeStep === 4 ? 0.8 : 0.2 }}
+              className="absolute"
+          style={{
+                left: 'calc(25% - 90px)',
+                bottom: '200px',
+                transform: 'rotate(-90deg)'
+              }}
+            >
+              <ArrowRight 
+                className="w-6 h-6 text-emerald-500"
+              />
+            </motion.div>
+          </div>
         </div>
-
       </div>
 
-      {/* --- Mobile: Vertical Layout --- */}
-      <div className="md:hidden w-full">
-        <MobileLoop />
+      {/* Mobile: Vertical Flow */}
+      <div className="lg:hidden w-full max-w-md">
+        <div className="space-y-6">
+          {/* Connection Line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5">
+            <div className="relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-blue-500/20 via-emerald-500/20 via-purple-500/20 to-emerald-500/20"></div>
+          <motion.div 
+                className="absolute top-0 left-0 w-full bg-gradient-to-b from-emerald-500 via-blue-500 via-emerald-500 via-purple-500 to-emerald-500"
+                initial={{ height: '0%' }}
+            animate={{
+                  height: `${((activeStep + 1) / steps.length) * 100}%`,
+                }}
+                transition={{ duration: 0.5 }}
+                style={{
+                  background: activeStep === 2 
+                    ? 'linear-gradient(to bottom, #10b981, #3b82f6, #ef4444, #a855f7, #10b981)'
+                    : 'linear-gradient(to bottom, #10b981, #3b82f6, #10b981, #a855f7, #10b981)'
+                }}
+              />
+            </div>
+          </div>
+
+          {steps.map((step, index) => {
+            const isActive = activeStep === index;
+            const colors = getColorClasses(step.color, isActive, step.isProblem);
+            const Icon = step.icon;
+
+            return (
+              <React.Fragment key={step.id}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className={`relative bg-gradient-to-br ${colors.bg} border-2 ${colors.border} rounded-xl p-4 flex items-center gap-4 ml-12 ${colors.glow} ${isActive ? 'shadow-lg' : ''}`}
+                >
+                  {/* Icon */}
+                  <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center flex-shrink-0`}>
+                    <Icon className={`w-6 h-6 ${colors.icon}`} />
+            </div>
+
+                  {/* Text */}
+                  <p className={`text-sm font-medium flex-1 ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {step.text}
+                  </p>
+
+                  {/* Problem Warning */}
+                  {step.isProblem && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: isActive ? 1 : 0.6 }}
+                      className="absolute -right-2 -top-2 bg-red-900/40 border border-red-500/50 rounded-full p-1.5 shadow-lg shadow-red-500/20"
+                    >
+                      <AlertTriangle className="w-4 h-4 text-red-400" />
+          </motion.div>
+                  )}
+        </motion.div>
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
-}
+};
 
+export default BambuLoop;
