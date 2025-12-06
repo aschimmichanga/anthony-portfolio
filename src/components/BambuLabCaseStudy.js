@@ -1400,53 +1400,63 @@ const BambuLabCaseStudy = () => {
                   <p className="text-gray-300 mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.approach}</p>
                   <p className="text-sm text-gray-400 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{version.learning}</p>
                   
-                  {/* Wireframe Placeholder */}
-                  <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-                    <div className="relative h-full flex flex-col">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="h-3 bg-gray-700 rounded w-24"></div>
-                        <div className="h-3 bg-gray-700 rounded w-16"></div>
-                      </div>
-                      <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
-                        <div className="h-6 bg-gray-700 rounded w-3/4 mb-3"></div>
-                        {version.version.includes('V1') && (
-                          <>
-                            <div className="space-y-2 mb-4">
-                              <div className="h-4 bg-gray-700 rounded w-full"></div>
-                              <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                              <div className="h-4 bg-gray-700 rounded w-4/6"></div>
-                            </div>
-                            <div className="h-10 bg-gray-700 rounded w-32"></div>
-                          </>
-                        )}
-                        {version.version.includes('V2') && (
-                          <>
-                            <div className="h-20 bg-gray-700 rounded mb-4"></div>
-                            <div className="space-y-2 mb-4">
-                              <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                              <div className="h-4 bg-gray-700 rounded w-2/3"></div>
-                            </div>
-                            <div className="h-10 bg-gray-700 rounded w-32"></div>
-                          </>
-                        )}
-                        {version.version.includes('V3') && (
-                          <>
-                            <div className="h-20 bg-gray-700 rounded mb-4"></div>
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              <div className="h-6 bg-emerald-700/50 rounded-full w-20"></div>
-                              <div className="h-6 bg-emerald-700/50 rounded-full w-24"></div>
-                              <div className="h-6 bg-emerald-700/50 rounded-full w-28"></div>
-                            </div>
-                            <div className="h-10 bg-emerald-600 rounded w-32"></div>
-                          </>
-                        )}
-                      </div>
-                      <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        {version.version} - {version.approach.split('.')[0]}
-                      </p>
+                  {/* Wireframe Image or Placeholder */}
+                  {version.visual && !version.visual.includes('placeholder') ? (
+                    <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20">
+                      <img 
+                        src={version.visual} 
+                        alt={version.version}
+                        className="w-full h-full object-contain"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-6 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
+                      <div className="relative h-full flex flex-col">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="h-3 bg-gray-700 rounded w-24"></div>
+                          <div className="h-3 bg-gray-700 rounded w-16"></div>
+                        </div>
+                        <div className="flex-1 bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+                          <div className="h-6 bg-gray-700 rounded w-3/4 mb-3"></div>
+                          {version.version.includes('V1') && (
+                            <>
+                              <div className="space-y-2 mb-4">
+                                <div className="h-4 bg-gray-700 rounded w-full"></div>
+                                <div className="h-4 bg-gray-700 rounded w-5/6"></div>
+                                <div className="h-4 bg-gray-700 rounded w-4/6"></div>
+                              </div>
+                              <div className="h-10 bg-gray-700 rounded w-32"></div>
+                            </>
+                          )}
+                          {version.version.includes('V2') && (
+                            <>
+                              <div className="h-20 bg-gray-700 rounded mb-4"></div>
+                              <div className="space-y-2 mb-4">
+                                <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+                                <div className="h-4 bg-gray-700 rounded w-2/3"></div>
+                              </div>
+                              <div className="h-10 bg-gray-700 rounded w-32"></div>
+                            </>
+                          )}
+                          {version.version.includes('V3') && (
+                            <>
+                              <div className="h-20 bg-gray-700 rounded mb-4"></div>
+                              <div className="flex flex-wrap gap-2 mb-4">
+                                <div className="h-6 bg-emerald-700/50 rounded-full w-20"></div>
+                                <div className="h-6 bg-emerald-700/50 rounded-full w-24"></div>
+                                <div className="h-6 bg-emerald-700/50 rounded-full w-28"></div>
+                              </div>
+                              <div className="h-10 bg-emerald-600 rounded w-32"></div>
+                            </>
+                          )}
+                        </div>
+                        <p className="text-gray-500 text-xs mt-2 text-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          {version.version} - {version.approach.split('.')[0]}
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
