@@ -9,82 +9,98 @@ const ReviewInfographic = () => {
     {
       id: 1,
       rating: 1,
-      author: 'Anonymous User',
-      date: '2 days ago',
-      reason: 'User Error',
-      review: 'Print failed because I used the wrong filament. Model is bad.',
+      author: '@JabbaTheHutt',
+      date: '2025-07-01',
+      reason: 'Functionality',
+      review: 'I didnt return at all.. 22 grams wasted.',
+      product: 'Print Profile PLA BI-COLOR BOOMERANG',
       category: 'misdirected',
-      highlight: 'Blamed model for user error'
+      highlight: 'Boomerang didn\'t return - creator suggests practice needed, has 5000+ successful prints',
+      source: 'MakerWorld Review'
     },
     {
       id: 2,
       rating: 1,
-      author: 'Anonymous User',
-      date: '1 week ago',
-      reason: 'Power Outage',
-      review: 'Power went out during print. 1 star.',
+      author: '@Jacob_Prints',
+      date: '2025-06-26',
+      reason: 'Functionality & Strength',
+      review: 'When I throw it it comes back but either straight down or perfect but not close to me at all and it is the right way and no matter what, it just happens. Breaks very easily.',
+      product: 'Print Profile PLA ONE COLOR BOOMERANG',
       category: 'misdirected',
-      highlight: 'Blamed creator for power outage'
+      highlight: 'Creator suggests using reinforced version and PETG, plus practice with beginner model',
+      source: 'MakerWorld Review'
     },
     {
       id: 3,
-      rating: 2,
-      author: 'Anonymous User',
-      date: '3 days ago',
-      reason: 'Bed Adhesion',
-      review: 'Print lifted from bed. Probably the model\'s fault.',
+      rating: 1,
+      author: '@geokore',
+      date: '2025-07-13',
+      reason: 'Functionality',
+      review: 'you can not move it, tried to losen is a bit but nothing',
+      product: 'Print Profile Slidr triangle pattern',
       category: 'misdirected',
-      highlight: 'Bed adhesion issue blamed on model'
+      highlight: 'Other users suggest reading description carefully - likely user error',
+      source: 'MakerWorld Review'
     },
     {
       id: 4,
-      rating: 1,
-      author: 'Anonymous User',
-      date: '5 days ago',
-      reason: 'Wet Filament',
-      review: 'Didn\'t work. My filament was wet but still...',
+      rating: 2,
+      author: '@firewolf14285',
+      date: '2025-07-12',
+      reason: 'User Error',
+      review: 'hard to distinguish ams version from single color version I accidentally printed the wrong version and had to stop it',
+      product: 'Print Profile Single Color',
       category: 'misdirected',
-      highlight: 'Wet filament blamed on creator'
+      highlight: 'Creator: "One says \'Single version\' and another \'AMS Version\', unless you can\'t read, I think it\'s clear enough."',
+      source: 'MakerWorld Review'
     },
     {
       id: 5,
       rating: 3,
-      author: 'Anonymous User',
-      date: '1 day ago',
-      reason: 'No Comment',
-      review: '',
-      category: 'unaware',
-      highlight: 'Low rating with no explanation'
+      author: '@Helban',
+      date: '2025-06-21',
+      reason: 'Strength Issue',
+      review: 'Sadly after the very first throw, it just fell apart completely, i kinda expected it to be stronger with PETG, heh.',
+      product: 'Print Profile (Boomerang)',
+      category: 'misdirected',
+      highlight: 'User printed with PETG, creator suggests changing filament brand - material quality issue',
+      source: 'MakerWorld Review'
     },
     {
       id: 6,
       rating: 2,
-      author: 'Anonymous User',
-      date: '4 days ago',
-      reason: 'Wrong Settings',
-      review: 'Used PLA-CF with PLA profile. Didn\'t work.',
+      author: '@user_1755733486',
+      date: '2025-07-14',
+      reason: 'Strength Issue',
+      review: 'cool but the ball joints in the finger ends are very very loosely modeled',
+      product: 'Print Profile Right Hand - 2 Color',
       category: 'misdirected',
-      highlight: 'Wrong settings blamed on model'
+      highlight: 'Creator explains: "it\'s dependent on your filament, I can\'t make them tighter or they would fuse on certain filament" - design constraint blamed as flaw',
+      source: 'MakerWorld Review'
     },
     {
       id: 7,
-      rating: 1,
-      author: 'Anonymous User',
-      date: '6 days ago',
-      reason: 'Clogged Nozzle',
-      review: 'Extruder clogged. This profile caused it.',
+      rating: 3,
+      author: '@user_1444886948',
+      date: '2025-06-22',
+      reason: 'Bed Adhesion',
+      review: 'Did not adhere perfectly',
+      product: 'Print Profile Zephyros FullSize',
       category: 'misdirected',
-      highlight: 'Hardware issue blamed on profile'
+      highlight: 'Vague 3-star review for bed adhesion - likely user setup issue',
+      source: 'MakerWorld Review'
     },
     {
       id: 8,
-      rating: 2,
-      author: 'Anonymous User',
-      date: '2 weeks ago',
+      rating: 1,
+      author: '@user_1444886948',
+      date: '2025-06-22',
       reason: 'No Comment',
       review: '',
+      product: 'Print Profile',
       category: 'unaware',
-      highlight: 'Silent low rating'
+      highlight: '1-star review with no explanation - creator has no context to improve',
+      source: 'MakerWorld Review'
     }
   ];
 
@@ -138,7 +154,7 @@ const ReviewInfographic = () => {
           Real MakerWorld Reviews
         </h3>
         <p className="text-xs lg:text-sm text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          Examples of misdirected blame and unaware reviewers
+          Real MakerWorld reviews showing misdirected blame and user error
         </p>
       </motion.div>
 
@@ -163,7 +179,12 @@ const ReviewInfographic = () => {
                   <div className="font-semibold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {currentReview.author}
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {currentReview.product && (
+                    <div className="text-xs text-gray-300 mt-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {currentReview.product}
+                    </div>
+                  )}
+                  <div className="flex items-center gap-2 text-xs text-gray-400 mt-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     <Calendar className="w-3 h-3" />
                     {currentReview.date}
                   </div>
@@ -207,17 +228,19 @@ const ReviewInfographic = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className={`text-gray-200 mb-4 leading-relaxed ${colors.text}`}
+                className={`text-gray-200 mb-4 leading-relaxed ${colors.text} text-sm`}
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
-                "{currentReview.review}"
+                <span className="text-gray-400">"</span>
+                <span className="whitespace-pre-wrap">{currentReview.review}</span>
+                <span className="text-gray-400">"</span>
               </motion.div>
             ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-gray-500 italic mb-4"
+                className="text-gray-500 italic mb-4 text-sm"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 No comment provided
@@ -229,14 +252,19 @@ const ReviewInfographic = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="pt-4 border-t border-gray-700/50"
+              className="pt-4 border-t border-gray-700/50 space-y-2"
             >
-              <div className="flex items-center gap-2">
-                <AlertCircle className={`w-4 h-4 ${colors.text}`} />
-                <span className={`text-xs font-medium ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <div className="flex items-start gap-2">
+                <AlertCircle className={`w-4 h-4 ${colors.text} mt-0.5 flex-shrink-0`} />
+                <span className={`text-xs font-medium ${colors.text} leading-relaxed`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {currentReview.highlight}
                 </span>
               </div>
+              {currentReview.source && (
+                <div className="text-xs text-gray-500 italic pt-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Source: {currentReview.source}
+                </div>
+              )}
             </motion.div>
           </motion.div>
         </AnimatePresence>
