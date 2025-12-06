@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import BambuLoop from './BambuLoop';
 import ReviewInfographic from './ReviewInfographic';
+import CreatorDashboardInfographic from './CreatorDashboardInfographic';
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -1053,6 +1054,10 @@ const BambuLabCaseStudy = () => {
                 {point.number === 2 ? (
                   <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20 py-6">
                     <ReviewInfographic />
+                  </div>
+                ) : point.number === 3 ? (
+                  <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20 py-6">
+                    <CreatorDashboardInfographic />
                   </div>
                 ) : point.visual && !point.visual.includes('placeholder') ? (
                   <div className="aspect-video bg-gray-900/50 border border-emerald-800/30 rounded-2xl mb-8 overflow-hidden shadow-lg shadow-emerald-900/20">
