@@ -9,6 +9,7 @@ import LearningInfographic from './LearningInfographic';
 
 import AttributionConceptInfographic from './AttributionConceptInfographic';
 import SlicerWizardFlow from './SlicerWizardFlow';
+import InterventionPointsInfographic from './InterventionPointsInfographic';
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -1183,39 +1184,20 @@ const BambuLabCaseStudy = () => {
             <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {data.interventionPoints.description}
             </p>
-
-            <div className="space-y-4 mb-8">
+            
+            {/* Intervention Points Infographic */}
+            <div className="bg-gray-900/30 border border-emerald-800/30 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/20 mb-8">
+              <InterventionPointsInfographic />
+            </div>
+            
+            {/* Points List */}
+            <div className="space-y-4">
               {data.interventionPoints.points.map((point, i) => (
                 <div key={i} className="flex gap-4 text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   <span className="text-emerald-400 font-bold">{i + 1}.</span>
                   <span>{point}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Journey Map Placeholder */}
-            <div className="aspect-video bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent)]"></div>
-              <div className="relative h-full flex items-center justify-center">
-                <div className="flex items-center gap-4 flex-wrap justify-center">
-                  {data.interventionPoints.points.map((point, i) => (
-                    <React.Fragment key={i}>
-                      <div className="bg-emerald-900/40 border border-emerald-700/50 rounded-lg px-4 py-3 min-w-[180px] text-center">
-                        <div className="w-3 h-3 bg-emerald-500 rounded-full mx-auto mb-2"></div>
-                        <p className="text-xs text-gray-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                          {point.split(':')[0]}
-                        </p>
-                      </div>
-                      {i < data.interventionPoints.points.length - 1 && (
-                        <div className="text-emerald-400 text-xl">→</div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-              <p className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-500 text-xs" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                User journey with intervention points
-              </p>
             </div>
           </motion.div>
         </section>
