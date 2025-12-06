@@ -13,28 +13,28 @@ import {
 const BambuLoop = () => {
   const [activeStep, setActiveStep] = useState(0);
 
-const steps = [
-  { 
-    id: 1, 
+  const steps = [
+    { 
+      id: 1, 
       text: 'Bambu Lab incentivizes creators', 
       icon: Gift,
-      color: 'emerald'
-  },
-  { 
-    id: 2, 
+      color: 'yellow'
+    },
+    { 
+      id: 2, 
       text: 'Creators upload high-quality models to MakerWorld', 
       icon: UploadCloud,
       color: 'blue'
-  },
-  { 
-    id: 3, 
+    },
+    { 
+      id: 3, 
       text: 'Users complete successful prints', 
       icon: Printer,
-      color: 'emerald',
+      color: 'red',
       isProblem: true
-  },
-  { 
-    id: 4, 
+    },
+    { 
+      id: 4, 
       text: 'Users purchase printers, filament, & accessories', 
       icon: ShoppingCart,
       color: 'purple'
@@ -66,13 +66,13 @@ const steps = [
     }
     
     switch (color) {
-      case 'emerald':
+      case 'yellow':
         return {
-          bg: isActive ? 'from-emerald-900/40 to-teal-900/40' : 'from-emerald-900/20 to-teal-900/20',
-          border: isActive ? 'border-emerald-500/50' : 'border-emerald-800/30',
-          icon: isActive ? 'text-emerald-400' : 'text-emerald-500/50',
-          text: isActive ? 'text-emerald-100' : 'text-gray-400',
-          glow: isActive ? 'shadow-emerald-500/20' : ''
+          bg: isActive ? 'from-yellow-900/40 to-amber-900/40' : 'from-yellow-900/20 to-amber-900/20',
+          border: isActive ? 'border-yellow-500/50' : 'border-yellow-800/30',
+          icon: isActive ? 'text-yellow-400' : 'text-yellow-500/50',
+          text: isActive ? 'text-yellow-100' : 'text-gray-400',
+          glow: isActive ? 'shadow-yellow-500/20' : ''
         };
       case 'blue':
         return {
@@ -82,6 +82,14 @@ const steps = [
           text: isActive ? 'text-blue-100' : 'text-gray-400',
           glow: isActive ? 'shadow-blue-500/20' : ''
         };
+      case 'red':
+        return {
+          bg: isActive ? 'from-red-900/40 to-orange-900/40' : 'from-red-900/20 to-orange-900/20',
+          border: isActive ? 'border-red-500/50' : 'border-red-800/30',
+          icon: isActive ? 'text-red-400' : 'text-red-500/50',
+          text: isActive ? 'text-red-100' : 'text-gray-400',
+          glow: isActive ? 'shadow-red-500/20' : ''
+        };
       case 'purple':
         return {
           bg: isActive ? 'from-purple-900/40 to-pink-900/40' : 'from-purple-900/20 to-pink-900/20',
@@ -90,8 +98,16 @@ const steps = [
           text: isActive ? 'text-purple-100' : 'text-gray-400',
           glow: isActive ? 'shadow-purple-500/20' : ''
         };
+      case 'emerald':
+        return {
+          bg: isActive ? 'from-emerald-900/40 to-teal-900/40' : 'from-emerald-900/20 to-teal-900/20',
+          border: isActive ? 'border-emerald-500/50' : 'border-emerald-800/30',
+          icon: isActive ? 'text-emerald-400' : 'text-emerald-500/50',
+          text: isActive ? 'text-emerald-100' : 'text-gray-400',
+          glow: isActive ? 'shadow-emerald-500/20' : ''
+        };
       default:
-  return {
+        return {
           bg: 'from-gray-900/20 to-gray-800/20',
           border: 'border-gray-700/30',
           icon: 'text-gray-500/50',
@@ -156,7 +172,7 @@ const steps = [
                         <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
           {step.text}
         </p>
-    </motion.div>
+                      </motion.div>
 
                       {/* Problem Warning */}
                       {step.isProblem && (
@@ -175,7 +191,7 @@ const steps = [
 
                     {/* Arrow to next */}
                     {index < 2 && (
-    <motion.div
+                      <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: isActive || activeStep > index ? 0.8 : 0.2 }}
                         transition={{ delay: index * 0.1 + 0.3 }}
@@ -186,24 +202,24 @@ const steps = [
                         />
     </motion.div>
                     )}
-          </React.Fragment>
-        );
-      })}
-    </div>
+                  </React.Fragment>
+                );
+              })}
+            </div>
 
-            {/* Vertical Arrow: Step 3 to Step 4 - positioned to connect the cards */}
+            {/* Vertical Arrow: Step 3 to Step 4 (connecting top right to bottom right) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: activeStep >= 2 ? 0.8 : 0.2 }}
               className="absolute"
               style={{ 
-                left: 'calc(50% + 90px + 24px + 90px)',
-                top: '180px',
-                transform: 'translateX(-50%) rotate(90deg)'
+                left: 'calc(50% + 260px)',
+                top: '200px',
+                transform: 'translateX(-50%) rotate(135deg)'
               }}
             >
               <ArrowRight 
-                className={`w-6 h-6 text-emerald-500`}
+                className={`w-6 h-6 text-red-500`}
               />
             </motion.div>
 
@@ -221,7 +237,7 @@ const steps = [
                   <motion.div
                     key={step.id}
                     initial={{ opacity: 0, y: 20 }}
-            animate={{ 
+                    animate={{ 
                       opacity: 1, 
                       y: 0,
                       scale: isActive ? 1.05 : 1
@@ -270,7 +286,7 @@ const steps = [
 
                 return (
                   <motion.div
-            key={step.id} 
+                    key={step.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ 
                       opacity: 1, 
@@ -301,14 +317,14 @@ const steps = [
             </div>
 
             {/* Arrow: Step 5 back to Step 1 (up arrow on left side) */}
-        <motion.div
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: activeStep === 4 ? 0.8 : 0.2 }}
               className="absolute"
-          style={{
+              style={{
                 left: 'calc(25% - 90px)',
-                bottom: '200px',
-                transform: 'rotate(-90deg)'
+                bottom: '180px',
+                transform: 'rotate(-135deg)'
               }}
             >
               <ArrowRight 
