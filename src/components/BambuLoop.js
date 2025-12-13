@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Gift, 
-  UploadCloud, 
-  Printer, 
+import {
+  Gift,
+  UploadCloud,
+  Printer,
   ShoppingCart,
   TrendingUp,
   AlertTriangle,
@@ -13,35 +13,35 @@ import {
 const BambuLoop = () => {
   const [activeStep, setActiveStep] = useState(0);
 
-const steps = [
-  { 
-    id: 1, 
-      text: 'Bambu Lab incentivizes creators', 
+  const steps = [
+    {
+      id: 1,
+      text: 'Bambu Lab incentivizes creators',
       icon: Gift,
       color: 'emerald'
-  },
-  { 
-    id: 2, 
-      text: 'Creators upload high-quality models to MakerWorld', 
+    },
+    {
+      id: 2,
+      text: 'Creators upload high-quality models to MakerWorld',
       icon: UploadCloud,
       color: 'blue'
-  },
-  { 
-    id: 3, 
-      text: 'Users complete successful prints', 
+    },
+    {
+      id: 3,
+      text: 'Users complete successful prints',
       icon: Printer,
       color: 'emerald',
       isProblem: true
-  },
-  { 
-    id: 4, 
-      text: 'Users purchase printers, filament, & accessories', 
+    },
+    {
+      id: 4,
+      text: 'Users purchase printers, filament, & accessories',
       icon: ShoppingCart,
       color: 'purple'
     },
-    { 
-      id: 5, 
-      text: 'Bambu Lab grows revenue and reinvests', 
+    {
+      id: 5,
+      text: 'Bambu Lab grows revenue and reinvests',
       icon: TrendingUp,
       color: 'emerald'
     }
@@ -64,7 +64,7 @@ const steps = [
         glow: 'shadow-red-500/20'
       };
     }
-    
+
     switch (color) {
       case 'emerald':
         return {
@@ -91,7 +91,7 @@ const steps = [
           glow: isActive ? 'shadow-purple-500/20' : ''
         };
       default:
-  return {
+        return {
           bg: 'from-gray-900/20 to-gray-800/20',
           border: 'border-gray-700/30',
           icon: 'text-gray-500/50',
@@ -104,7 +104,7 @@ const steps = [
   return (
     <div className="relative w-full flex flex-col items-center justify-center p-6 lg:p-8">
       {/* Title */}
-    <motion.div
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-8 lg:mb-10 text-center"
@@ -134,8 +134,8 @@ const steps = [
                   <React.Fragment key={step.id}>
                     <motion.div
                       initial={{ opacity: 0, y: -20 }}
-                      animate={{ 
-                        opacity: 1, 
+                      animate={{
+                        opacity: 1,
                         y: 0,
                         scale: isActive ? 1.05 : 1
                       }}
@@ -147,16 +147,16 @@ const steps = [
                         whileHover={{ scale: 1.05, y: -5 }}
                         className={`bg-gradient-to-br ${colors.bg} border-2 ${colors.border} rounded-xl p-4 w-[180px] cursor-pointer transition-all duration-300 ${colors.glow} ${isActive ? 'shadow-lg' : ''}`}
                       >
-        {/* Icon */}
+                        {/* Icon */}
                         <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center mb-3 mx-auto`}>
                           <Icon className={`w-6 h-6 ${colors.icon}`} />
-        </div>
+                        </div>
 
-        {/* Text */}
+                        {/* Text */}
                         <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          {step.text}
-        </p>
-    </motion.div>
+                          {step.text}
+                        </p>
+                      </motion.div>
 
                       {/* Problem Warning */}
                       {step.isProblem && (
@@ -175,34 +175,34 @@ const steps = [
 
                     {/* Arrow to next */}
                     {index < 2 && (
-    <motion.div
+                      <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: isActive || activeStep > index ? 0.8 : 0.2 }}
                         transition={{ delay: index * 0.1 + 0.3 }}
                         className="flex-shrink-0"
                       >
-                        <ArrowRight 
+                        <ArrowRight
                           className={`w-6 h-6 ${step.isProblem ? 'text-red-500' : 'text-emerald-500'}`}
                         />
-    </motion.div>
+                      </motion.div>
                     )}
-          </React.Fragment>
-        );
-      })}
-    </div>
+                  </React.Fragment>
+                );
+              })}
+            </div>
 
             {/* Vertical Arrow: Step 3 to Step 4 - positioned to connect the cards */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: activeStep >= 2 ? 0.8 : 0.2 }}
               className="absolute"
-              style={{ 
+              style={{
                 left: 'calc(50% + 90px + 24px + 90px)',
                 top: '180px',
                 transform: 'translateX(-50%) rotate(90deg)'
               }}
             >
-              <ArrowRight 
+              <ArrowRight
                 className={`w-6 h-6 text-emerald-500`}
               />
             </motion.div>
@@ -221,8 +221,8 @@ const steps = [
                   <motion.div
                     key={step.id}
                     initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-                      opacity: 1, 
+                    animate={{
+                      opacity: 1,
                       y: 0,
                       scale: isActive ? 1.05 : 1
                     }}
@@ -238,7 +238,7 @@ const steps = [
                       <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center mb-3 mx-auto`}>
                         <Icon className={`w-6 h-6 ${colors.icon}`} />
                       </div>
-                      
+
                       {/* Text */}
                       <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {step.text}
@@ -255,7 +255,7 @@ const steps = [
                 transition={{ delay: 0.4 }}
                 className="flex-shrink-0"
               >
-                <ArrowRight 
+                <ArrowRight
                   className="w-6 h-6 text-emerald-500 rotate-180"
                 />
               </motion.div>
@@ -270,10 +270,10 @@ const steps = [
 
                 return (
                   <motion.div
-            key={step.id} 
+                    key={step.id}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ 
-                      opacity: 1, 
+                    animate={{
+                      opacity: 1,
                       y: 0,
                       scale: isActive ? 1.05 : 1
                     }}
@@ -289,7 +289,7 @@ const steps = [
                       <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center mb-3 mx-auto`}>
                         <Icon className={`w-6 h-6 ${colors.icon}`} />
                       </div>
-                      
+
                       {/* Text */}
                       <p className={`text-xs font-medium text-center leading-tight ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {step.text}
@@ -301,17 +301,17 @@ const steps = [
             </div>
 
             {/* Arrow: Step 5 back to Step 1 (up arrow on left side) */}
-        <motion.div
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: activeStep === 4 ? 0.8 : 0.2 }}
               className="absolute"
-          style={{
+              style={{
                 left: 'calc(25% - 90px)',
                 bottom: '200px',
                 transform: 'rotate(-90deg)'
               }}
             >
-              <ArrowRight 
+              <ArrowRight
                 className="w-6 h-6 text-emerald-500"
               />
             </motion.div>
@@ -326,15 +326,15 @@ const steps = [
           <div className="absolute left-8 top-0 bottom-0 w-0.5">
             <div className="relative h-full">
               <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-blue-500/20 via-emerald-500/20 via-purple-500/20 to-emerald-500/20"></div>
-          <motion.div 
+              <motion.div
                 className="absolute top-0 left-0 w-full bg-gradient-to-b from-emerald-500 via-blue-500 via-emerald-500 via-purple-500 to-emerald-500"
                 initial={{ height: '0%' }}
-            animate={{
+                animate={{
                   height: `${((activeStep + 1) / steps.length) * 100}%`,
                 }}
                 transition={{ duration: 0.5 }}
                 style={{
-                  background: activeStep === 2 
+                  background: activeStep === 2
                     ? 'linear-gradient(to bottom, #10b981, #3b82f6, #ef4444, #a855f7, #10b981)'
                     : 'linear-gradient(to bottom, #10b981, #3b82f6, #10b981, #a855f7, #10b981)'
                 }}
@@ -358,7 +358,7 @@ const steps = [
                   {/* Icon */}
                   <div className={`w-12 h-12 rounded-full bg-gray-900/50 border border-gray-700/50 flex items-center justify-center flex-shrink-0`}>
                     <Icon className={`w-6 h-6 ${colors.icon}`} />
-            </div>
+                  </div>
 
                   {/* Text */}
                   <p className={`text-sm font-medium flex-1 ${colors.text}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -373,9 +373,9 @@ const steps = [
                       className="absolute -right-2 -top-2 bg-red-900/40 border border-red-500/50 rounded-full p-1.5 shadow-lg shadow-red-500/20"
                     >
                       <AlertTriangle className="w-4 h-4 text-red-400" />
-          </motion.div>
+                    </motion.div>
                   )}
-        </motion.div>
+                </motion.div>
               </React.Fragment>
             );
           })}

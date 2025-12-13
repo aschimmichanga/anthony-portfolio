@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
@@ -10,6 +10,9 @@ import LearningInfographic from './LearningInfographic';
 import AttributionConceptInfographic from './AttributionConceptInfographic';
 import SlicerWizardFlow from './SlicerWizardFlow';
 import InterventionPointsInfographic from './InterventionPointsInfographic';
+import Carousel from './Carousel';
+
+
 
 const BambuLabCaseStudy = () => {
   const data = {
@@ -31,47 +34,13 @@ const BambuLabCaseStudy = () => {
     // Summary
     summary: {
       goal: 'Design a review system for MakerWorld that helps users learn from failures while providing creators with fair, actionable feedback.',
-      solution: 'An attribution system with AI-powered tag suggestions that prompts users to categorize failure causes before submitting reviews.',
+      solution: 'A three-part intervention: AI Slicer Wizard for prevention, Context-Aware Reviews for attribution, and Web Parity for ecosystem consistency.',
       outcome: 'Expected to reduce misdirected reviews by 35% and improve feedback quality for both users and creators.'
     },
 
-    // Problem Statement
-    problemStatement: {
-      title: 'Problem Statement',
-      content: 'The Core Issue: Bambu Lab\'s current post-print rating flow prompts users to rate the 3D model — whether or not the print succeeded — without surfacing relevant troubleshooting context or attribution.\n\nThe Consequence: This leads to inaccurate low-star reviews driven by user error or "invisible" setup issues, not inherent model flaws. As a result, creators are unfairly penalized, and feedback is reduced to an ambiguous 1-5 star count. Both parties are left in the dark, making it harder to iterate — especially as more inexperienced (novice) users enter the ecosystem expecting a seamless, "plug-and-print" experience.'
-    },
 
-    // Why it matters
-    whyItMatters: {
-      title: 'Why It Matters (The Broken Flywheel)',
-      content: 'At its core, this isn\'t just a UI flaw. It\'s a broken core business feedback loop that harms the health of Bambu Lab\'s ecosystem.'
-    },
 
-    // Success Vision
-    successVision: {
-      title: 'Success Vision',
-      content: 'Turn frustration from failed prints into actionable insights. By guiding users to provide relevant feedback — even after failure — we can turn inaccurate reviews into opportunities for learning and improvement. This ensures printers keep printing, creators keep creating, and the Bambu marketplace flywheel spins faster.'
-    },
 
-    // Business Feedback Loop
-    businessLoop: {
-      title: 'The Ideal Flywheel',
-      description: 'Bambu Lab\'s business model depends on a healthy feedback loop between creators and users.',
-      steps: [
-        'Bambu Lab incentivizes Creators',
-        'Creators upload high-quality models on MakerWorld',
-        'Users complete successful prints',
-        'Users purchase printers, filament, & accessories',
-        'Bambu grows revenue and reinvests (Loop back to 1)'
-      ]
-    },
-
-    // What MakerWorld told us
-    problemContext: {
-      headline: 'The Breakpoint',
-      challenge: 'When prints fail and reviews misattribute blame, trust breaks down. Creators disengage, and content quality declines. Over time, the platform loses its "plug-and-play" promise.',
-      stat: 'Reducing confidence in the product and impacting printer/accessory sales. Fixing this restores clarity, realigns incentives, and keeps the flywheel spinning.'
-    },
 
     // Quote Board
     quoteBoard: {
@@ -472,50 +441,54 @@ const BambuLabCaseStudy = () => {
   return (
     <div className="min-h-screen bg-[#0a0f0a] text-white">
       {/* Hero */}
-      <div className="relative h-[70vh] overflow-hidden">
+      <div className="relative h-[85vh] overflow-hidden">
         <img
           src={data.hero}
           alt={data.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-[#0a0f0a]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-[#0a0f0a]"></div>
 
-        <Link to="/" className="absolute top-8 left-8 flex items-center gap-2 text-white/80 hover:text-emerald-400 transition-colors z-10" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          <FiArrowLeft className="text-xl" />
+        <Link to="/" className="absolute top-8 left-8 flex items-center gap-2 text-white/80 hover:text-emerald-400 transition-colors z-10 group" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <FiArrowLeft className="text-xl group-hover:-translate-x-1 transition-transform" />
           <span className="text-sm font-medium">Back to Portfolio</span>
         </Link>
 
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
-          <div className="max-w-4xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6" style={{ fontFamily: "'Sora', sans-serif" }}>{data.title}</h1>
-              <p className="text-xl text-gray-300 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.subtitle}</p>
+          <div className="max-w-6xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+              <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
+                {data.title}
+              </h1>
+              <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                {data.subtitle}
+              </p>
 
               {/* Metadata */}
-              <div className="grid md:grid-cols-2 gap-6 text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 pt-8 border-t border-white/10" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 <div>
-                  <div className="text-gray-500 mb-1">Discipline</div>
-                  <div className="text-white">{data.metadata.discipline}</div>
+                  <div className="text-gray-500 text-xs uppercase tracking-wider mb-2">Discipline</div>
+                  <div className="text-white font-medium">{data.metadata.discipline}</div>
                 </div>
                 <div>
-                  <div className="text-gray-500 mb-1">Timeline</div>
-                  <div className="text-white">{data.metadata.timeline}</div>
+                  <div className="text-gray-500 text-xs uppercase tracking-wider mb-2">Timeline</div>
+                  <div className="text-white font-medium">{data.metadata.timeline}</div>
                 </div>
                 <div>
-                  <div className="text-gray-500 mb-1">Role</div>
-                  <div className="text-white">{data.metadata.role}</div>
+                  <div className="text-gray-500 text-xs uppercase tracking-wider mb-2">Role</div>
+                  <div className="text-white font-medium">{data.metadata.role}</div>
                 </div>
                 <div>
-                  <div className="text-gray-500 mb-1">For</div>
-                  <div className="text-white">{data.metadata.for}</div>
+                  <div className="text-gray-500 text-xs uppercase tracking-wider mb-2">For</div>
+                  <div className="text-white font-medium">{data.metadata.for}</div>
                 </div>
                 <div>
-                  <div className="text-gray-500 mb-1">Team</div>
-                  <div className="text-white">{data.metadata.team}</div>
+                  <div className="text-gray-500 text-xs uppercase tracking-wider mb-2">Team</div>
+                  <div className="text-white font-medium">{data.metadata.team}</div>
                 </div>
                 <div>
-                  <div className="text-gray-500 mb-1">Tools</div>
-                  <div className="text-white">{data.metadata.tools}</div>
+                  <div className="text-gray-500 text-xs uppercase tracking-wider mb-2">Tools</div>
+                  <div className="text-white font-medium">{data.metadata.tools}</div>
                 </div>
               </div>
             </motion.div>
@@ -527,69 +500,245 @@ const BambuLabCaseStudy = () => {
       <div className="max-w-5xl mx-auto px-6 lg:px-12 py-20">
 
         {/* Summary */}
+        <section className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-3 gap-8 border-y border-white/10 py-12"
+          >
+            <div>
+              <h3 className="text-emerald-400 font-bold mb-4 uppercase tracking-wider text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Goal</h3>
+              <p className="text-xl text-white font-medium leading-relaxed" style={{ fontFamily: "'Sora', sans-serif" }}>
+                Design a review system that helps users learn from failures while providing creators with fair, actionable feedback.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-emerald-400 font-bold mb-4 uppercase tracking-wider text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Solution</h3>
+              <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                A three-part intervention: AI Slicer Wizard for prevention, Context-Aware Reviews for attribution, and Web Parity for ecosystem consistency.
+              </p>
+            </div>
+            <div className="relative group">
+              <div className="flex items-center gap-2 mb-4">
+                <h3 className="text-emerald-400 font-bold uppercase tracking-wider text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Projected Impact</h3>
+                <div className="cursor-help text-emerald-500/50 hover:text-emerald-400 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                </div>
+                {/* Tooltip */}
+                <div className="absolute bottom-full left-0 mb-2 w-64 p-3 bg-gray-800 border border-gray-700 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    Calculation: 15 out of 42 analyzed negative reviews (35%) were attributed to user error. This solution targets those specific cases.
+                  </p>
+                </div>
+              </div>
+              <div className="text-4xl font-bold text-white mb-2" style={{ fontFamily: "'Sora', sans-serif" }}>35%</div>
+              <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Estimated reduction in misdirected reviews, based on analysis of 42 actual negative reviews.
+              </p>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Background & Context */}
+        <section className="mb-32">
+          {/* Hardware Intro: The Printers */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-12 max-w-4xl mx-auto"
+          >
+            <div className="relative bg-[#101010] rounded-xl overflow-hidden border border-[#333] group">
+              {/* Ghost image to set container height based on aspect ratio */}
+              <img
+                src={`${process.env.PUBLIC_URL}/images/case-studies/bambu-marketing-official-v2.png`}
+                alt=""
+                className="invisible w-full h-auto"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0">
+                <Carousel
+                  images={[
+                    { src: `${process.env.PUBLIC_URL}/images/case-studies/PC_2.mp4`, label: "Bambu Lab's New Flagship Model H2C with Votek" }
+                  ]}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Part 1: The Promise */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-24 max-w-4xl mx-auto"
+          >
+            <div className="space-y-6 mb-12">
+              <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>Context: The Promise vs Reality Gap</h2>
+              <p className="text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Bambu Lab is often seen as the Apple of 3D printing, a company that brings hardware (<a href="https://bambulab.com/en" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors">Printers</a>), software (<a href="https://bambulab.com/en/download/studio" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors">Bambu Studio</a>), and marketplace (<a href="https://makerworld.com/en" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors">MakerWorld</a>) together into a single easy to use ecosystem. For beginners, this is exactly the appeal: a smooth, guided entry into a notoriously technical hobby.
+              </p>
+              <p className="text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                But once users move past setup and begin printing, the experience becomes less predictable. Issues like poor bed adhesion, plate contamination, or incorrect filament profiles can derail a print instantly. And when they do, most users have no diagnostic scaffolding. They don’t know what failed or why.
+              </p>
+              <p className="text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                The gap between the polished promise and the messy reality leaves both new users and creators without the guidance the ecosystem assumes they have.
+              </p>
+            </div>
+
+            <div className="relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 group">
+              {/* Ghost image to set container height based on aspect ratio */}
+              <img
+                src={`${process.env.PUBLIC_URL}/images/case-studies/bambu-marketing-official-v2.png`}
+                alt=""
+                className="invisible w-full h-auto"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0">
+                <Carousel
+                  objectFit="cover"
+                  images={[
+                    { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-marketing-official-v2.png`, label: "Official Marketing: Plug-N-Play Promise" },
+                    { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-marketing-15mins.png`, label: "Official Marketing: 15 Minutes Setup" },
+                    { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-studio-ui.png`, label: "Bambu Studio: 3D Printing Software" },
+                    { src: `${process.env.PUBLIC_URL}/images/case-studies/makerworld-ui.png`, label: "MakerWorld: The Model Marketplace" }
+                  ]}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Part 2: The Spark */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="space-y-6 mb-12">
+              <h3 className="text-3xl font-bold text-emerald-400 mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>The Personal Spark</h3>
+              <div className="space-y-6 text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <p>
+                  I felt this gap too.  I bought my first printer in June 2025, even after completing Bambu Lab’s learning materials, I still found myself finding answers from forums, Reddit threads, YouTube tutorials, and Chatgpt just to understand slicer settings and print failures. This worked for me because I enjoy tinkering, although it quietly contradicted the ease of use the ecosystem promises. For most beginners, the barrier is not the printer, it is the absence of guidance once something goes wrong.
+                </p>
+                <p>
+                  For the first few months I only downloaded free models from MakerWorld and assumed the occasional failure was simply part of learning. The underlying issue surfaced only when I began publishing my own models. One of my earliest uploads, a simple spaceship from the game EVE Online, received a one star review from a user whose first layer failed because of a dirty build plate. The fix was easy, a quick soap and water cleaning of the plate. But the user blamed the model, and the platform displayed their review as a critique of “model quality.”
+                </p>
+                <p>
+                  Users are misattributing their issues to creator design flaws. Creators are being penalized for issues unrelated to their models. And beginners are leaving the experience without learning anything that would help them succeed the next time.
+                </p>
+                <p className="text-white font-medium border-l-2 border-emerald-500 pl-4">
+                  A system designed to feel seamless at the start leaves everyone unsupported the moment reality becomes unpredictable.
+                </p>
+              </div>
+            </div>
+
+            {/* Carousel for Keepstar Images */}
+            <div className="relative aspect-video bg-gray-900 rounded-xl overflow-hidden border border-gray-800 group">
+              <Carousel
+                images={[
+                  { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-microcenter.jpg`, label: "Day 1: Picking up my P1S Combo at Microcenter" },
+                  { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-software-complexity.png`, label: "Slicer Software" },
+                  { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-gpt-debug.png`, label: "Debugging Failures with Chatgpt" },
+                  { src: `${process.env.PUBLIC_URL}/images/case-studies/bambu-keepstar-2.jpg`, label: "My EVE Online Keepstar Model" }
+                ]}
+              />
+            </div>
+          </motion.div>
+        </section>
+
+        {/*MakerWorld Incentives*/}
         <section className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto bg-[#101010] border border-[#222] rounded-2xl p-8 md:p-12"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>Summary</h2>
-            <div className="space-y-6 text-lg text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              <p>
-                <span className="font-semibold text-white">Goal:</span> Design a review system that helps users learn from failures while providing creators with fair, actionable feedback.
-              </p>
-              <p>
-                <span className="font-semibold text-emerald-400">Solution:</span> An AI-powered attribution system that guides users to categorize failure causes before submitting reviews. Role: Product Designer & UX Researcher.
-              </p>
-              <p>
-                Through research and iterative design, the solution improves feedback accuracy and creates learning opportunities for users, creators, and the platform.
-              </p>
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-1 space-y-6">
+                <h3 className="text-2xl font-bold text-white" style={{ fontFamily: "'Sora', sans-serif" }}>MakerWorld’s Incentive Program</h3>
+                <div className="text-lg text-gray-300 leading-relaxed space-y-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <p>
+                    MakerWorld stands out from other STL sites by offering high quality models at no cost to the user. Since the platform connects directly to Bambu Studio, the models users download and print shape how they judge the reliability of the entire ecosystem.
+                  </p>
+                  <p>
+                    To maintain that quality at scale, Bambu Lab rewards creators with points when users complete valid prints. Points convert into Bambu Lab store credit, and visibility is influenced by ratings and successful print reports.
+                  </p>
+
+                  <p className="font-medium text-emerald-400 pt-4">
+                    This gives creators a real incentive to publish high quality models that print well on the first attem
+                  </p>
+                </div>
+              </div>
+              {/* Visual/Icon for Points/Economy */}
+              <div className="w-full md:w-1/3 flex items-center justify-center">
+                <div className="relative w-full max-w-[280px] rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/case-studies/bambu-gift-card.png`}
+                    alt="MakerWorld Points Redemption Interface"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
             </div>
           </motion.div>
         </section>
 
-        {/* Problem Statement */}
-        <section className="mb-16">
+        {/* The "Why" Grid */}
+        <section className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="grid lg:grid-cols-2 gap-8"
           >
-            <div className="bg-gradient-to-br from-orange-900/30 to-red-900/30 border-l-4 border-orange-500 rounded-r-xl p-8 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
-              <h2 className="text-3xl font-bold mb-6 text-orange-300" style={{ fontFamily: "'Sora', sans-serif" }}>{data.problemStatement.title}</h2>
-              <p className="text-lg text-gray-200 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.problemStatement.content}</p>
+            {/* Problem Statement */}
+            <div className="lg:col-span-2 bg-gradient-to-br from-orange-900/20 to-red-900/20 border border-orange-800/30 rounded-2xl p-8 lg:p-12 relative overflow-hidden group hover:border-orange-700/50 transition-colors">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor" className="text-orange-500"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" /></svg>
+              </div>
+              <h2 className="text-3xl font-bold mb-6 text-orange-400" style={{ fontFamily: "'Sora', sans-serif" }}>Define the Problem Clearly</h2>
+              <div className="text-lg text-gray-200 leading-relaxed space-y-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <p>The fundamental flaw in MakerWorld's review mechanism lies in its narrow scope. Constraining feedback to 1-5 star ratings, comments, and photos drastically oversimplifies the multi-stage process of digital creation to physical output. <br /><em className="text-white"></em></p>
+                <p>The system captures the outcome, not the cause. That blind spot produces a ripple effect:</p>
+                <ul className="list-disc pl-6 space-y-2 text-gray-300">
+                  <li>Users misattribute failures to creators.</li>
+                  <li>Creators are penalized for issues unrelated to their models.</li>
+                  <li>Feedback becomes noise rather than learning.</li>
+                  <li>Beginners sense frustration rather than progress.</li>
+                  <li>The marketplace trust loop breaks.</li>
+                </ul>
+                <p className="font-medium text-orange-300 pt-4">In an ecosystem built on plug and print accessibility, the weakest link becomes assumption.</p>
+              </div>
             </div>
-          </motion.div>
-        </section>
 
-        {/* Why it matters */}
-        <section className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 border-l-4 border-emerald-500 rounded-r-xl p-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-              <h2 className="text-3xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>{data.whyItMatters.title}</h2>
-              <p className="text-lg text-gray-200 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.whyItMatters.content}</p>
+            {/* Why It Matters */}
+            <div className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-800/30 rounded-2xl p-8 relative overflow-hidden group hover:border-emerald-700/50 transition-colors">
+              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor" className="text-emerald-500"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" /></svg>
+              </div>
+              <h2 className="text-2xl font-bold mb-4 text-emerald-400" style={{ fontFamily: "'Sora', sans-serif" }}>Why It Matters (The Broken Flywheel)</h2>
+              <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Bambu Lab depends on a feedback flywheel. Creators upload reliable models, users get successful prints, and positive reviews surface the best designs. This attracts more users, strengthens the ecosystem, and fuels growth. The flywheel slows when creators no longer feel that uploading to MakerWorld is worth the effort. The issue is not the printers or the models, but the system’s inability to tell real design flaws from simple user misunderstandings.
+              </p>
             </div>
-          </motion.div>
-        </section>
 
-        {/* Success Vision */}
-        <section className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-gradient-to-br from-emerald-900/30 to-teal-900/30 border-l-4 border-emerald-500 rounded-r-xl p-8 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-              <h2 className="text-3xl font-bold mb-6 text-emerald-300" style={{ fontFamily: "'Sora', sans-serif" }}>{data.successVision.title}</h2>
-              <p className="text-lg text-gray-200 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.successVision.content}</p>
+            {/* Success Vision */}
+            <div className="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-800/30 rounded-2xl p-8 relative overflow-hidden group hover:border-blue-700/50 transition-colors">
+              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor" className="text-blue-500"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" /></svg>
+              </div>
+              <h2 className="text-2xl font-bold mb-4 text-blue-400" style={{ fontFamily: "'Sora', sans-serif" }}>Insight: Failure Is an Opportunity to Learn</h2>
+              <p className="text-gray-300 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Failures are not the problem. Misclassification is. Every failed print is an opportunity to learn, holding information that could help both the user and the ecosystem improve. Yet none of this learning is captured or surfaced.</p>
+              <p className="font-medium text-blue-300 pt-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>The insight is simple: attribute the failure before evaluating the model.</p>
             </div>
           </motion.div>
         </section>
@@ -602,8 +751,8 @@ const BambuLabCaseStudy = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>{data.businessLoop.title}</h2>
-            <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{data.businessLoop.description}</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ fontFamily: "'Sora', sans-serif" }}>The Ideal Flywheel</h2>
+            <p className="text-lg text-gray-300 mb-8 leading-relaxed" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Bambu Lab's business model depends on a healthy feedback loop between creators and users.</p>
 
             <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-emerald-800/30 rounded-2xl p-4 sm:p-6 md:p-8 overflow-visible">
               <BambuLoop />
